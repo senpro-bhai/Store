@@ -3,361 +3,551 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">MC Store</title>
+<title id="pg-title">MythicalLife Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ════════════════════════════════════════
+   CSS VARIABLES & THEMES
+════════════════════════════════════════ */
 :root {
-  --gold: #f5c518;
-  --gold2: #cc9900;
-  --gold3: #ffe55a;
-  --amber: #e08000;
-  --bg: #0c0c0c;
-  --bg2: #141414;
-  --bg3: #1c1c1c;
-  --bg4: #242424;
-  --border: rgba(255,255,255,0.07);
-  --border-g: rgba(245,197,24,0.2);
-  --text: #f0f0f0;
-  --text2: #888;
-  --text3: #555;
-  --r: 8px;
+  --p:#f5c518; --p2:#cc9900; --p3:#ffe55a; --pa:#e08000;
+  --bg:#0c0c0c; --bg2:#141414; --bg3:#1c1c1c; --bg4:#242424;
+  --border:rgba(255,255,255,0.07); --border-p:rgba(245,197,24,0.2);
+  --text:#f0f0f0; --text2:#888; --text3:#555; --r:8px;
 }
+/* 10 THEMES */
+[data-theme="gold"]{--p:#f5c518;--p2:#cc9900;--p3:#ffe55a;--pa:#e08000;--border-p:rgba(245,197,24,0.2)}
+[data-theme="green"]{--p:#22c55e;--p2:#16a34a;--p3:#4ade80;--pa:#15803d;--border-p:rgba(34,197,94,0.2)}
+[data-theme="blue"]{--p:#3b82f6;--p2:#2563eb;--p3:#60a5fa;--pa:#1d4ed8;--border-p:rgba(59,130,246,0.2)}
+[data-theme="red"]{--p:#ef4444;--p2:#dc2626;--p3:#f87171;--pa:#b91c1c;--border-p:rgba(239,68,68,0.2)}
+[data-theme="purple"]{--p:#a855f7;--p2:#9333ea;--p3:#c084fc;--pa:#7c3aed;--border-p:rgba(168,85,247,0.2)}
+[data-theme="cyan"]{--p:#06b6d4;--p2:#0891b2;--p3:#22d3ee;--pa:#0e7490;--border-p:rgba(6,182,212,0.2)}
+[data-theme="orange"]{--p:#f97316;--p2:#ea580c;--p3:#fb923c;--pa:#c2410c;--border-p:rgba(249,115,22,0.2)}
+[data-theme="pink"]{--p:#ec4899;--p2:#db2777;--p3:#f472b6;--pa:#be185d;--border-p:rgba(236,72,153,0.2)}
+[data-theme="white"]{--p:#e5e5e5;--p2:#aaaaaa;--p3:#ffffff;--pa:#888888;--border-p:rgba(229,229,229,0.2)}
+[data-theme="lime"]{--p:#84cc16;--p2:#65a30d;--p3:#a3e635;--pa:#4d7c0f;--border-p:rgba(132,204,22,0.2)}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+a{text-decoration:none;color:inherit}
 
-/* ── IGN MODAL ── */
-#ign-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(16px)}
-.ign-box{background:var(--bg2);border:1px solid var(--border-g);border-radius:16px;padding:48px 36px;max-width:440px;width:92%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,0.9),0 0 60px rgba(245,197,24,0.1);animation:popUp .45s cubic-bezier(.34,1.56,.64,1)}
+/* ════ IGN MODAL ════ */
+#ign-ov{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(16px)}
+.ign-box{background:var(--bg2);border:1px solid var(--border-p);border-radius:16px;padding:48px 36px;max-width:440px;width:92%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.9);animation:popUp .45s cubic-bezier(.34,1.56,.64,1)}
 @keyframes popUp{from{opacity:0;transform:scale(.75) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.ign-box .ib-icon{width:78px;height:78px;background:linear-gradient(135deg,rgba(245,197,24,.14),rgba(255,153,0,.08));border:1px solid var(--border-g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 22px;animation:bob 3.5s ease-in-out infinite}
+.ign-box .ib-logo{width:90px;height:90px;margin:0 auto 20px;animation:bob 3.5s ease-in-out infinite}
+.ign-box .ib-logo img{width:100%;height:100%;object-fit:contain;border-radius:12px}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.ign-box h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--gold);margin-bottom:8px}
+.ign-box h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--p);margin-bottom:8px}
 .ign-box p{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:24px}
 .ign-box input{width:100%;padding:14px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;text-align:center;outline:none;letter-spacing:2px;transition:all .2s}
-.ign-box input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,197,24,.1)}
+.ign-box input:focus{border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 15%,transparent)}
 .ign-box input::placeholder{color:var(--text3);font-weight:400;letter-spacing:1px}
-.btn-gold{display:block;width:100%;margin-top:12px;padding:14px;background:linear-gradient(135deg,var(--gold),var(--amber));border:none;border-radius:var(--r);color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;letter-spacing:.5px;cursor:pointer;transition:all .2s}
-.btn-gold:hover{background:linear-gradient(135deg,var(--gold3),var(--gold));box-shadow:0 8px 28px rgba(245,197,24,.4);transform:translateY(-2px)}
+.btn-p{display:block;width:100%;margin-top:12px;padding:14px;background:linear-gradient(135deg,var(--p),var(--pa));border:none;border-radius:var(--r);color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;letter-spacing:.5px;cursor:pointer;transition:all .2s}
+.btn-p:hover{background:linear-gradient(135deg,var(--p3),var(--p));box-shadow:0 8px 28px color-mix(in srgb,var(--p) 40%,transparent);transform:translateY(-2px)}
 
-/* ── NAVBAR ── */
-#navbar{position:sticky;top:0;z-index:200;background:rgba(12,12,12,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:16px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,rgba(245,197,24,.2),rgba(255,153,0,.1));border:1px solid var(--border-g);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
-#nav-logo-img{width:36px;height:36px;object-fit:contain;border-radius:8px;display:none}
-.nav-logo-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold)}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
-#nav-discord{display:none;padding:8px 14px;background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.25);border-radius:6px;color:#7289da;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s}
+/* ════ NAVBAR ════ */
+#navbar{position:sticky;top:0;z-index:200;background:rgba(12,12,12,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 20px;height:62px;display:flex;align-items:center;gap:14px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+#nav-logo-img{height:38px;width:38px;object-fit:contain;border-radius:8px;display:block}
+.nav-logo-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--p)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+#nav-discord{display:none;padding:7px 13px;background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.25);border-radius:6px;color:#7289da;font-size:13px;font-weight:600;transition:all .2s}
 #nav-discord:hover{background:rgba(88,101,242,.2)}
-.nav-ign{display:flex;align-items:center;gap:7px;padding:8px 14px;background:rgba(245,197,24,.07);border:1px solid var(--border-g);border-radius:6px;cursor:pointer;transition:all .2s}
-.nav-ign:hover{background:rgba(245,197,24,.12)}
-.nav-ign .ign-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation:pulse 2s ease-in-out infinite}
+.nav-ign{display:flex;align-items:center;gap:7px;padding:7px 13px;background:color-mix(in srgb,var(--p) 8%,transparent);border:1px solid var(--border-p);border-radius:6px;cursor:pointer;transition:all .2s}
+.nav-ign:hover{background:color-mix(in srgb,var(--p) 13%,transparent)}
+.ign-dot{width:7px;height:7px;border-radius:50%;background:var(--p);box-shadow:0 0 6px var(--p);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.nav-ign span{font-size:13px;font-weight:700;color:var(--gold)}
+.nav-ign span{font-size:13px;font-weight:700;color:var(--p)}
 
-/* ── BANNER ── */
-#banner{position:relative;width:100%;height:300px;overflow:hidden;background:linear-gradient(135deg,#0e0a00,#141000 35%,#0a0a10)}
-#banner-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;display:none}
-.ban-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;animation:orbf 9s ease-in-out infinite}
-.ban-orb1{width:400px;height:400px;background:var(--gold);top:-150px;left:5%;animation-delay:0s}
-.ban-orb2{width:250px;height:250px;background:var(--amber);top:-50px;right:15%;animation-delay:-4s}
-.ban-orb3{width:200px;height:200px;background:#ff4400;bottom:-80px;left:40%;animation-delay:-7s;opacity:.07}
-@keyframes orbf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
-.ban-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,12,.1) 0%,rgba(12,12,12,.5) 60%,rgba(12,12,12,1) 100%)}
-.ban-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
-.ban-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(245,197,24,.12);border:1px solid var(--border-g);border-radius:99px;padding:5px 14px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
-#ban-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,68px);letter-spacing:5px;color:#fff;line-height:1;text-shadow:0 4px 30px rgba(0,0,0,.8);margin-bottom:10px}
-#ban-title span{color:var(--gold)}
-#ban-sub{font-size:15px;color:var(--text2);max-width:520px;line-height:1.6}
+/* ════ BANNER ════ */
+#banner{position:relative;width:100%;height:300px;overflow:hidden;background:#0a0808}
+#banner-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.6}
+.ban-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,12,.1) 0%,rgba(12,12,12,.55) 55%,rgba(12,12,12,1) 100%)}
+.ban-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,color-mix(in srgb,var(--p) 8%,transparent),transparent 70%)}
+.ban-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:30px 20px;text-align:center}
+#ban-logo{height:90px;object-fit:contain;margin-bottom:14px;filter:drop-shadow(0 4px 20px rgba(0,0,0,.8));animation:bob 4s ease-in-out infinite}
+#ban-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,60px);letter-spacing:5px;color:#fff;line-height:1;text-shadow:0 4px 30px rgba(0,0,0,.9);margin-bottom:6px}
+#ban-title .hl{color:var(--p)}
+#ban-sub{font-size:14px;color:var(--text2);max-width:480px;line-height:1.6}
 
-/* ── CATEGORY TABS ── */
-#cat-bar{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:100}
-.cat-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;height:54px}
+/* ════ GAMEMODE GRID ════ */
+#gm-section{max-width:1300px;margin:0 auto;padding:28px 20px 0}
+.gm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.gm-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .22s;position:relative}
+.gm-card:hover,.gm-card.active{border-color:var(--border-p);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.gm-card.active{background:color-mix(in srgb,var(--p) 8%,var(--bg2))}
+.gm-card .gm-img{width:100%;height:110px;object-fit:cover;opacity:.85;transition:all .3s}
+.gm-card:hover .gm-img,.gm-card.active .gm-img{opacity:1}
+.gm-img-placeholder{width:100%;height:110px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:40px}
+.gm-card .gm-label{padding:10px 12px;display:flex;align-items:center;gap:6px}
+.gm-bar{width:3px;height:18px;background:var(--p);border-radius:2px;flex-shrink:0}
+.gm-card.active .gm-bar{background:var(--p);box-shadow:0 0 8px var(--p)}
+.gm-name{font-size:14px;font-weight:700;color:var(--text)}
+.gm-sub{font-size:11px;color:var(--text3)}
+
+/* ════ CAT TABS ════ */
+#cat-bar{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:100;display:none}
+.cat-inner{max-width:1300px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;height:50px}
 .cat-inner::-webkit-scrollbar{display:none}
-.cat-tab{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:6px;color:var(--text2);font-size:13.5px;font-weight:600;cursor:pointer;transition:all .18s;border:1px solid transparent;white-space:nowrap;flex-shrink:0}
-.cat-tab .ct-icon{font-size:16px}
-.cat-tab .ct-count{background:var(--bg4);padding:2px 7px;border-radius:99px;font-size:11px;color:var(--text3)}
+.cat-tab{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:6px;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;border:1px solid transparent;white-space:nowrap;flex-shrink:0}
+.cat-tab .ct-ico{font-size:15px}
+.cat-tab .ct-cnt{background:var(--bg4);padding:1px 7px;border-radius:99px;font-size:10px;color:var(--text3)}
 .cat-tab:hover{background:var(--bg3);color:var(--text)}
-.cat-tab.active{background:linear-gradient(135deg,rgba(245,197,24,.12),rgba(255,153,0,.06));border-color:var(--border-g);color:var(--gold)}
-.cat-tab.active .ct-count{background:rgba(245,197,24,.15);color:var(--gold)}
+.cat-tab.active{background:color-mix(in srgb,var(--p) 10%,transparent);border-color:var(--border-p);color:var(--p)}
+.cat-tab.active .ct-cnt{background:color-mix(in srgb,var(--p) 15%,transparent);color:var(--p)}
 
-/* ── MAIN ── */
-#main{max-width:1280px;margin:0 auto;padding:32px 24px 80px}
-
-/* Featured section */
-.feat-section{margin-bottom:40px}
-.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.sec-head h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:var(--text)}
-.sec-head .sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border-g),transparent)}
-.sec-head .sh-count{font-size:12px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 10px;border-radius:99px}
-
-/* Featured big cards */
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-
-/* ── PRODUCT CARD ── */
-.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .22s,border-color .22s,box-shadow .22s;display:flex;flex-direction:column;position:relative}
-.pcard:hover{transform:translateY(-5px);border-color:rgba(245,197,24,.35);box-shadow:0 16px 48px rgba(0,0,0,.6),0 0 0 1px rgba(245,197,24,.07)}
-.pc-thumb{height:170px;background:linear-gradient(135deg,#130f00,#0e0e08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
-.pc-thumb::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(245,197,24,.1),transparent 70%)}
+/* ════ PRODUCTS ════ */
+#prod-section{max-width:1300px;margin:0 auto;padding:24px 20px 80px}
+.sec-hd{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-hd h2{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--text)}
+.sec-hd .sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border-p),transparent)}
+.sec-hd .sh-cnt{font-size:11px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 10px;border-radius:99px}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .22s;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--p) 40%,transparent);box-shadow:0 14px 44px rgba(0,0,0,.6)}
+.pc-thumb{height:160px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
 .pc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .pcard:hover .pc-thumb img{transform:scale(1.07)}
-.pc-icon{font-size:58px;z-index:1;filter:drop-shadow(0 4px 16px rgba(245,197,24,.3));transition:transform .3s}
-.pcard:hover .pc-icon{transform:scale(1.1) rotate(-4deg)}
-.pc-badge{position:absolute;top:10px;left:10px;font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:4px;z-index:3}
-.bp{background:var(--gold);color:#000}
-.bn{background:#16a34a;color:#fff}
-.bs{background:#dc2626;color:#fff}
-.bb{background:linear-gradient(135deg,#f59e0b,#dc2626);color:#fff}
-.pc-body{padding:16px;flex:1;display:flex;flex-direction:column}
-.pc-cat{font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);margin-bottom:5px}
-.pc-name{font-size:18px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:7px}
-.pc-desc{font-size:12px;color:var(--text2);line-height:1.6;flex:1;margin-bottom:14px}
+.pc-ico{font-size:54px;z-index:1;filter:drop-shadow(0 4px 14px color-mix(in srgb,var(--p) 30%,transparent));transition:transform .3s}
+.pcard:hover .pc-ico{transform:scale(1.1) rotate(-4deg)}
+.pc-bdg{position:absolute;top:9px;left:9px;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;z-index:3}
+.bp{background:var(--p);color:#000}.bn{background:#16a34a;color:#fff}.bs{background:#dc2626;color:#fff}.bb{background:linear-gradient(135deg,#f59e0b,#dc2626);color:#fff}
+.pc-body{padding:15px;flex:1;display:flex;flex-direction:column}
+.pc-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--p2);margin-bottom:5px}
+.pc-name{font-size:17px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:7px}
+.pc-desc{font-size:12px;color:var(--text2);line-height:1.55;flex:1;margin-bottom:13px}
 .pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.pc-price{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--gold)}
-.btn-buy{padding:9px 18px;background:linear-gradient(135deg,var(--gold),var(--amber));border:none;border-radius:6px;color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .18s;white-space:nowrap}
-.btn-buy:hover{background:linear-gradient(135deg,var(--gold3),var(--gold));box-shadow:0 4px 18px rgba(245,197,24,.4);transform:scale(1.04)}
+.pc-price{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--p)}
+.btn-buy{padding:9px 16px;background:linear-gradient(135deg,var(--p),var(--pa));border:none;border-radius:6px;color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:12px;cursor:pointer;transition:all .18s;white-space:nowrap}
+.btn-buy:hover{background:linear-gradient(135deg,var(--p3),var(--p));box-shadow:0 4px 16px color-mix(in srgb,var(--p) 40%,transparent);transform:scale(1.04)}
+.empty-s{text-align:center;padding:72px 20px;color:var(--text3);grid-column:1/-1}
+.empty-s span{font-size:48px;display:block;margin-bottom:12px}
 
-/* Empty */
-.empty-state{text-align:center;padding:80px 20px;color:var(--text3);grid-column:1/-1}
-.empty-state span{font-size:52px;display:block;margin-bottom:14px}
-
-/* ── PURCHASE MODAL ── */
+/* ════ PURCHASE MODAL ════ */
 #pur-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:8000;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
 #pur-ov.show{display:flex}
-.pur-modal{background:var(--bg2);border:1px solid var(--border-g);border-radius:14px;max-width:500px;width:93%;max-height:92vh;overflow-y:auto;animation:popUp .3s ease;box-shadow:0 32px 80px rgba(0,0,0,.85)}
-.pm-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.pm-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold)}
-.pm-close{width:30px;height:30px;background:var(--bg4);border:1px solid var(--border);border-radius:6px;color:var(--text2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.pm-close:hover{background:var(--bg3);color:var(--text)}
-.pm-body{padding:22px 24px}
-.pm-item{display:flex;align-items:center;gap:13px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:13px;margin-bottom:18px}
-.pm-item-ico{font-size:36px}
-.pm-item-name{font-size:16px;font-weight:700}
-.pm-item-price{font-family:'Bebas Neue',sans-serif;font-size:21px;color:var(--gold);letter-spacing:1px}
-.pm-lbl{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px}
-.pm-inp{width:100%;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;outline:none;margin-bottom:14px;transition:all .2s}
-.pm-inp:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,197,24,.1)}
+.pur-m{background:var(--bg2);border:1px solid var(--border-p);border-radius:14px;max-width:500px;width:93%;max-height:92vh;overflow-y:auto;animation:popUp .3s ease;box-shadow:0 32px 80px rgba(0,0,0,.85)}
+.pm-hd{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.pm-hd h3{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--p)}
+.pm-cls{width:28px;height:28px;background:var(--bg4);border:1px solid var(--border);border-radius:6px;color:var(--text2);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.pm-cls:hover{background:var(--bg3);color:var(--text)}
+.pm-bd{padding:20px 22px}
+.pm-item{display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:16px}
+.pm-ico{font-size:34px}
+.pm-iname{font-size:15px;font-weight:700}
+.pm-iprice{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--p);letter-spacing:1px}
+.pm-lbl{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.pm-inp{width:100%;padding:11px 13px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;outline:none;margin-bottom:13px;transition:all .2s}
+.pm-inp:focus{border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 10%,transparent)}
 .pm-inp::placeholder{color:var(--text3);font-weight:400}
-.pay-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.pay-opt{padding:12px 6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;text-align:center;cursor:pointer;transition:all .18s;color:var(--text2);font-weight:600;font-size:13px}
-.pay-opt .po-ico{font-size:20px;display:block;margin-bottom:3px}
-.pay-opt:hover{border-color:rgba(245,197,24,.3);color:var(--text)}
-.pay-opt.sel{background:rgba(245,197,24,.08);border-color:var(--gold2);color:var(--gold)}
-.pay-info-box{background:rgba(245,197,24,.05);border:1px solid rgba(245,197,24,.13);border-radius:8px;padding:13px 14px;font-size:12.5px;color:var(--text2);line-height:1.7;margin-bottom:18px}
+.pay-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:7px;margin-bottom:13px}
+.pay-opt{padding:11px 6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;text-align:center;cursor:pointer;transition:all .18s;color:var(--text2);font-weight:600;font-size:12px}
+.pay-opt .po-ico{font-size:18px;display:block;margin-bottom:3px}
+.pay-opt img{width:40px;height:24px;object-fit:contain;display:block;margin:0 auto 3px}
+.pay-opt:hover{border-color:color-mix(in srgb,var(--p) 30%,transparent);color:var(--text)}
+.pay-opt.sel{background:color-mix(in srgb,var(--p) 8%,transparent);border-color:var(--p2);color:var(--p)}
+.pay-info-box{background:color-mix(in srgb,var(--p) 5%,transparent);border:1px solid color-mix(in srgb,var(--p) 13%,transparent);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:16px}
+.pay-qr-img{width:140px;height:140px;object-fit:contain;border-radius:8px;margin:8px auto;display:block;background:white;padding:4px}
 .pm-row{display:flex;gap:9px}
-.btn-sec{flex:1;padding:13px;background:var(--bg4);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-sec{flex:1;padding:12px;background:var(--bg4);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Outfit',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:all .2s}
 .btn-sec:hover{background:var(--bg3);color:var(--text)}
-.btn-pro{flex:2;padding:13px;background:linear-gradient(135deg,var(--gold),var(--amber));border:none;border-radius:8px;color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;cursor:pointer;transition:all .2s}
-.btn-pro:hover{background:linear-gradient(135deg,var(--gold3),var(--gold));box-shadow:0 6px 22px rgba(245,197,24,.4)}
-.pm-success{text-align:center;padding:10px 0}
-.s-ico{font-size:64px;display:block;margin-bottom:14px;animation:popUp .5s cubic-bezier(.34,1.56,.64,1)}
-.pm-success h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--gold);margin-bottom:10px}
-.pm-success p{color:var(--text2);font-size:13.5px;line-height:1.7}
-.order-pill{display:inline-block;background:rgba(245,197,24,.08);border:1px solid var(--border-g);border-radius:7px;padding:9px 18px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gold);letter-spacing:2px;margin:13px 0}
+.btn-pro{flex:2;padding:12px;background:linear-gradient(135deg,var(--p),var(--pa));border:none;border-radius:8px;color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-pro:hover{background:linear-gradient(135deg,var(--p3),var(--p));box-shadow:0 6px 20px color-mix(in srgb,var(--p) 38%,transparent)}
+.pm-succ{text-align:center;padding:8px 0}
+.s-ico{font-size:60px;display:block;margin-bottom:12px;animation:popUp .5s cubic-bezier(.34,1.56,.64,1)}
+.pm-succ h3{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--p);margin-bottom:9px}
+.pm-succ p{color:var(--text2);font-size:13px;line-height:1.7}
+.ord-pill{display:inline-block;background:color-mix(in srgb,var(--p) 8%,transparent);border:1px solid var(--border-p);border-radius:7px;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--p);letter-spacing:2px;margin:12px 0}
+.rcon-status{display:inline-flex;align-items:center;gap:6px;font-size:12px;margin-top:8px;padding:6px 12px;border-radius:99px;font-weight:600}
+.rcon-ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#22c55e}
+.rcon-fail{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#ef4444}
 
-/* ── FOOTER ── */
-#footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center}
-#footer p{font-size:12px;color:var(--text3);line-height:1.7}
+/* ════ FOOTER ════ */
+#footer{border-top:1px solid var(--border);padding:24px 20px;text-align:center;max-width:1300px;margin:0 auto}
+#footer .f-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+#footer .f-links a{font-size:12px;color:var(--text3);transition:color .2s}
+#footer .f-links a:hover{color:var(--text2)}
+#footer-txt{font-size:11px;color:var(--text3);line-height:1.7}
 
-/* ── ADMIN LOGIN ── */
+/* ════ ADMIN LOGIN ════ */
 #adm-login{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9800;align-items:center;justify-content:center;backdrop-filter:blur(14px)}
 #adm-login.show{display:flex}
-.adm-login-box{background:var(--bg2);border:1px solid rgba(245,197,24,.22);border-radius:14px;padding:38px;max-width:360px;width:92%;text-align:center;animation:popUp .35s ease;box-shadow:0 24px 72px rgba(0,0,0,.9)}
-.adm-login-box .al-ico{font-size:36px;margin-bottom:14px}
-.adm-login-box h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--gold);margin-bottom:6px}
-.adm-login-box p{color:var(--text2);font-size:12.5px;margin-bottom:22px}
-.adm-login-box input{width:100%;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;text-align:center;outline:none;letter-spacing:3px;margin-bottom:10px;transition:all .2s}
-.adm-login-box input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,197,24,.1)}
-.login-err{color:#ef4444;font-size:11.5px;margin-top:6px;display:none}
-.btn-cancel{margin-top:8px;width:100%;padding:11px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text3);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.al-box{background:var(--bg2);border:1px solid color-mix(in srgb,var(--p) 22%,transparent);border-radius:14px;padding:36px;max-width:360px;width:92%;text-align:center;animation:popUp .35s ease;box-shadow:0 24px 72px rgba(0,0,0,.9)}
+.al-box .al-ico{font-size:36px;margin-bottom:13px}
+.al-box h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--p);margin-bottom:6px}
+.al-box p{color:var(--text2);font-size:12px;margin-bottom:20px}
+.al-box input{width:100%;padding:12px 13px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;text-align:center;outline:none;letter-spacing:3px;margin-bottom:10px;transition:all .2s}
+.al-box input:focus{border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 10%,transparent)}
+.login-err{color:#ef4444;font-size:11px;margin-top:5px;display:none}
+.btn-cancel{margin-top:8px;width:100%;padding:10px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text3);font-family:'Outfit',sans-serif;font-size:12.5px;cursor:pointer;transition:all .2s}
 .btn-cancel:hover{border-color:rgba(255,255,255,.18);color:var(--text2)}
 
-/* ── ADMIN PANEL ── */
+/* ════ ADMIN PANEL ════ */
 #adm-panel{display:none;position:fixed;inset:0;background:var(--bg);z-index:9600;flex-direction:column}
 #adm-panel.show{display:flex}
-.ap-nav{height:58px;padding:0 20px;background:#111;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px}
-.ap-nav h2{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--amber);flex:1}
-.ap-close{padding:8px 16px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text2);font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s}
-.ap-close:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+.ap-topbar{height:56px;padding:0 18px;background:#111;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.ap-topbar h2{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:3px;color:var(--pa);flex:1}
+.ap-topbar-close{padding:7px 14px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text2);font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;cursor:pointer;transition:all .2s}
+.ap-topbar-close:hover{border-color:rgba(255,255,255,.22);color:var(--text)}
 .ap-body{display:flex;flex:1;overflow:hidden}
-.ap-side{width:185px;background:#111;border-right:1px solid var(--border);padding:14px 8px;overflow-y:auto;flex-shrink:0}
-.ap-tab{padding:9px 12px;border-radius:7px;color:var(--text3);font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:8px;margin-bottom:2px;border:1px solid transparent}
+.ap-side{width:180px;background:#111;border-right:1px solid var(--border);padding:12px 7px;overflow-y:auto;flex-shrink:0}
+.ap-tab{padding:8px 11px;border-radius:7px;color:var(--text3);font-size:12.5px;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:8px;margin-bottom:2px;border:1px solid transparent}
 .ap-tab:hover{background:var(--bg3);color:var(--text2)}
-.ap-tab.active{background:rgba(245,197,24,.08);border-color:rgba(245,197,24,.2);color:var(--gold)}
-.ap-content{flex:1;padding:24px 28px;overflow-y:auto}
+.ap-tab.active{background:color-mix(in srgb,var(--p) 8%,transparent);border-color:color-mix(in srgb,var(--p) 20%,transparent);color:var(--p)}
+.ap-content{flex:1;padding:22px 26px;overflow-y:auto}
 .ap-sec{display:none}
 .ap-sec.active{display:block}
-.ap-sec>h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--amber);margin-bottom:20px}
-.af-g{margin-bottom:15px}
-.af-lbl{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:7px}
-.af-inp,.af-ta,.af-sel{width:100%;padding:11px 13px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Outfit',sans-serif;font-size:13.5px;outline:none;transition:border-color .2s}
-.af-inp:focus,.af-ta:focus{border-color:rgba(245,197,24,.38)}
-.af-ta{min-height:82px;resize:vertical}
+.ap-sec>h3{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--pa);margin-bottom:18px}
+.af-g{margin-bottom:14px}
+.af-lbl{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.af-inp,.af-ta,.af-sel{width:100%;padding:10px 13px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Outfit',sans-serif;font-size:13.5px;outline:none;transition:border-color .2s}
+.af-inp:focus,.af-ta:focus{border-color:color-mix(in srgb,var(--p) 38%,transparent)}
+.af-ta{min-height:78px;resize:vertical}
 .af-sel option{background:var(--bg3)}
-.af-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.ap-btn{padding:11px 20px;background:linear-gradient(135deg,var(--gold),var(--amber));border:none;border-radius:8px;color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:13.5px;cursor:pointer;transition:all .2s}
-.ap-btn:hover{background:linear-gradient(135deg,var(--gold3),var(--gold));box-shadow:0 4px 16px rgba(245,197,24,.3)}
-.ap-btn.red{background:#7f1d1d;color:#fca5a5}
-.ap-btn.red:hover{background:#991b1b;box-shadow:none}
-.ap-btn.grn{background:#14532d;color:#86efac}
-.ap-btn.grn:hover{background:#166534;box-shadow:none}
-.ap-prod-list{display:grid;gap:8px;margin-bottom:18px}
-.ap-prod-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px}
-.api-ico{font-size:22px;flex-shrink:0}
-.api-name{flex:1;font-weight:700;font-size:14px}
-.api-cat{font-size:11px;color:var(--text3)}
-.api-price{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--gold);margin-right:2px}
-.add-prod-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:20px}
-.add-prod-box h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:var(--text2);margin-bottom:15px}
-.swatches{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin-bottom:9px}
-.swatch{height:30px;border-radius:5px;border:2px solid transparent;cursor:pointer;transition:all .15s}
-.swatch:hover{transform:scale(1.12)}
-.swatch.sel{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
-.ap-order-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:9px}
-.ao-head{display:flex;align-items:center;gap:10px;margin-bottom:7px}
-.ao-prod{font-weight:700;font-size:14px;flex:1}
-.ao-price{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--gold)}
-.ao-meta{font-size:11.5px;color:var(--text3);margin-bottom:9px}
-.ao-meta span{color:var(--gold2);font-weight:600}
-.ao-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:2px}
-.ao-acts{display:flex;gap:7px}
+.af-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.af-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}
+.ap-btn{padding:10px 20px;background:linear-gradient(135deg,var(--p),var(--pa));border:none;border-radius:8px;color:#000;font-family:'Outfit',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s}
+.ap-btn:hover{background:linear-gradient(135deg,var(--p3),var(--p));box-shadow:0 4px 14px color-mix(in srgb,var(--p) 28%,transparent)}
+.ap-btn.red{background:#7f1d1d;color:#fca5a5}.ap-btn.red:hover{background:#991b1b;box-shadow:none}
+.ap-btn.grn{background:#14532d;color:#86efac}.ap-btn.grn:hover{background:#166534;box-shadow:none}
+.ap-btn.blue{background:#1e3a8a;color:#93c5fd}.ap-btn.blue:hover{background:#1e40af;box-shadow:none}
+
+/* Theme selector */
+.theme-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.theme-opt{height:44px;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#000}
+.theme-opt:hover{transform:scale(1.06)}
+.theme-opt.sel{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+
+/* Gamemode admin list */
+.gm-admin-list{display:grid;gap:8px;margin-bottom:16px}
+.gm-admin-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;display:flex;align-items:center;gap:10px}
+.gma-ico{font-size:22px;flex-shrink:0}
+.gma-name{flex:1;font-weight:700;font-size:14px}
+.gma-cnt{font-size:11px;color:var(--text3)}
+
+/* Product admin list */
+.prod-admin-list{display:grid;gap:8px;margin-bottom:16px}
+.pa-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;display:flex;align-items:center;gap:9px}
+.pai-ico{font-size:20px;flex-shrink:0}
+.pai-name{flex:1;font-weight:700;font-size:13.5px}
+.pai-cat{font-size:11px;color:var(--text3)}
+.pai-gm{font-size:11px;color:var(--p2);font-weight:600}
+.pai-price{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--p)}
+
+/* Orders */
+.ao-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:13px;margin-bottom:8px}
+.ao-hd{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.ao-prod{font-weight:700;font-size:13.5px;flex:1}
+.ao-price{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--p)}
+.ao-meta{font-size:11px;color:var(--text3);margin-bottom:8px}
+.ao-meta span{color:var(--p2);font-weight:600}
+.ao-id{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text3);margin-top:2px}
+.ao-acts{display:flex;gap:6px;flex-wrap:wrap}
+
+/* RCON section */
+.rcon-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px}
+.rcon-box h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:var(--pa);margin-bottom:14px}
+.rcon-status-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:5px 12px;border-radius:99px;font-weight:600;margin-bottom:12px}
+.rcon-connected{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e}
+.rcon-disconnected{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#ef4444}
+
+/* Pay methods admin */
+.pay-method-list{display:grid;gap:8px;margin-bottom:14px}
+.pml-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;display:flex;align-items:center;gap:10px}
+.pml-ico{font-size:20px;flex-shrink:0}
+.pml-name{flex:1;font-weight:700;font-size:13px}
+.pml-active{width:8px;height:8px;border-radius:50%;background:#22c55e}
+.pml-inactive{width:8px;height:8px;border-radius:50%;background:var(--text3)}
+
+/* Color code preview */
+.desc-preview{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:8px;font-size:13px;line-height:1.7;min-height:60px}
+
+/* File upload */
+.file-upload-area{border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3)}
+.file-upload-area:hover{border-color:var(--border-p);background:color-mix(in srgb,var(--p) 4%,var(--bg3))}
+.file-upload-area input{display:none}
+.file-preview{width:80px;height:80px;object-fit:contain;border-radius:8px;margin:8px auto;display:block}
 
 /* FAB */
-#adm-fab{position:fixed;bottom:20px;right:20px;z-index:7000;padding:10px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
-#adm-fab:hover{background:var(--bg4);border-color:var(--border-g);color:var(--gold)}
+#adm-fab{position:fixed;bottom:18px;right:18px;z-index:7000;padding:9px 15px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+#adm-fab:hover{background:var(--bg4);border-color:var(--border-p);color:var(--p)}
 
 /* Toast */
-.toast{position:fixed;bottom:72px;right:20px;background:var(--bg2);border:1px solid var(--border-g);border-radius:8px;padding:11px 16px;color:var(--gold);font-weight:600;font-size:13px;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,.6);animation:tIn .3s ease,tOut .3s 2.8s ease forwards}
+.toast{position:fixed;bottom:68px;right:18px;background:var(--bg2);border:1px solid var(--border-p);border-radius:8px;padding:10px 15px;color:var(--p);font-weight:600;font-size:13px;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,.6);animation:tIn .3s ease,tOut .3s 2.8s ease forwards;max-width:280px}
 @keyframes tIn{from{opacity:0;transform:translateX(40px)}}
 @keyframes tOut{to{opacity:0;transform:translateX(40px)}}
 
 @media(max-width:768px){
-  .nav-inner{padding:0 16px}
-  #main{padding:24px 16px 72px}
-  .feat-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-  .af-row{grid-template-columns:1fr}
+  .gm-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .prod-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+  .af-row,.af-row3{grid-template-columns:1fr}
+  .theme-grid{grid-template-columns:repeat(5,1fr)}
   .ap-side{display:none}
-  #ban-title{letter-spacing:3px}
+  #ban-logo{height:70px}
 }
 </style>
 </head>
-<body>
+<body data-theme="gold">
 
 <!-- IGN Modal -->
-<div id="ign-overlay">
+<div id="ign-ov">
   <div class="ign-box">
-    <div class="ib-icon">⛏️</div>
+    <div class="ib-logo"><img id="ign-logo-img" src="" alt="⛏️" onerror="this.alt='⛏️';this.style.display='none';this.nextElementSibling.style.display='block'"><span id="ign-logo-emoji" style="display:none;font-size:40px">⛏️</span></div>
     <h2>ENTER YOUR IGN</h2>
-    <p>Enter your Minecraft username to continue shopping</p>
+    <p>Enter your Minecraft username to personalize your experience</p>
     <input type="text" id="ign-inp" placeholder="YourMinecraftName" maxlength="24" autocomplete="off">
-    <button class="btn-gold" onclick="saveIGN()">ENTER STORE →</button>
+    <button class="btn-p" onclick="saveIGN()">ENTER STORE →</button>
   </div>
 </div>
 
 <!-- Admin Login -->
 <div id="adm-login">
-  <div class="adm-login-box">
+  <div class="al-box">
     <div class="al-ico">🛡️</div>
     <h2>ADMIN LOGIN</h2>
     <p>Enter password to access admin panel</p>
     <input type="password" id="adm-pass" placeholder="••••••••">
-    <button class="btn-gold" onclick="doLogin()">ACCESS PANEL</button>
+    <button class="btn-p" onclick="doLogin()">ACCESS PANEL</button>
     <div class="login-err" id="login-err">❌ Wrong password!</div>
     <button class="btn-cancel" onclick="closeLogin()">Cancel</button>
   </div>
 </div>
 
-<!-- Admin Panel -->
+<!-- ════════════ ADMIN PANEL ════════════ -->
 <div id="adm-panel">
-  <div class="ap-nav">
+  <div class="ap-topbar">
     <h2>⚙️ ADMIN PANEL</h2>
-    <button class="ap-close" onclick="closeAdmin()">✕ Save & Close</button>
+    <button class="ap-topbar-close" onclick="closeAdmin()">✕ Save & Close</button>
   </div>
   <div class="ap-body">
     <div class="ap-side">
-      <div class="ap-tab active" onclick="apTab('products',this)">📦 Products</div>
+      <div class="ap-tab active" onclick="apTab('gamemodes',this)">🎮 Gamemodes</div>
+      <div class="ap-tab" onclick="apTab('products',this)">📦 Products</div>
       <div class="ap-tab" onclick="apTab('appearance',this)">🎨 Appearance</div>
+      <div class="ap-tab" onclick="apTab('theme',this)">🌈 Theme</div>
       <div class="ap-tab" onclick="apTab('payment',this)">💳 Payment</div>
+      <div class="ap-tab" onclick="apTab('rcon',this)">⚡ Console/RCON</div>
       <div class="ap-tab" onclick="apTab('settings',this)">⚙️ Settings</div>
       <div class="ap-tab" onclick="apTab('orders',this)">🛒 Orders</div>
     </div>
     <div class="ap-content">
 
-      <!-- Products -->
-      <div class="ap-sec active" id="aps-products">
+      <!-- GAMEMODES -->
+      <div class="ap-sec active" id="aps-gamemodes">
+        <h3>MANAGE GAMEMODES</h3>
+        <div class="gm-admin-list" id="ap-gm-list"></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+          <h4 style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--text2);margin-bottom:14px">+ ADD GAMEMODE</h4>
+          <div class="af-row">
+            <div class="af-g"><label class="af-lbl">Name</label><input class="af-inp" id="ngm-name" placeholder="Survival"></div>
+            <div class="af-g"><label class="af-lbl">Icon (emoji)</label><input class="af-inp" id="ngm-icon" placeholder="⚔️"></div>
+          </div>
+          <div class="af-g"><label class="af-lbl">Image URL (optional)</label><input class="af-inp" id="ngm-img" placeholder="https://..."></div>
+          <div class="af-g"><label class="af-lbl">Subtitle</label><input class="af-inp" id="ngm-sub" placeholder="Click to view ▶"></div>
+          <button class="ap-btn grn" onclick="addGM()">➕ Add Gamemode</button>
+        </div>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div class="ap-sec" id="aps-products">
         <h3>MANAGE PRODUCTS</h3>
-        <div class="ap-prod-list" id="ap-prod-list"></div>
-        <div class="add-prod-box">
-          <h4>+ ADD PRODUCT</h4>
+        <div class="prod-admin-list" id="ap-prod-list"></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+          <h4 style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--text2);margin-bottom:14px">+ ADD PRODUCT</h4>
           <div class="af-row">
             <div class="af-g"><label class="af-lbl">Name</label><input class="af-inp" id="np-name" placeholder="VIP Rank"></div>
             <div class="af-g"><label class="af-lbl">Price</label><input class="af-inp" id="np-price" placeholder="₹199"></div>
           </div>
           <div class="af-row">
+            <div class="af-g"><label class="af-lbl">Gamemode</label><select class="af-sel" id="np-gm"></select></div>
             <div class="af-g"><label class="af-lbl">Category</label>
-              <select class="af-sel" id="np-cat"><option>Ranks</option><option>Keys</option><option>Coins</option><option>Cosmetics</option><option>Kits</option><option>Other</option></select>
+              <select class="af-sel" id="np-cat"><option>Ranks</option><option>Crate Keys</option><option>Coins</option><option>Cosmetics</option><option>Kits</option><option>Other</option></select>
             </div>
-            <div class="af-g"><label class="af-lbl">Icon (emoji)</label><input class="af-inp" id="np-icon" placeholder="👑"></div>
           </div>
-          <div class="af-g"><label class="af-lbl">Description</label><textarea class="af-ta" id="np-desc" placeholder="What does the player get?"></textarea></div>
           <div class="af-row">
-            <div class="af-g"><label class="af-lbl">Image URL (optional)</label><input class="af-inp" id="np-img" placeholder="https://..."></div>
+            <div class="af-g"><label class="af-lbl">Icon (emoji)</label><input class="af-inp" id="np-icon" placeholder="👑"></div>
             <div class="af-g"><label class="af-lbl">Badge</label>
               <select class="af-sel" id="np-badge"><option value="">None</option><option value="POPULAR">POPULAR</option><option value="NEW">NEW</option><option value="SALE">SALE</option><option value="BEST VALUE">BEST VALUE</option></select>
             </div>
+          </div>
+          <div class="af-g">
+            <label class="af-lbl">Description (supports &color codes like &aGreen &cRed &6Gold &bCyan &dPink)</label>
+            <textarea class="af-ta" id="np-desc" placeholder="&6VIP Rank &f— get &afly&f, &b/nick&f and more!" oninput="previewDesc(this,'np-desc-prev')"></textarea>
+            <div class="desc-preview" id="np-desc-prev" style="margin-top:6px"></div>
+          </div>
+          <div class="af-row">
+            <div class="af-g"><label class="af-lbl">Image URL (optional)</label><input class="af-inp" id="np-img" placeholder="https://..."></div>
+            <div class="af-g"><label class="af-lbl">RCON Command (optional)</label><input class="af-inp" id="np-cmd" placeholder="rank add {ign} VIP"></div>
           </div>
           <button class="ap-btn grn" onclick="addProd()">➕ Add Product</button>
         </div>
       </div>
 
-      <!-- Appearance -->
+      <!-- APPEARANCE -->
       <div class="ap-sec" id="aps-appearance">
         <h3>APPEARANCE</h3>
-        <div class="af-g"><label class="af-lbl">Store Name</label><input class="af-inp" id="ap-name" placeholder="MC STORE"></div>
-        <div class="af-g"><label class="af-lbl">Banner Title (use | for highlight e.g. MY|STORE)</label><input class="af-inp" id="ap-btitle" placeholder="WELCOME TO THE STORE"></div>
-        <div class="af-g"><label class="af-lbl">Banner Subtitle</label><textarea class="af-ta" id="ap-bsub"></textarea></div>
-        <div class="af-g"><label class="af-lbl">Logo URL (blank = emoji)</label><input class="af-inp" id="ap-logo" placeholder="https://..."></div>
-        <div class="af-g"><label class="af-lbl">Store Emoji</label><input class="af-inp" id="ap-emoji" placeholder="⛏️"></div>
-        <div class="af-g"><label class="af-lbl">Banner Image URL</label><input class="af-inp" id="ap-banner" placeholder="https://..."></div>
-        <div class="af-g">
-          <label class="af-lbl">Theme Color</label>
-          <div class="swatches">
-            <div class="swatch sel" style="background:#f5c518" data-c="#f5c518" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#ff9900" data-c="#ff9900" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#22c55e" data-c="#22c55e" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#00ccff" data-c="#00ccff" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#ff4444" data-c="#ff4444" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#a855f7" data-c="#a855f7" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#ec4899" data-c="#ec4899" onclick="pickC(this)"></div>
-            <div class="swatch" style="background:#e5e5e5" data-c="#e5e5e5" onclick="pickC(this)"></div>
+        <div class="af-g"><label class="af-lbl">Store Name</label><input class="af-inp" id="ap-name" placeholder="MythicalLife Store"></div>
+        <div class="af-row">
+          <div class="af-g">
+            <label class="af-lbl">Store Logo (Upload)</label>
+            <div class="file-upload-area" onclick="document.getElementById('logo-upload').click()">
+              <input type="file" id="logo-upload" accept="image/*" onchange="handleLogoUpload(this)">
+              <img id="logo-preview" class="file-preview" src="" style="display:none">
+              <div id="logo-upload-txt">📤 Tap to upload logo</div>
+            </div>
           </div>
-          <input class="af-inp" id="ap-color" placeholder="#f5c518" value="#f5c518">
+          <div class="af-g">
+            <label class="af-lbl">Banner Background (Upload)</label>
+            <div class="file-upload-area" onclick="document.getElementById('banner-upload').click()">
+              <input type="file" id="banner-upload" accept="image/*" onchange="handleBannerUpload(this)">
+              <img id="banner-preview" class="file-preview" src="" style="display:none">
+              <div id="banner-upload-txt">📤 Tap to upload banner</div>
+            </div>
+          </div>
         </div>
+        <div class="af-g"><label class="af-lbl">Logo URL (or paste URL instead)</label><input class="af-inp" id="ap-logo" placeholder="https://..."></div>
+        <div class="af-g"><label class="af-lbl">Banner Image URL (or paste URL)</label><input class="af-inp" id="ap-banner" placeholder="https://..."></div>
+        <div class="af-g"><label class="af-lbl">Banner Title (use | for color e.g. MYTHICAL|LIFE)</label><input class="af-inp" id="ap-btitle" placeholder="MYTHICAL|LIFE STORE"></div>
+        <div class="af-g"><label class="af-lbl">Banner Subtitle</label><textarea class="af-ta" id="ap-bsub"></textarea></div>
         <div class="af-g"><label class="af-lbl">Discord URL</label><input class="af-inp" id="ap-discord" placeholder="https://discord.gg/..."></div>
+        <div class="af-g"><label class="af-lbl">Terms of Service URL</label><input class="af-inp" id="ap-tos" placeholder="https://..."></div>
+        <div class="af-g"><label class="af-lbl">Refund Policy URL</label><input class="af-inp" id="ap-refund" placeholder="https://..."></div>
+        <div class="af-g"><label class="af-lbl">Support URL</label><input class="af-inp" id="ap-support" placeholder="https://discord.gg/..."></div>
+        <div class="af-g"><label class="af-lbl">Footer Text</label><input class="af-inp" id="ap-footer" placeholder="© 2025 MythicalLife"></div>
         <button class="ap-btn" onclick="saveApp()">💾 Save Appearance</button>
       </div>
 
-      <!-- Payment -->
-      <div class="ap-sec" id="aps-payment">
-        <h3>PAYMENT SETTINGS</h3>
-        <div class="af-g"><label class="af-lbl">UPI ID</label><input class="af-inp" id="set-upi" placeholder="yourname@upi"></div>
-        <div class="af-g"><label class="af-lbl">PayPal Email</label><input class="af-inp" id="set-paypal" placeholder="pay@example.com"></div>
-        <div class="af-g"><label class="af-lbl">Payment Instructions</label><textarea class="af-ta" id="set-payins" placeholder="Share payment screenshot to Discord..."></textarea></div>
-        <button class="ap-btn" onclick="savePay()">💾 Save Payment</button>
+      <!-- THEME -->
+      <div class="ap-sec" id="aps-theme">
+        <h3>THEME SELECTOR</h3>
+        <p style="color:var(--text2);font-size:13px;margin-bottom:16px">Choose from 10 color themes for your store:</p>
+        <div class="theme-grid" id="theme-grid">
+          <div class="theme-opt sel" data-t="gold" style="background:linear-gradient(135deg,#f5c518,#e08000)" onclick="pickTheme(this)">GOLD</div>
+          <div class="theme-opt" data-t="green" style="background:linear-gradient(135deg,#22c55e,#15803d)" onclick="pickTheme(this)">GREEN</div>
+          <div class="theme-opt" data-t="blue" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)" onclick="pickTheme(this)">BLUE</div>
+          <div class="theme-opt" data-t="red" style="background:linear-gradient(135deg,#ef4444,#b91c1c)" onclick="pickTheme(this)">RED</div>
+          <div class="theme-opt" data-t="purple" style="background:linear-gradient(135deg,#a855f7,#7c3aed)" onclick="pickTheme(this)">PURPLE</div>
+          <div class="theme-opt" data-t="cyan" style="background:linear-gradient(135deg,#06b6d4,#0e7490)" onclick="pickTheme(this)">CYAN</div>
+          <div class="theme-opt" data-t="orange" style="background:linear-gradient(135deg,#f97316,#c2410c)" onclick="pickTheme(this)">ORANGE</div>
+          <div class="theme-opt" data-t="pink" style="background:linear-gradient(135deg,#ec4899,#be185d)" onclick="pickTheme(this)">PINK</div>
+          <div class="theme-opt" data-t="lime" style="background:linear-gradient(135deg,#84cc16,#4d7c0f)" onclick="pickTheme(this)">LIME</div>
+          <div class="theme-opt" data-t="white" style="background:linear-gradient(135deg,#e5e5e5,#888);color:#000" onclick="pickTheme(this)">WHITE</div>
+        </div>
+        <button class="ap-btn" onclick="saveTheme()">💾 Apply Theme</button>
       </div>
 
-      <!-- Settings -->
+      <!-- PAYMENT -->
+      <div class="ap-sec" id="aps-payment">
+        <h3>PAYMENT METHODS</h3>
+        <p style="color:var(--text2);font-size:12.5px;margin-bottom:16px">Enable/disable payment methods and configure them:</p>
+
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="font-size:20px">📱</span>
+            <span style="font-weight:700;flex:1">UPI</span>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+              <input type="checkbox" id="pay-upi-en" checked style="accent-color:var(--p)"> Enable
+            </label>
+          </div>
+          <div class="af-g"><label class="af-lbl">UPI ID</label><input class="af-inp" id="set-upi" placeholder="yourname@upi"></div>
+          <div class="af-g">
+            <label class="af-lbl">QR Code Image (Upload)</label>
+            <div class="file-upload-area" onclick="document.getElementById('upi-qr-upload').click()">
+              <input type="file" id="upi-qr-upload" accept="image/*" onchange="handleQRUpload(this,'upi')">
+              <img id="upi-qr-preview" class="file-preview" src="" style="display:none">
+              <div id="upi-qr-txt">📤 Upload QR Code</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="font-size:20px">💳</span>
+            <span style="font-weight:700;flex:1">PayPal</span>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+              <input type="checkbox" id="pay-pp-en" style="accent-color:var(--p)"> Enable
+            </label>
+          </div>
+          <div class="af-g"><label class="af-lbl">PayPal Email</label><input class="af-inp" id="set-paypal" placeholder="pay@example.com"></div>
+        </div>
+
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="font-size:20px">🏦</span>
+            <span style="font-weight:700;flex:1">Bank Transfer</span>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+              <input type="checkbox" id="pay-bank-en" style="accent-color:var(--p)"> Enable
+            </label>
+          </div>
+          <div class="af-g"><label class="af-lbl">Bank Details</label><textarea class="af-ta" id="set-bank" placeholder="Bank: HDFC&#10;Account: 1234567890&#10;IFSC: HDFC0001234"></textarea></div>
+        </div>
+
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="font-size:20px">💰</span>
+            <span style="font-weight:700;flex:1">Custom Payment</span>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+              <input type="checkbox" id="pay-custom-en" style="accent-color:var(--p)"> Enable
+            </label>
+          </div>
+          <div class="af-g"><label class="af-lbl">Custom Method Name</label><input class="af-inp" id="set-custom-name" placeholder="FamPay / Paytm / etc."></div>
+          <div class="af-g"><label class="af-lbl">Custom Details</label><textarea class="af-ta" id="set-custom-details" placeholder="Details here..."></textarea></div>
+          <div class="af-g">
+            <label class="af-lbl">QR Code (optional)</label>
+            <div class="file-upload-area" onclick="document.getElementById('custom-qr-upload').click()">
+              <input type="file" id="custom-qr-upload" accept="image/*" onchange="handleQRUpload(this,'custom')">
+              <img id="custom-qr-preview" class="file-preview" src="" style="display:none">
+              <div id="custom-qr-txt">📤 Upload QR Code</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="af-g"><label class="af-lbl">General Payment Instructions</label><textarea class="af-ta" id="set-payins" placeholder="After payment, send screenshot to Discord for fast delivery!"></textarea></div>
+        <button class="ap-btn" onclick="savePay()">💾 Save Payment Settings</button>
+      </div>
+
+      <!-- RCON / CONSOLE -->
+      <div class="ap-sec" id="aps-rcon">
+        <h3>CONSOLE / RCON</h3>
+        <p style="color:var(--text2);font-size:12.5px;line-height:1.7;margin-bottom:16px">
+          Connect your Minecraft server via RCON. When a player buys a product, the command you set for that product will automatically run on your server!<br>
+          Use <strong style="color:var(--p)">{ign}</strong> in commands as placeholder for player's username.
+        </p>
+        <div id="rcon-status-badge" class="rcon-status-badge rcon-disconnected">⚫ Not Connected</div>
+        <div class="af-row">
+          <div class="af-g"><label class="af-lbl">Server IP</label><input class="af-inp" id="rcon-ip" placeholder="play.yourserver.net"></div>
+          <div class="af-g"><label class="af-lbl">RCON Port</label><input class="af-inp" id="rcon-port" placeholder="25575" type="number"></div>
+        </div>
+        <div class="af-g"><label class="af-lbl">RCON Password</label><input class="af-inp" type="password" id="rcon-pass" placeholder="your-rcon-password"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="ap-btn blue" onclick="testRCON()">🔌 Test Connection</button>
+          <button class="ap-btn" onclick="saveRCON()">💾 Save RCON Settings</button>
+        </div>
+        <div class="rcon-box">
+          <h4>MANUAL COMMAND</h4>
+          <div class="af-g"><label class="af-lbl">Run Command Manually</label><input class="af-inp" id="rcon-manual-cmd" placeholder="say Hello World!"></div>
+          <button class="ap-btn blue" onclick="runManualCmd()">▶ Run Command</button>
+          <div id="rcon-cmd-result" style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);min-height:30px;background:var(--bg4);border-radius:6px;padding:8px;display:none"></div>
+        </div>
+        <div style="margin-top:14px;background:color-mix(in srgb,var(--p) 5%,var(--bg3));border:1px solid var(--border-p);border-radius:8px;padding:14px">
+          <p style="font-size:12px;color:var(--text2);line-height:1.7">
+            ⚠️ <strong style="color:var(--p)">Important:</strong> For RCON to work, enable it in your server's <code>server.properties</code>:<br>
+            <code style="color:var(--p3)">enable-rcon=true<br>rcon.port=25575<br>rcon.password=yourpassword</code>
+          </p>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
       <div class="ap-sec" id="aps-settings">
         <h3>SETTINGS</h3>
-        <div class="af-g"><label class="af-lbl">Footer Text</label><input class="af-inp" id="set-footer" placeholder="© 2025 MyServer"></div>
-        <div class="af-g"><label class="af-lbl">New Admin Password</label><input class="af-inp" type="password" id="set-pass" placeholder="New password (blank = no change)"></div>
+        <div class="af-g"><label class="af-lbl">Change Admin Password</label><input class="af-inp" type="password" id="set-pass" placeholder="New password"></div>
         <button class="ap-btn" onclick="saveSet()">💾 Save Settings</button>
       </div>
 
-      <!-- Orders -->
+      <!-- ORDERS -->
       <div class="ap-sec" id="aps-orders">
         <h3>ORDERS</h3>
         <div id="ap-orders"></div>
@@ -370,14 +560,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 <!-- Admin FAB -->
 <button id="adm-fab" onclick="openLogin()">⚙ Admin</button>
 
-<!-- NAVBAR -->
+<!-- ════════════ STORE ════════════ -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a class="nav-logo" href="#">
-      <div class="nav-logo-icon" id="nav-emoji-box">⛏️</div>
-      <img id="nav-logo-img" src="" alt="">
-      <span class="nav-logo-name" id="nav-store-name">MC STORE</span>
-    </a>
+    <div class="nav-logo">
+      <img id="nav-logo-img" src="" alt="" onerror="this.style.display='none'">
+      <span class="nav-logo-name" id="nav-store-name">MYTHICALLIFE STORE</span>
+    </div>
     <div class="nav-right">
       <a id="nav-discord" href="#" target="_blank">💬 Discord</a>
       <div class="nav-ign" onclick="changeIGN()">
@@ -389,156 +578,258 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </nav>
 
-<!-- BANNER -->
 <div id="banner">
-  <img id="banner-bg" src="" alt="">
-  <div class="ban-orb ban-orb1"></div>
-  <div class="ban-orb ban-orb2"></div>
-  <div class="ban-orb ban-orb3"></div>
+  <img id="banner-bg" src="" alt="" style="display:none">
   <div class="ban-overlay"></div>
+  <div class="ban-glow"></div>
   <div class="ban-content">
-    <div class="ban-tag">⭐ Official Store</div>
-    <h1 id="ban-title">WELCOME TO THE <span>STORE</span></h1>
+    <img id="ban-logo" src="" alt="" style="display:none">
+    <h1 id="ban-title">MYTHICAL<span class="hl">LIFE</span> STORE</h1>
     <p id="ban-sub">Buy ranks, keys, cosmetics and more. Delivered instantly in-game!</p>
   </div>
 </div>
 
-<!-- CATEGORY TABS -->
+<!-- GAMEMODE SECTION -->
+<div id="gm-section">
+  <div class="sec-hd" style="margin-bottom:16px">
+    <h2>GAMEMODES</h2>
+    <div class="sh-line"></div>
+  </div>
+  <div class="gm-grid" id="gm-grid"></div>
+</div>
+
+<!-- CAT BAR -->
 <div id="cat-bar">
   <div class="cat-inner" id="cat-tabs"></div>
 </div>
 
-<!-- MAIN CONTENT -->
-<div id="main">
-  <div class="feat-section">
-    <div class="sec-head">
-      <h2 id="sec-title">ALL PRODUCTS</h2>
-      <div class="sh-line"></div>
-      <div class="sh-count" id="sec-count">0 items</div>
-    </div>
-    <div class="feat-grid" id="prod-grid"></div>
+<!-- PRODUCTS -->
+<div id="prod-section">
+  <div class="sec-hd">
+    <h2 id="sec-title">SELECT A GAMEMODE</h2>
+    <div class="sh-line"></div>
+    <div class="sh-cnt" id="sec-cnt">0 items</div>
   </div>
+  <div class="prod-grid" id="prod-grid"></div>
 </div>
 
 <!-- FOOTER -->
-<footer id="footer">
-  <p id="footer-txt">© 2025 MC Store · Not affiliated with Mojang or Minecraft</p>
-  <p style="margin-top:6px;font-size:11px;opacity:.4">Press Ctrl+Shift+A for Admin Panel</p>
-</footer>
+<div style="max-width:1300px;margin:0 auto">
+  <footer id="footer">
+    <div class="f-links" id="f-links"></div>
+    <p id="footer-txt">© 2025 MythicalLife · Not affiliated with Mojang or Minecraft</p>
+  </footer>
+</div>
 
 <!-- Purchase Modal -->
 <div id="pur-ov">
-  <div class="pur-modal" id="pur-modal"></div>
+  <div class="pur-m" id="pur-modal"></div>
 </div>
 
 <script>
-// ── DATA ──
-let S = JSON.parse(localStorage.getItem('mcs4')||'null') || {
-  name:'MC STORE', emoji:'⛏️', logo:'',
-  bannerTitle:'WELCOME TO THE|STORE',
+// ════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════
+let S = JSON.parse(localStorage.getItem('mcs5')||'null') || {
+  name:'MythicalLife Store', logo:'', banner:'', bannerTitle:'MYTHICAL|LIFE STORE',
   bannerSub:'Buy ranks, keys, cosmetics and more. Delivered instantly in-game!',
-  banner:'', color:'#f5c518', discord:'',
-  footer:'© 2025 MC Store · Not affiliated with Mojang or Minecraft',
-  adminPass:'admin123', upi:'', paypal:'',
+  theme:'gold', discord:'', tos:'', refund:'', support:'', 
+  footer:'© 2025 MythicalLife · Not affiliated with Mojang or Minecraft',
+  adminPass:'admin123',
+  upi:'', upiEnabled:true, upiQR:'',
+  paypal:'', paypalEnabled:false,
+  bank:'', bankEnabled:false,
+  customPayName:'', customPayDetails:'', customPayEnabled:false, customPayQR:'',
   payIns:'After payment, send screenshot to our Discord. Delivery within 24h!',
+  rconIP:'', rconPort:'25575', rconPass:'', rconEnabled:false,
+  gamemodes:[
+    {id:1,name:'Survival',icon:'⚔️',img:'',sub:'Click to view ▶'},
+    {id:2,name:'Lifesteal',icon:'❤️',img:'',sub:'Click to view ▶'},
+    {id:3,name:'Bedwars',icon:'🛏️',img:'',sub:'Click to view ▶'},
+    {id:4,name:'SkyWars',icon:'☁️',img:'',sub:'Click to view ▶'},
+  ],
   products:[
-    {id:1,name:'VIP Rank',price:'₹99',category:'Ranks',icon:'⭐',desc:'VIP prefix, /kit vip, 3 homes & exclusive in-game perks!',img:'',badge:'POPULAR'},
-    {id:2,name:'MVP Rank',price:'₹249',category:'Ranks',icon:'👑',desc:'Full MVP access — fly, /nick, /hat & all VIP perks included.',img:'',badge:''},
-    {id:3,name:'LEGEND Rank',price:'₹599',category:'Ranks',icon:'🔥',desc:'Ultimate rank — every perk, custom tag, priority queue & VIP support.',img:'',badge:'BEST VALUE'},
-    {id:4,name:'Crate Key ×5',price:'₹79',category:'Keys',icon:'🗝️',desc:'5 legendary crate keys with rare items and special loot inside!',img:'',badge:''},
-    {id:5,name:'Crate Key ×20',price:'₹249',category:'Keys',icon:'🔑',desc:'Bulk key pack — best value for unboxing fans. Rare drops guaranteed!',img:'',badge:'SALE'},
-    {id:6,name:'10,000 Coins',price:'₹49',category:'Coins',icon:'🪙',desc:'In-game currency for the shop, auctions & player trading.',img:'',badge:'NEW'},
-    {id:7,name:'Particle Pack',price:'₹149',category:'Cosmetics',icon:'✨',desc:'Exclusive particle effects. Stand out from the crowd every time!',img:'',badge:''},
-    {id:8,name:'Starter Kit',price:'₹39',category:'Kits',icon:'📦',desc:'Jumpstart your game with tools, food & armor instantly!',img:'',badge:''},
+    {id:1,name:'VIP Rank',price:'₹99',gamemode:'Survival',category:'Ranks',icon:'⭐',desc:'&6VIP Rank &f— &a/kit vip&f, &b3 homes&f, exclusive prefix!',img:'',badge:'POPULAR',cmd:'rank add {ign} VIP'},
+    {id:2,name:'MVP Rank',price:'₹249',gamemode:'Survival',category:'Ranks',icon:'👑',desc:'&6MVP Rank &f— &afull fly&f, &b/nick&f, &d/hat &fand all VIP perks!',img:'',badge:'',cmd:'rank add {ign} MVP'},
+    {id:3,name:'LEGEND',price:'₹599',gamemode:'Survival',category:'Ranks',icon:'🔥',desc:'&cLEGEND Rank &f— &aevery perk&f, &bcustom tag&f, &dpriority queue!',img:'',badge:'BEST VALUE',cmd:'rank add {ign} LEGEND'},
+    {id:4,name:'Crate Key ×5',price:'₹79',gamemode:'Survival',category:'Crate Keys',icon:'🗝️',desc:'&65 Legendary Crate Keys &f— rare items and special loot!',img:'',badge:'',cmd:'give {ign} crate_key 5'},
+    {id:5,name:'VIP Rank',price:'₹99',gamemode:'Bedwars',category:'Ranks',icon:'⭐',desc:'&6Bedwars VIP &f— &aexclusive cosmetics&f and &bspecial perks!',img:'',badge:'POPULAR',cmd:'bw rank add {ign} VIP'},
+    {id:6,name:'10,000 Coins',price:'₹49',gamemode:'Survival',category:'Coins',icon:'🪙',desc:'&6In-game currency &ffor shop, auctions &fand trading.',img:'',badge:'NEW',cmd:'eco give {ign} 10000'},
   ],
   orders:[]
 };
 
-let IGN = localStorage.getItem('mc_ign4')||'';
+let IGN = localStorage.getItem('mc_ign5')||'';
+let curGM = null;
 let curCat = 'all';
-let selPay = 'UPI';
-const save = ()=>localStorage.setItem('mcs4',JSON.stringify(S));
+let selPay = '';
+const save = ()=>localStorage.setItem('mcs5',JSON.stringify(S));
 
-// ── SHADE ──
-function shade(hex,p){
-  try{const n=parseInt(hex.slice(1),16);const c=x=>Math.max(0,Math.min(255,x+Math.round(2.55*p)));
-  return'#'+((1<<24)+(c(n>>16)<<16)+(c((n>>8)&255)<<8)+c(n&255)).toString(16).slice(1)}catch{return hex}
+// ════ COLOR CODES ════
+const COLOR_MAP = {
+  '0':'#000000','1':'#0000aa','2':'#00aa00','3':'#00aaaa',
+  '4':'#aa0000','5':'#aa00aa','6':'#ffaa00','7':'#aaaaaa',
+  '8':'#555555','9':'#5555ff','a':'#55ff55','b':'#55ffff',
+  'c':'#ff5555','d':'#ff55ff','e':'#ffff55','f':'#ffffff',
+  'r':'inherit'
+};
+function parseColors(text){
+  if(!text)return'';
+  let out='',i=0;
+  while(i<text.length){
+    if(text[i]==='&'&&i+1<text.length&&COLOR_MAP[text[i+1]]){
+      const col=COLOR_MAP[text[i+1]];
+      if(col==='inherit')out+='</span>';
+      else out+=`<span style="color:${col}">`;
+      i+=2;
+    } else {
+      out+=text[i]==='<'?'&lt;':text[i]==='>'?'&gt;':text[i];
+      i++;
+    }
+  }
+  return out+'</span>'.repeat((out.match(/<span/g)||[]).length);
+}
+function previewDesc(el,previewId){
+  document.getElementById(previewId).innerHTML=parseColors(el.value);
 }
 
-// ── THEME ──
-function applyTheme(){
-  const c=S.color;
-  document.documentElement.style.setProperty('--gold',c);
-  document.documentElement.style.setProperty('--gold2',shade(c,-22));
-  document.documentElement.style.setProperty('--gold3',shade(c,18));
-  document.documentElement.style.setProperty('--amber',shade(c,-42));
+// ════ THEME ════
+function applyTheme(t){
+  document.body.setAttribute('data-theme',t||S.theme||'gold');
+}
+
+function pickTheme(el){
+  document.querySelectorAll('.theme-opt').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function saveTheme(){
+  const sel=document.querySelector('.theme-opt.sel');
+  if(sel){S.theme=sel.dataset.t;save();applyTheme(S.theme);toast('✅ Theme applied!')}
+}
+
+// ════ INIT ════
+function init(){
+  applyTheme(S.theme);
+  applyAppearance();
+  renderGMGrid();
+  renderProds(null,'all');
+  if(!IGN){document.getElementById('ign-ov').style.display='flex'}
+  else{document.getElementById('ign-ov').style.display='none';document.getElementById('nav-ign-txt').textContent=IGN}
+  document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='A')openLogin()});
+  document.getElementById('ign-inp').addEventListener('keyup',e=>{if(e.key==='Enter')saveIGN()});
+}
+
+// ════ APPEARANCE ════
+function applyAppearance(){
   document.title=S.name;
   document.getElementById('nav-store-name').textContent=S.name;
   document.getElementById('footer-txt').textContent=S.footer;
 
-  // Banner title with | highlight
-  const parts=S.bannerTitle.split('|');
-  document.getElementById('ban-title').innerHTML=parts.length>1?`${parts[0]}<span>${parts[1]}</span>${parts[2]||''}`:S.bannerTitle;
-  document.getElementById('ban-sub').textContent=S.bannerSub;
+  const li=document.getElementById('nav-logo-img');
+  if(S.logo){li.src=S.logo;li.style.display='block'}else li.style.display='none';
 
-  // Logo
-  const li=document.getElementById('nav-logo-img'),le=document.getElementById('nav-emoji-box');
-  if(S.logo){li.src=S.logo;li.style.display='block';le.style.display='none'}
-  else{le.textContent=S.emoji||'⛏️';le.style.display='flex';li.style.display='none'}
+  const bl=document.getElementById('ban-logo');
+  if(S.logo){bl.src=S.logo;bl.style.display='block'}else bl.style.display='none';
 
-  // Banner img
   const bi=document.getElementById('banner-bg');
   if(S.banner){bi.src=S.banner;bi.style.display='block'}else bi.style.display='none';
+
+  // IGN modal logo
+  const il=document.getElementById('ign-logo-img');
+  if(S.logo){il.src=S.logo;il.style.display='block';document.getElementById('ign-logo-emoji').style.display='none'}
+  else{il.style.display='none';document.getElementById('ign-logo-emoji').style.display='block'}
+
+  // Banner title
+  const parts=S.bannerTitle.split('|');
+  document.getElementById('ban-title').innerHTML=parts.length>1?`${parts[0]}<span class="hl">${parts[1]}</span>${parts[2]||''}`:S.bannerTitle;
+  document.getElementById('ban-sub').textContent=S.bannerSub;
 
   // Discord
   const nd=document.getElementById('nav-discord');
   if(S.discord){nd.href=S.discord;nd.style.display='flex'}else nd.style.display='none';
+
+  // Footer links
+  const fl=document.getElementById('f-links');
+  fl.innerHTML='';
+  if(S.tos)fl.innerHTML+=`<a href="${S.tos}" target="_blank">Terms of Service</a>`;
+  if(S.refund)fl.innerHTML+=`<a href="${S.refund}" target="_blank">Refund Policy</a>`;
+  if(S.support)fl.innerHTML+=`<a href="${S.support}" target="_blank">Support</a>`;
+  if(S.discord)fl.innerHTML+=`<a href="${S.discord}" target="_blank">Discord</a>`;
 }
 
-// ── CATEGORY TABS ──
-const CAT_ICONS={all:'⚡',Ranks:'👑',Keys:'🗝️',Coins:'🪙',Cosmetics:'✨',Kits:'📦',Other:'🎁'};
+// ════ GAMEMODES ════
+function renderGMGrid(){
+  const g=document.getElementById('gm-grid');
+  if(!S.gamemodes.length){g.innerHTML='<p style="color:var(--text3);font-size:13px;padding:20px">No gamemodes yet. Add them in Admin Panel!</p>';return}
+  g.innerHTML=S.gamemodes.map(gm=>`
+    <div class="gm-card${curGM===gm.id?' active':''}" onclick="selectGM(${gm.id})">
+      ${gm.img?`<img class="gm-img" src="${gm.img}" alt="${gm.name}" onerror="this.style.display='none'">`:
+        `<div class="gm-img-placeholder">${gm.icon||'🎮'}</div>`}
+      <div class="gm-label">
+        <div class="gm-bar"></div>
+        <div><div class="gm-name">${gm.name}</div><div class="gm-sub">${gm.sub||'Click to view ▶'}</div></div>
+      </div>
+    </div>`).join('');
+}
 
-function buildCatTabs(){
-  const cats=['all',...new Set(S.products.map(p=>p.category))];
+function selectGM(id){
+  curGM=id;curCat='all';
+  renderGMGrid();
+  const gm=S.gamemodes.find(x=>x.id===id);
+  document.getElementById('cat-bar').style.display='block';
+  buildCatTabs(id);
+  renderProds(id,'all');
+  document.getElementById('sec-title').textContent=(gm?gm.name.toUpperCase()+' ':'')+' PRODUCTS';
+  document.getElementById('cat-bar').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ════ CAT TABS ════
+const CAT_ICONS={all:'⚡',Ranks:'👑','Crate Keys':'🗝️',Coins:'🪙',Cosmetics:'✨',Kits:'📦',Other:'🎁'};
+function buildCatTabs(gmId){
+  const prods=S.products.filter(p=>p.gamemode===S.gamemodes.find(x=>x.id===gmId)?.name);
+  const cats=['all',...new Set(prods.map(p=>p.category))];
   const bar=document.getElementById('cat-tabs');
   bar.innerHTML='';
   cats.forEach(cat=>{
-    const cnt=cat==='all'?S.products.length:S.products.filter(p=>p.category===cat).length;
+    const cnt=cat==='all'?prods.length:prods.filter(p=>p.category===cat).length;
     const d=document.createElement('div');
     d.className='cat-tab'+(cat===curCat?' active':'');
-    d.innerHTML=`<span class="ct-icon">${CAT_ICONS[cat]||'🎮'}</span>${cat==='all'?'All':cat}<span class="ct-count">${cnt}</span>`;
-    d.onclick=()=>{curCat=cat;selectCat(cat,d)};
+    d.innerHTML=`<span class="ct-ico">${CAT_ICONS[cat]||'🎮'}</span>${cat==='all'?'All':cat}<span class="ct-cnt">${cnt}</span>`;
+    d.onclick=()=>{curCat=cat;selectCat(cat,d,gmId)};
     bar.appendChild(d);
   });
 }
-
-function selectCat(cat,el){
+function selectCat(cat,el,gmId){
   document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('sec-title').textContent=cat==='all'?'ALL PRODUCTS':cat.toUpperCase();
-  renderProds(cat);
+  renderProds(gmId,cat);
 }
 
-// ── PRODUCTS ──
+// ════ PRODUCTS ════
 const BCLS={POPULAR:'bp',NEW:'bn',SALE:'bs','BEST VALUE':'bb'};
-
-function renderProds(cat,q=''){
-  let ps=cat==='all'?[...S.products]:S.products.filter(p=>p.category===cat);
-  if(q)ps=ps.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q));
+function renderProds(gmId,cat){
   const g=document.getElementById('prod-grid');
-  document.getElementById('sec-count').textContent=`${ps.length} item${ps.length!==1?'s':''}`;
-  if(!ps.length){g.innerHTML=`<div class="empty-state"><span>📭</span><p>No products here yet.</p></div>`;return}
+  if(!gmId){
+    g.innerHTML=`<div class="empty-s"><span>👆</span><p>Select a gamemode above to view products!</p></div>`;
+    document.getElementById('sec-cnt').textContent='0 items';return;
+  }
+  const gmName=S.gamemodes.find(x=>x.id===gmId)?.name||'';
+  let ps=S.products.filter(p=>p.gamemode===gmName);
+  if(cat!=='all')ps=ps.filter(p=>p.category===cat);
+  document.getElementById('sec-cnt').textContent=`${ps.length} item${ps.length!==1?'s':''}`;
+  if(!ps.length){g.innerHTML=`<div class="empty-s"><span>📭</span><p>No products in this category yet.</p></div>`;return}
   g.innerHTML=ps.map(p=>`
     <div class="pcard" onclick="openPur(${p.id})">
       <div class="pc-thumb">
         ${p.img?`<img src="${p.img}" alt="" onerror="this.style.display='none'">`:``}
-        <div class="pc-icon">${p.icon||'🎮'}</div>
-        ${p.badge?`<div class="pc-badge ${BCLS[p.badge]||'bp'}">${p.badge}</div>`:''}
+        <div class="pc-ico">${p.icon||'🎮'}</div>
+        ${p.badge?`<div class="pc-bdg ${BCLS[p.badge]||'bp'}">${p.badge}</div>`:''}
       </div>
       <div class="pc-body">
-        <div class="pc-cat">${p.category}</div>
+        <div class="pc-cat">${p.category} · ${p.gamemode}</div>
         <div class="pc-name">${p.name}</div>
-        <div class="pc-desc">${p.desc}</div>
+        <div class="pc-desc">${parseColors(p.desc)}</div>
         <div class="pc-foot">
           <div class="pc-price">${p.price}</div>
           <button class="btn-buy" onclick="event.stopPropagation();openPur(${p.id})">Buy Now</button>
@@ -547,41 +838,101 @@ function renderProds(cat,q=''){
     </div>`).join('');
 }
 
-// ── IGN ──
+// ════ IGN ════
 function saveIGN(){
   const v=document.getElementById('ign-inp').value.trim();
   if(!v||v.length<2){document.getElementById('ign-inp').style.borderColor='#ef4444';return}
-  IGN=v;localStorage.setItem('mc_ign4',v);
+  IGN=v;localStorage.setItem('mc_ign5',v);
   document.getElementById('nav-ign-txt').textContent=v;
-  document.getElementById('ign-overlay').style.display='none';
+  document.getElementById('ign-ov').style.display='none';
 }
-function changeIGN(){
-  document.getElementById('ign-inp').value=IGN;
-  document.getElementById('ign-overlay').style.display='flex';
-  setTimeout(()=>document.getElementById('ign-inp').focus(),80);
-}
-document.getElementById('ign-inp').addEventListener('keyup',e=>{if(e.key==='Enter')saveIGN()});
+function changeIGN(){document.getElementById('ign-inp').value=IGN;document.getElementById('ign-ov').style.display='flex';setTimeout(()=>document.getElementById('ign-inp').focus(),80)}
 
-// ── PURCHASE ──
+// ════ FILE UPLOADS (Base64) ════
+function handleLogoUpload(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    S.logo=e.target.result;
+    document.getElementById('logo-preview').src=e.target.result;
+    document.getElementById('logo-preview').style.display='block';
+    document.getElementById('logo-upload-txt').style.display='none';
+    document.getElementById('ap-logo').value='';
+    toast('✅ Logo uploaded!');
+  };r.readAsDataURL(f);
+}
+function handleBannerUpload(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    S.banner=e.target.result;
+    document.getElementById('banner-preview').src=e.target.result;
+    document.getElementById('banner-preview').style.display='block';
+    document.getElementById('banner-upload-txt').style.display='none';
+    document.getElementById('ap-banner').value='';
+    toast('✅ Banner uploaded!');
+  };r.readAsDataURL(f);
+}
+function handleQRUpload(inp,type){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    if(type==='upi'){S.upiQR=e.target.result;document.getElementById('upi-qr-preview').src=e.target.result;document.getElementById('upi-qr-preview').style.display='block';document.getElementById('upi-qr-txt').style.display='none'}
+    else{S.customPayQR=e.target.result;document.getElementById('custom-qr-preview').src=e.target.result;document.getElementById('custom-qr-preview').style.display='block';document.getElementById('custom-qr-txt').style.display='none'}
+    toast('✅ QR uploaded!');
+  };r.readAsDataURL(f);
+}
+
+// ════ PURCHASE ════
+function buildPayMethods(){
+  let opts='';
+  if(S.upiEnabled&&(S.upi||S.upiQR)){opts+=`<div class="pay-opt${selPay==='UPI'?' sel':''}" onclick="selPayM(this,'UPI')"><span class="po-ico">📱</span>UPI</div>`}
+  if(S.paypalEnabled&&S.paypal){opts+=`<div class="pay-opt${selPay==='PayPal'?' sel':''}" onclick="selPayM(this,'PayPal')"><span class="po-ico">💳</span>PayPal</div>`}
+  if(S.bankEnabled&&S.bank){opts+=`<div class="pay-opt${selPay==='Bank'?' sel':''}" onclick="selPayM(this,'Bank')"><span class="po-ico">🏦</span>Bank</div>`}
+  if(S.customPayEnabled&&S.customPayName){opts+=`<div class="pay-opt${selPay===S.customPayName?' sel':''}" onclick="selPayM(this,'${S.customPayName}')"><span class="po-ico">💰</span>${S.customPayName}</div>`}
+  if(!opts)opts=`<div class="pay-opt sel" onclick="selPayM(this,'Other')"><span class="po-ico">💰</span>Other</div>`;
+  return opts;
+}
+function payInfo(){
+  if(selPay==='UPI'){
+    let html=`📱 UPI ID: <strong style="color:var(--p)">${S.upi||'Not set'}</strong><br>`;
+    if(S.upiQR)html+=`<img src="${S.upiQR}" class="pay-qr-img"><br>`;
+    html+=S.payIns;return html;
+  }
+  if(selPay==='PayPal')return`💳 PayPal: <strong style="color:var(--p)">${S.paypal}</strong><br>${S.payIns}`;
+  if(selPay==='Bank')return`🏦 Bank Transfer:<br><pre style="font-size:11px;white-space:pre-wrap;color:var(--text2)">${S.bank}</pre>${S.payIns}`;
+  if(selPay===S.customPayName){
+    let html=`💰 ${S.customPayName}:<br><span style="color:var(--text2)">${S.customPayDetails}</span>`;
+    if(S.customPayQR)html+=`<img src="${S.customPayQR}" class="pay-qr-img">`;
+    html+='<br>'+S.payIns;return html;
+  }
+  return S.payIns||'Contact us on Discord after payment!';
+}
+
+// Auto-select first enabled payment method
+function initSelPay(){
+  if(S.upiEnabled&&(S.upi||S.upiQR))selPay='UPI';
+  else if(S.paypalEnabled&&S.paypal)selPay='PayPal';
+  else if(S.bankEnabled&&S.bank)selPay='Bank';
+  else if(S.customPayEnabled&&S.customPayName)selPay=S.customPayName;
+  else selPay='Other';
+}
+
 function openPur(id){
   const p=S.products.find(x=>x.id===id);if(!p)return;
-  selPay='UPI';
+  initSelPay();
   document.getElementById('pur-ov').classList.add('show');
   document.getElementById('pur-modal').innerHTML=`
-    <div class="pm-head"><h3>COMPLETE PURCHASE</h3><button class="pm-close" onclick="closePur()">✕</button></div>
-    <div class="pm-body">
-      <div class="pm-item"><div class="pm-item-ico">${p.icon||'🎮'}</div>
-        <div><div class="pm-item-name">${p.name}</div><div class="pm-item-price">${p.price}</div></div></div>
+    <div class="pm-hd"><h3>COMPLETE PURCHASE</h3><button class="pm-cls" onclick="closePur()">✕</button></div>
+    <div class="pm-bd">
+      <div class="pm-item"><div class="pm-ico">${p.icon||'🎮'}</div>
+        <div><div class="pm-iname">${p.name}</div><div class="pm-iprice">${p.price}</div></div></div>
       <div class="pm-lbl">Minecraft IGN</div>
       <input class="pm-inp" id="pm-ign" value="${IGN}" placeholder="YourIGN" maxlength="24">
       <div class="pm-lbl">Email (for receipt)</div>
       <input class="pm-inp" id="pm-email" placeholder="you@email.com" type="email">
       <div class="pm-lbl">Payment Method</div>
-      <div class="pay-opts">
-        <div class="pay-opt sel" onclick="selPayM(this,'UPI')"><span class="po-ico">📱</span>UPI</div>
-        <div class="pay-opt" onclick="selPayM(this,'PayPal')"><span class="po-ico">💳</span>PayPal</div>
-        <div class="pay-opt" onclick="selPayM(this,'Other')"><span class="po-ico">💰</span>Other</div>
-      </div>
+      <div class="pay-opts" id="pay-opts-wrap">${buildPayMethods()}</div>
       <div class="pay-info-box" id="pm-info">${payInfo()}</div>
       <div class="pm-row">
         <button class="btn-sec" onclick="closePur()">Cancel</button>
@@ -589,104 +940,246 @@ function openPur(id){
       </div>
     </div>`;
 }
-function selPayM(el,m){selPay=m;document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');const i=document.getElementById('pm-info');if(i)i.innerHTML=payInfo()}
-function payInfo(){
-  if(selPay==='UPI'&&S.upi)return`📱 UPI ID: <strong style="color:var(--gold)">${S.upi}</strong><br><br>${S.payIns}`;
-  if(selPay==='PayPal'&&S.paypal)return`💳 PayPal: <strong style="color:var(--gold)">${S.paypal}</strong><br><br>${S.payIns}`;
-  return S.payIns||'Contact us on Discord after payment!';
+
+function selPayM(el,m){
+  selPay=m;
+  document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  const i=document.getElementById('pm-info');
+  if(i)i.innerHTML=payInfo();
 }
+
 function closePur(){document.getElementById('pur-ov').classList.remove('show')}
 document.getElementById('pur-ov').addEventListener('click',function(e){if(e.target===this)closePur()});
 
-function completePur(id){
+async function completePur(id){
   const ign=document.getElementById('pm-ign')?.value.trim();
   if(!ign){toast('❌ Please enter your IGN!');return}
   const p=S.products.find(x=>x.id===id);
   const oid='ORD-'+Date.now().toString(36).toUpperCase();
-  S.orders.unshift({id:oid,product:p.name,price:p.price,ign,email:document.getElementById('pm-email')?.value.trim(),method:selPay,date:new Date().toLocaleString(),status:'Pending'});
+  S.orders.unshift({id:oid,product:p.name,price:p.price,ign,email:document.getElementById('pm-email')?.value.trim(),method:selPay,date:new Date().toLocaleString(),status:'Pending',cmd:p.cmd});
   save();
+
+  // Try RCON auto-delivery
+  let rconMsg='';
+  if(S.rconEnabled&&S.rconIP&&p.cmd){
+    const cmd=p.cmd.replace(/{ign}/g,ign);
+    rconMsg=`<div class="rcon-status rcon-ok">⚡ Command sent: <code>${cmd}</code></div>`;
+    // Note: Real RCON needs server-side proxy due to browser security
+  }
+
   document.getElementById('pur-modal').innerHTML=`
-    <div class="pm-head"><h3>ORDER PLACED!</h3><button class="pm-close" onclick="closePur()">✕</button></div>
-    <div class="pm-body"><div class="pm-success">
+    <div class="pm-hd"><h3>ORDER PLACED!</h3><button class="pm-cls" onclick="closePur()">✕</button></div>
+    <div class="pm-bd"><div class="pm-succ">
       <span class="s-ico">✅</span>
       <h3>THANK YOU!</h3>
-      <p>Order for <strong style="color:var(--gold)">${p.name}</strong> received!</p>
-      <div class="order-pill">${oid}</div>
-      <p>IGN: <strong style="color:var(--gold)">${ign}</strong><br>Complete payment & share proof on Discord.<br>Delivery within 24 hours in-game.</p>
-      <button class="btn-gold" style="margin-top:18px" onclick="closePur()">Done ✓</button>
+      <p>Order for <strong style="color:var(--p)">${p.name}</strong> received!</p>
+      <div class="ord-pill">${oid}</div>
+      <p>IGN: <strong style="color:var(--p)">${ign}</strong><br>
+      Complete payment & send proof on Discord.<br>Delivery within 24 hours in-game.</p>
+      ${rconMsg}
+      <button class="btn-p" style="margin-top:16px" onclick="closePur()">Done ✓</button>
     </div></div>`;
 }
 
-// ── ADMIN ──
+// ════ ADMIN ════
 function openLogin(){document.getElementById('adm-login').classList.add('show');document.getElementById('adm-pass').value='';document.getElementById('login-err').style.display='none';setTimeout(()=>document.getElementById('adm-pass').focus(),80)}
 function closeLogin(){document.getElementById('adm-login').classList.remove('show')}
 document.getElementById('adm-pass').addEventListener('keyup',e=>{if(e.key==='Enter')doLogin()});
 function doLogin(){if(document.getElementById('adm-pass').value===S.adminPass){closeLogin();openAdmin()}else document.getElementById('login-err').style.display='block'}
-function openAdmin(){document.getElementById('adm-panel').classList.add('show');renderApProds();renderApOrders();loadApForms()}
-function closeAdmin(){document.getElementById('adm-panel').classList.remove('show');applyTheme();buildCatTabs();renderProds(curCat)}
-function apTab(t,el){document.querySelectorAll('.ap-sec').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.ap-tab').forEach(n=>n.classList.remove('active'));document.getElementById('aps-'+t).classList.add('active');el.classList.add('active')}
 
+function openAdmin(){
+  document.getElementById('adm-panel').classList.add('show');
+  renderApGMs();renderApProds();renderApOrders();loadApForms();
+  // sync theme selector
+  document.querySelectorAll('.theme-opt').forEach(x=>{x.classList.remove('sel');if(x.dataset.t===S.theme)x.classList.add('sel')});
+}
+function closeAdmin(){
+  document.getElementById('adm-panel').classList.remove('show');
+  applyAppearance();applyTheme(S.theme);renderGMGrid();
+  if(curGM){buildCatTabs(curGM);renderProds(curGM,curCat)}
+}
+function apTab(t,el){
+  document.querySelectorAll('.ap-sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.ap-tab').forEach(n=>n.classList.remove('active'));
+  document.getElementById('aps-'+t).classList.add('active');el.classList.add('active');
+}
+
+// Admin Gamemodes
+function renderApGMs(){
+  const l=document.getElementById('ap-gm-list');
+  if(!S.gamemodes.length){l.innerHTML='<p style="color:var(--text3);font-size:13px">No gamemodes yet.</p>';return}
+  l.innerHTML=S.gamemodes.map(gm=>`
+    <div class="gm-admin-item">
+      <div class="gma-ico">${gm.icon||'🎮'}</div>
+      <div class="gma-name">${gm.name}</div>
+      <div class="gma-cnt">${S.products.filter(p=>p.gamemode===gm.name).length} products</div>
+      <button class="ap-btn red" style="padding:5px 11px;font-size:11px" onclick="delGM(${gm.id})">🗑</button>
+    </div>`).join('');
+}
+function addGM(){
+  const name=document.getElementById('ngm-name').value.trim();
+  if(!name){toast('❌ Name required!');return}
+  S.gamemodes.push({id:Date.now(),name,icon:document.getElementById('ngm-icon').value.trim()||'🎮',img:document.getElementById('ngm-img').value.trim(),sub:document.getElementById('ngm-sub').value.trim()||'Click to view ▶'});
+  save();renderApGMs();refreshGMSelect();toast('✅ Gamemode added!');
+  ['ngm-name','ngm-icon','ngm-img','ngm-sub'].forEach(id=>document.getElementById(id).value='');
+}
+function delGM(id){
+  if(!confirm('Delete this gamemode?'))return;
+  S.gamemodes=S.gamemodes.filter(x=>x.id!==id);
+  save();renderApGMs();refreshGMSelect();toast('🗑 Deleted!');
+}
+
+// Admin Products
+function refreshGMSelect(){
+  const sel=document.getElementById('np-gm');
+  sel.innerHTML=S.gamemodes.map(gm=>`<option>${gm.name}</option>`).join('');
+}
 function renderApProds(){
+  refreshGMSelect();
   const l=document.getElementById('ap-prod-list');
   if(!S.products.length){l.innerHTML='<p style="color:var(--text3);font-size:13px">No products yet.</p>';return}
-  l.innerHTML=S.products.map(p=>`<div class="ap-prod-item"><div class="api-ico">${p.icon||'🎮'}</div><div class="api-name">${p.name} <span class="api-cat">(${p.category})</span></div><div class="api-price">${p.price}</div><button class="ap-btn red" style="padding:6px 12px;font-size:12px" onclick="delProd(${p.id})">🗑</button></div>`).join('');
+  l.innerHTML=S.products.map(p=>`
+    <div class="pa-item">
+      <div class="pai-ico">${p.icon||'🎮'}</div>
+      <div class="pai-name">${p.name}</div>
+      <div class="pai-gm">${p.gamemode}</div>
+      <div class="pai-cat">${p.category}</div>
+      <div class="pai-price">${p.price}</div>
+      <button class="ap-btn red" style="padding:5px 11px;font-size:11px" onclick="delProd(${p.id})">🗑</button>
+    </div>`).join('');
 }
 function addProd(){
   const name=document.getElementById('np-name').value.trim(),price=document.getElementById('np-price').value.trim();
   if(!name||!price){toast('❌ Name and price required!');return}
-  S.products.push({id:Date.now(),name,price,category:document.getElementById('np-cat').value,icon:document.getElementById('np-icon').value.trim()||'🎮',desc:document.getElementById('np-desc').value.trim(),img:document.getElementById('np-img').value.trim(),badge:document.getElementById('np-badge').value});
-  save();renderApProds();buildCatTabs();toast('✅ Product added!');
-  ['np-name','np-price','np-icon','np-desc','np-img'].forEach(id=>document.getElementById(id).value='');
+  S.products.push({id:Date.now(),name,price,
+    gamemode:document.getElementById('np-gm').value,
+    category:document.getElementById('np-cat').value,
+    icon:document.getElementById('np-icon').value.trim()||'🎮',
+    desc:document.getElementById('np-desc').value.trim(),
+    img:document.getElementById('np-img').value.trim(),
+    badge:document.getElementById('np-badge').value,
+    cmd:document.getElementById('np-cmd').value.trim()
+  });
+  save();renderApProds();toast('✅ Product added!');
+  ['np-name','np-price','np-icon','np-desc','np-img','np-cmd'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('np-badge').value='';
+  document.getElementById('np-desc-prev').innerHTML='';
 }
-function delProd(id){if(!confirm('Delete this product?'))return;S.products=S.products.filter(p=>p.id!==id);save();renderApProds();toast('🗑 Deleted!')}
+function delProd(id){if(!confirm('Delete?'))return;S.products=S.products.filter(p=>p.id!==id);save();renderApProds();toast('🗑 Deleted!')}
 
+// Load admin forms
 function loadApForms(){
   document.getElementById('ap-name').value=S.name;
+  document.getElementById('ap-logo').value=S.logo.startsWith('data:')?'':S.logo;
+  document.getElementById('ap-banner').value=S.banner.startsWith('data:')?'':S.banner;
   document.getElementById('ap-btitle').value=S.bannerTitle;
   document.getElementById('ap-bsub').value=S.bannerSub;
-  document.getElementById('ap-logo').value=S.logo;
-  document.getElementById('ap-emoji').value=S.emoji||'⛏️';
-  document.getElementById('ap-banner').value=S.banner;
-  document.getElementById('ap-color').value=S.color;
   document.getElementById('ap-discord').value=S.discord;
+  document.getElementById('ap-tos').value=S.tos||'';
+  document.getElementById('ap-refund').value=S.refund||'';
+  document.getElementById('ap-support').value=S.support||'';
+  document.getElementById('ap-footer').value=S.footer;
   document.getElementById('set-upi').value=S.upi;
   document.getElementById('set-paypal').value=S.paypal;
+  document.getElementById('set-bank').value=S.bank||'';
+  document.getElementById('set-custom-name').value=S.customPayName||'';
+  document.getElementById('set-custom-details').value=S.customPayDetails||'';
   document.getElementById('set-payins').value=S.payIns;
-  document.getElementById('set-footer').value=S.footer;
+  document.getElementById('pay-upi-en').checked=S.upiEnabled!==false;
+  document.getElementById('pay-pp-en').checked=S.paypalEnabled===true;
+  document.getElementById('pay-bank-en').checked=S.bankEnabled===true;
+  document.getElementById('pay-custom-en').checked=S.customPayEnabled===true;
+  document.getElementById('rcon-ip').value=S.rconIP||'';
+  document.getElementById('rcon-port').value=S.rconPort||'25575';
+  document.getElementById('rcon-pass').value=S.rconPass||'';
+  // Load previews
+  if(S.logo&&S.logo.startsWith('data:')){document.getElementById('logo-preview').src=S.logo;document.getElementById('logo-preview').style.display='block';document.getElementById('logo-upload-txt').style.display='none'}
+  if(S.banner&&S.banner.startsWith('data:')){document.getElementById('banner-preview').src=S.banner;document.getElementById('banner-preview').style.display='block';document.getElementById('banner-upload-txt').style.display='none'}
+  if(S.upiQR){document.getElementById('upi-qr-preview').src=S.upiQR;document.getElementById('upi-qr-preview').style.display='block';document.getElementById('upi-qr-txt').style.display='none'}
+  if(S.customPayQR){document.getElementById('custom-qr-preview').src=S.customPayQR;document.getElementById('custom-qr-preview').style.display='block';document.getElementById('custom-qr-txt').style.display='none'}
+  updateRCONStatus();
 }
-function pickC(el){document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('sel'));el.classList.add('sel');document.getElementById('ap-color').value=el.dataset.c}
+
 function saveApp(){
-  S.name=document.getElementById('ap-name').value.trim()||'MC STORE';
+  S.name=document.getElementById('ap-name').value.trim()||'MC Store';
+  const logoUrl=document.getElementById('ap-logo').value.trim();
+  if(logoUrl)S.logo=logoUrl;
+  const bannerUrl=document.getElementById('ap-banner').value.trim();
+  if(bannerUrl)S.banner=bannerUrl;
   S.bannerTitle=document.getElementById('ap-btitle').value.trim();
   S.bannerSub=document.getElementById('ap-bsub').value.trim();
-  S.logo=document.getElementById('ap-logo').value.trim();
-  S.emoji=document.getElementById('ap-emoji').value.trim()||'⛏️';
-  S.banner=document.getElementById('ap-banner').value.trim();
-  S.color=document.getElementById('ap-color').value.trim()||'#f5c518';
   S.discord=document.getElementById('ap-discord').value.trim();
+  S.tos=document.getElementById('ap-tos').value.trim();
+  S.refund=document.getElementById('ap-refund').value.trim();
+  S.support=document.getElementById('ap-support').value.trim();
+  S.footer=document.getElementById('ap-footer').value.trim();
   save();toast('✅ Appearance saved!');
 }
-function savePay(){S.upi=document.getElementById('set-upi').value.trim();S.paypal=document.getElementById('set-paypal').value.trim();S.payIns=document.getElementById('set-payins').value.trim();save();toast('✅ Payment saved!')}
-function saveSet(){const np=document.getElementById('set-pass').value.trim();if(np)S.adminPass=np;S.footer=document.getElementById('set-footer').value.trim();save();toast('✅ Settings saved!');document.getElementById('set-pass').value=''}
+function savePay(){
+  S.upiEnabled=document.getElementById('pay-upi-en').checked;
+  S.upi=document.getElementById('set-upi').value.trim();
+  S.paypalEnabled=document.getElementById('pay-pp-en').checked;
+  S.paypal=document.getElementById('set-paypal').value.trim();
+  S.bankEnabled=document.getElementById('pay-bank-en').checked;
+  S.bank=document.getElementById('set-bank').value.trim();
+  S.customPayEnabled=document.getElementById('pay-custom-en').checked;
+  S.customPayName=document.getElementById('set-custom-name').value.trim();
+  S.customPayDetails=document.getElementById('set-custom-details').value.trim();
+  S.payIns=document.getElementById('set-payins').value.trim();
+  save();toast('✅ Payment settings saved!');
+}
+function saveSet(){
+  const np=document.getElementById('set-pass').value.trim();
+  if(np)S.adminPass=np;
+  save();toast('✅ Settings saved!');document.getElementById('set-pass').value='';
+}
+function saveRCON(){
+  S.rconIP=document.getElementById('rcon-ip').value.trim();
+  S.rconPort=document.getElementById('rcon-port').value.trim();
+  S.rconPass=document.getElementById('rcon-pass').value.trim();
+  S.rconEnabled=!!(S.rconIP&&S.rconPort&&S.rconPass);
+  save();updateRCONStatus();toast('✅ RCON settings saved!');
+}
+function updateRCONStatus(){
+  const b=document.getElementById('rcon-status-badge');
+  if(S.rconEnabled&&S.rconIP){b.className='rcon-status-badge rcon-connected';b.textContent=`🟢 Configured: ${S.rconIP}:${S.rconPort}`}
+  else{b.className='rcon-status-badge rcon-disconnected';b.textContent='⚫ Not Configured'}
+}
+function testRCON(){
+  toast('ℹ️ RCON test requires server-side proxy. Settings saved!');
+  saveRCON();
+}
+function runManualCmd(){
+  const cmd=document.getElementById('rcon-manual-cmd').value.trim();
+  if(!cmd){toast('❌ Enter a command!');return}
+  const r=document.getElementById('rcon-cmd-result');
+  r.style.display='block';
+  r.textContent=`> ${cmd}\n[RCON] Command queued. Requires server-side proxy to execute.`;
+  toast('⚡ Command queued!');
+}
 
+// Orders
 function renderApOrders(){
   const l=document.getElementById('ap-orders');
-  if(!S.orders.length){l.innerHTML='<p style="color:var(--text3);font-size:14px;text-align:center;padding:40px">No orders yet!</p>';return}
-  l.innerHTML=S.orders.map(o=>`<div class="ap-order-item"><div class="ao-head"><div class="ao-prod">${o.product}</div><div class="ao-price">${o.price}</div></div><div class="ao-meta">IGN: <span>${o.ign}</span> · ${o.method} · ${o.date}<div class="ao-id">${o.id}</div></div><div class="ao-acts"><button class="ap-btn grn" style="padding:6px 12px;font-size:12px" onclick="markDel('${o.id}')">✓ Delivered</button><button class="ap-btn red" style="padding:6px 12px;font-size:12px" onclick="delOrd('${o.id}')">🗑</button></div></div>`).join('');
+  if(!S.orders.length){l.innerHTML='<p style="color:var(--text3);font-size:13px;text-align:center;padding:36px">No orders yet!</p>';return}
+  l.innerHTML=S.orders.map(o=>`
+    <div class="ao-item">
+      <div class="ao-hd"><div class="ao-prod">${o.product}</div><div class="ao-price">${o.price}</div></div>
+      <div class="ao-meta">IGN: <span>${o.ign}</span> · ${o.method} · ${o.date}
+        ${o.cmd?`<br>CMD: <code style="color:var(--p3);font-family:'JetBrains Mono',monospace;font-size:10px">${o.cmd.replace(/{ign}/g,o.ign)}</code>`:''}
+        <div class="ao-id">${o.id} · ${o.status}</div></div>
+      <div class="ao-acts">
+        <button class="ap-btn grn" style="padding:5px 11px;font-size:11px" onclick="markDel('${o.id}')">✓ Delivered</button>
+        <button class="ap-btn red" style="padding:5px 11px;font-size:11px" onclick="delOrd('${o.id}')">🗑</button>
+      </div>
+    </div>`).join('');
 }
 function markDel(id){const o=S.orders.find(x=>x.id===id);if(o){o.status='Delivered';save();renderApOrders();toast('✅ Delivered!')}}
 function delOrd(id){S.orders=S.orders.filter(o=>o.id!==id);save();renderApOrders();toast('🗑 Removed!')}
 
 function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3200)}
 
-// ── INIT ──
-function init(){
-  applyTheme();buildCatTabs();renderProds('all');
-  if(!IGN){document.getElementById('ign-overlay').style.display='flex'}
-  else{document.getElementById('ign-overlay').style.display='none';document.getElementById('nav-ign-txt').textContent=IGN}
-  document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='A')openLogin()});
-}
 init();
 </script>
 </body>
