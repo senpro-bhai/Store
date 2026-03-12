@@ -9,33 +9,21 @@
 :root{
   --bg:#0d0d10;--surface:#15151c;--surface2:#1c1c27;--border:#28283a;
   --accent:#f5a623;--accent2:#e05c2a;--teal:#00c9b1;--purple:#7c3aed;
-  --text:#d0d0e8;--dim:#5a5a7a;
-  --danger:#ff4466;--success:#22dd88;
+  --text:#d0d0e8;--dim:#5a5a7a;--danger:#ff4466;--success:#22dd88;
   --sidebar-w:210px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh}
 
-/* ── PROMO TICKER BANNER ── */
-#promoBanner{
-  background:linear-gradient(90deg,#9a5e00,#f5a623,#9a5e00);
-  background-size:300% 100%;animation:banShimmer 4s linear infinite;
-  padding:7px 40px;font-size:13px;font-weight:700;color:#000;
-  position:relative;display:flex;align-items:center;justify-content:center;gap:8px;
-  letter-spacing:.3px;flex-shrink:0;
-}
-#promoBanner .pb-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:15px;cursor:pointer;color:#0007;line-height:1}
+/* PROMO BANNER */
+#promoBanner{background:linear-gradient(90deg,#9a5e00,#f5a623,#9a5e00);background-size:300% 100%;animation:banShimmer 4s linear infinite;padding:7px 40px;font-size:13px;font-weight:700;color:#000;position:relative;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:.3px;flex-shrink:0}
+#promoBanner .pb-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:15px;cursor:pointer;color:#0007}
 @keyframes banShimmer{0%{background-position:0 0}100%{background-position:300% 0}}
 
-/* ── HEADER ── */
-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 20px;height:54px;background:#0f0f16;border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:300;flex-shrink:0;gap:10px;
-}
-.h-logo{font-family:'Cinzel',serif;font-size:17px;font-weight:900;white-space:nowrap;
-  background:linear-gradient(135deg,#f5a623,#ff6020);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:54px;background:#0f0f16;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:300;flex-shrink:0;gap:10px}
+.h-logo{font-family:'Cinzel',serif;font-size:17px;font-weight:900;white-space:nowrap;background:linear-gradient(135deg,#f5a623,#ff6020);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .h-center{display:flex;gap:6px;align-items:center}
 .srv-pill{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;cursor:pointer;font-size:11px;font-weight:700;transition:border-color .2s;white-space:nowrap}
 .srv-pill:hover{border-color:var(--accent)}
@@ -45,8 +33,8 @@ header{
 .disc-pill:hover{opacity:.85}
 .h-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .bdr-toggle{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:4px 10px;cursor:pointer;transition:border-color .2s;user-select:none}
-.bdr-toggle:hover{border-color:var(--teal)}
-.bdr-toggle.on{border-color:var(--teal);background:rgba(0,201,177,.07)}
+.bdr-toggle:hover,.bdr-toggle.on{border-color:var(--teal)}
+.bdr-toggle.on{background:rgba(0,201,177,.07)}
 .bdr-lbl{font-size:12px;font-weight:700;color:var(--dim);transition:color .2s}
 .bdr-toggle.on .bdr-lbl{color:var(--teal)}
 .tsw{width:30px;height:17px;background:var(--border);border-radius:9px;position:relative;transition:background .2s;flex-shrink:0}
@@ -64,132 +52,84 @@ header{
 .uc-name{color:var(--accent)}
 .uc-out{color:var(--dim);font-size:11px;margin-left:2px}
 
-/* ── MIGRATE BANNER ── */
-#migBanner{
-  background:linear-gradient(90deg,rgba(224,92,42,.13),rgba(245,166,35,.06),rgba(224,92,42,.13));
-  border-bottom:1px solid rgba(224,92,42,.3);
-  display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 20px;flex-shrink:0;
-}
+/* MIGRATE BANNER */
+#migBanner{background:linear-gradient(90deg,rgba(224,92,42,.13),rgba(245,166,35,.06),rgba(224,92,42,.13));border-bottom:1px solid rgba(224,92,42,.3);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 20px;flex-shrink:0}
 .mig-l{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
 .mig-l strong{color:var(--accent2)}.mig-l span{color:var(--dim);font-size:12px}
 .mig-go{padding:5px 15px;background:var(--accent2);border:none;border-radius:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:#fff;cursor:pointer;white-space:nowrap;transition:opacity .2s;flex-shrink:0}
 .mig-go:hover{opacity:.85}
 .mig-x{background:none;border:none;color:var(--dim);cursor:pointer;font-size:16px;padding:0 2px;flex-shrink:0}
-.mig-x:hover{color:var(--text)}
 
-/* ── STORE LAYOUT ── */
+/* CUSTOM BANNER IMAGE */
+#customBannerArea{display:none;width:100%;overflow:hidden;flex-shrink:0}
+#customBannerArea img{width:100%;height:160px;object-fit:cover;display:block}
+
+/* STORE LAYOUT */
 .store-wrap{display:flex;flex:1;overflow:hidden}
 
-/* ── SIDEBAR ── */
-#sidebar{
-  width:var(--sidebar-w);flex-shrink:0;background:#0f0f16;border-right:1px solid var(--border);
-  display:flex;flex-direction:column;overflow-y:auto;
-  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
-}
+/* SIDEBAR */
+#sidebar{width:var(--sidebar-w);flex-shrink:0;background:#0f0f16;border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 .sb-head{padding:14px 16px 6px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
-.cat-btn{
-  display:flex;align-items:center;gap:8px;padding:10px 16px;cursor:pointer;
-  font-size:14px;font-weight:600;color:var(--dim);border-left:3px solid transparent;
-  transition:all .15s;
-}
+.cat-btn{display:flex;align-items:center;gap:8px;padding:10px 16px;cursor:pointer;font-size:14px;font-weight:600;color:var(--dim);border-left:3px solid transparent;transition:all .15s}
 .cat-btn:hover{color:var(--text);background:rgba(255,255,255,.025)}
 .cat-btn.active{color:var(--accent);border-left-color:var(--accent);background:rgba(245,166,35,.05)}
-.cat-ico{font-size:15px;width:18px;text-align:center;flex-shrink:0}
+.cat-ico{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.cat-ico img{width:18px;height:18px;object-fit:cover;border-radius:3px;vertical-align:middle}
 .sb-sep{height:1px;background:var(--border);margin:5px 0}
 
-/* ── MAIN AREA ── */
+/* MAIN AREA */
 #mainArea{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 
-/* ── LOGO HERO (FireMC style — centre banner) ── */
-.store-hero{
-  position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#1a1200 0%,#0d0d10 100%);
-  padding:0;display:flex;flex-direction:column;align-items:center;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(245,166,35,.18) 0%,transparent 70%);
-  pointer-events:none;
-}
+/* HERO */
+.store-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#1a1200 0%,#0d0d10 100%);padding:0;display:flex;flex-direction:column;align-items:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(245,166,35,.18) 0%,transparent 70%);pointer-events:none}
 .hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.hero-particles span{
-  position:absolute;width:2px;height:2px;background:var(--accent);border-radius:50%;
-  animation:float var(--d,6s) var(--del,0s) ease-in-out infinite alternate;
-  opacity:.5;
-}
-@keyframes float{from{transform:translateY(0) translateX(0)}to{transform:translateY(-30px) translateX(10px)}}
-.hero-logo-wrap{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;align-items:center;
-  padding:28px 20px 20px;
-}
-.hero-logo-img{
-  width:140px;height:140px;border-radius:50%;
-  background:radial-gradient(circle,rgba(245,166,35,.25),rgba(255,80,0,.1));
-  border:3px solid rgba(245,166,35,.4);
-  display:flex;align-items:center;justify-content:center;
-  font-size:70px;
-  box-shadow:0 0 40px rgba(245,166,35,.3),0 0 80px rgba(245,166,35,.1);
-  animation:logoPulse 3s ease-in-out infinite;
-  margin-bottom:14px;
-}
-@keyframes logoPulse{0%,100%{box-shadow:0 0 40px rgba(245,166,35,.3),0 0 80px rgba(245,166,35,.1)}50%{box-shadow:0 0 55px rgba(245,166,35,.5),0 0 100px rgba(245,166,35,.18)}}
-.hero-title{
-  font-family:'Cinzel',serif;font-size:32px;font-weight:900;letter-spacing:2px;
-  background:linear-gradient(135deg,#fff8e0,#f5a623,#ff6020);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  text-shadow:none;margin-bottom:6px;text-align:center;
-}
+.hero-particles span{position:absolute;width:2px;height:2px;background:var(--accent);border-radius:50%;animation:float var(--d,6s) var(--del,0s) ease-in-out infinite alternate;opacity:.5}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-30px) translateX(8px)}}
+.hero-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:28px 20px 20px}
+.hero-logo-img{width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.25),rgba(255,80,0,.1));border:3px solid rgba(245,166,35,.4);display:flex;align-items:center;justify-content:center;font-size:70px;box-shadow:0 0 40px rgba(245,166,35,.3);animation:logoPulse 3s ease-in-out infinite;margin-bottom:14px;overflow:hidden}
+.hero-logo-img img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 40px rgba(245,166,35,.3)}50%{box-shadow:0 0 60px rgba(245,166,35,.5)}}
+.hero-title{font-family:'Cinzel',serif;font-size:32px;font-weight:900;letter-spacing:2px;background:linear-gradient(135deg,#fff8e0,#f5a623,#ff6020);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;text-align:center}
 .hero-sub{font-size:13px;color:var(--dim);text-align:center;letter-spacing:.3px;margin-bottom:18px}
 .hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
-.hero-pill{
-  display:flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,.05);border:1px solid var(--border);
-  border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;
-  cursor:pointer;transition:border-color .2s;
-}
+.hero-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:border-color .2s}
 .hero-pill:hover{border-color:var(--accent)}
 .hero-pill .pdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .hero-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 
-/* ── PAGE SECTIONS ── */
+/* PAGES */
 .page{display:none;padding:22px}
 .page.on{display:block}
 
-/* HOME INFO */
+/* HOME */
 .info-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:14px}
-.info-box-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:3px}
-.info-box h2{font-family:'Cinzel',serif;font-size:18px;margin-bottom:4px}
-.info-box p{font-size:13px;color:var(--dim);line-height:1.75;margin-top:6px}
-.info-box p strong{color:var(--text)}
 .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:14px}
 .info-card{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:12px 14px}
 .info-card-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:3px}
 .info-card-val{font-size:17px;font-weight:700;color:var(--accent)}
 .sec-hd{font-family:'Cinzel',serif;font-size:15px;font-weight:700;margin-bottom:13px;color:var(--text)}
 
-/* ── PACKAGE ROWS ── */
+/* PACKAGE ROWS */
 .pkg-list{display:flex;flex-direction:column;gap:6px}
-.pkg-row{
-  display:flex;align-items:center;gap:12px;
-  background:var(--surface);border:1px solid var(--border);border-radius:7px;
-  padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s;
-}
+.pkg-row{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s}
 .pkg-row:hover{border-color:var(--accent);background:rgba(245,166,35,.035)}
-.pr-ico{width:48px;height:48px;border-radius:6px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.pr-ico{width:48px;height:48px;border-radius:6px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
+.pr-ico img{width:100%;height:100%;object-fit:cover;border-radius:5px}
 .pr-inf{flex:1;min-width:0}
 .pr-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:1px}
 .pr-desc{font-size:12px;color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pr-price{font-size:17px;font-weight:700;color:var(--accent);white-space:nowrap;flex-shrink:0}
 .pr-price small{font-size:11px;color:var(--dim)}
 
-/* ── ITEM DETAIL MODAL ── */
+/* ITEM DETAIL MODAL */
 .det-ov{display:none;position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.82);backdrop-filter:blur(5px);align-items:center;justify-content:center}
 .det-ov.on{display:flex}
 .det-box{background:var(--surface);border:1px solid var(--border);border-radius:11px;width:440px;max-width:95vw;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.7);animation:popIn .2s ease}
 @keyframes popIn{from{transform:translateY(12px) scale(.97);opacity:0}to{transform:none;opacity:1}}
 .det-top{display:flex;gap:13px;padding:18px 18px 0}
-.det-ico{width:76px;height:76px;border-radius:8px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0}
+.det-ico{width:76px;height:76px;border-radius:8px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;overflow:hidden}
+.det-ico img{width:100%;height:100%;object-fit:cover;border-radius:7px}
 .det-info{flex:1}
 .det-name{font-size:18px;font-weight:700;margin-bottom:3px}
 .det-price{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:8px}
@@ -206,15 +146,10 @@ header{
 .det-close{display:block;width:calc(100% - 36px);margin:0 18px 18px;padding:7px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:var(--dim);cursor:pointer;transition:all .2s}
 .det-close:hover{border-color:var(--dim);color:var(--text)}
 
-/* ── CART PANEL (slide-in from right) ── */
+/* CART PANEL */
 .cart-ov{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.6);backdrop-filter:blur(3px)}
 .cart-ov.on{display:block}
-.cart-panel{
-  position:absolute;right:0;top:0;bottom:0;width:380px;max-width:100vw;
-  background:var(--surface);border-left:1px solid var(--border);
-  display:flex;flex-direction:column;
-  animation:slideIn .25s ease;
-}
+.cart-panel{position:absolute;right:0;top:0;bottom:0;width:380px;max-width:100vw;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;animation:slideIn .25s ease}
 @keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
 .cart-hd{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--border);flex-shrink:0}
 .cart-hd h3{font-size:16px;font-weight:700}
@@ -223,7 +158,8 @@ header{
 .cart-body{flex:1;overflow-y:auto;padding:14px 20px}
 .cart-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
 .cart-item:last-child{border:none}
-.ci-ico{font-size:24px;width:34px;text-align:center}
+.ci-ico{font-size:24px;width:34px;text-align:center;display:flex;align-items:center;justify-content:center}
+.ci-ico img{width:30px;height:30px;object-fit:cover;border-radius:4px}
 .ci-inf{flex:1}.ci-n{font-size:13px;font-weight:700}.ci-p{font-size:12px;color:var(--accent);font-weight:600}
 .ci-rm{background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:3px}
 .cart-empty{text-align:center;padding:40px 0;color:var(--dim);font-size:14px}
@@ -238,13 +174,24 @@ header{
 .checkout-btn{width:100%;padding:11px;background:linear-gradient(135deg,var(--accent),#cc6600);border:none;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#000;cursor:pointer;transition:opacity .2s}
 .checkout-btn:hover{opacity:.85}
 
-/* ── MODALS ── */
+/* CHECKOUT QR MODAL */
+.qr-ov{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);align-items:center;justify-content:center}
+.qr-ov.on{display:flex}
+.qr-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;width:340px;max-width:94vw;animation:popIn .2s ease;position:relative}
+.qr-box h3{font-family:'Cinzel',serif;font-size:16px;margin-bottom:4px}
+.qr-box p{font-size:12px;color:var(--dim);margin-bottom:16px}
+.qr-img-area{width:160px;height:160px;margin:0 auto 14px;background:var(--surface2);border:2px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:50px;overflow:hidden}
+.qr-img-area img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.qr-amt{font-size:22px;font-weight:700;color:var(--accent);margin-bottom:14px}
+.qr-close{width:100%;padding:10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:var(--dim);cursor:pointer;margin-top:6px}
+.qr-close:hover{color:var(--text);border-color:var(--dim)}
+
+/* MODALS */
 .m-ov{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.78);backdrop-filter:blur(5px);align-items:center;justify-content:center}
 .m-ov.on{display:flex}
 .m-box{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:28px;width:380px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:popIn .2s ease;position:relative}
 .m-title{font-family:'Cinzel',serif;font-size:18px;font-weight:900;margin-bottom:4px}
 .m-sub{font-size:13px;color:var(--dim);margin-bottom:20px;line-height:1.65}
-.m-sub .bt{display:inline-block;background:rgba(0,201,177,.1);border:1px solid rgba(0,201,177,.35);color:var(--teal);padding:1px 7px;border-radius:3px;font-size:11px;font-weight:700;margin-left:3px}
 .fg{margin-bottom:12px}.fl{display:block;font-size:11px;font-weight:700;letter-spacing:.4px;color:var(--dim);margin-bottom:4px;text-transform:uppercase}
 .fi{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:8px 10px;font-family:'Rajdhani',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s}
 .fi:focus{border-color:var(--accent)}
@@ -257,8 +204,6 @@ header{
 .m-close:hover{color:var(--text)}
 .bdr-row{margin-top:14px;text-align:center}
 .bdr-row label{display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;color:var(--dim);cursor:pointer}
-
-/* MINI SWITCH */
 .msw{width:36px;height:20px;background:var(--border);border-radius:10px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
 .msw::after{content:'';position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .2s}
 .msw.on{background:var(--success)}.msw.on::after{transform:translateX(16px)}
@@ -272,65 +217,42 @@ header{
 .mg-btn:hover{opacity:.85}
 .mg-btn:disabled{opacity:.4;cursor:not-allowed}
 
-/* ══════════════════════════════════
-   ADMIN PANEL — Full FireMC Style
-══════════════════════════════════ */
+/* ══════════════════════
+   ADMIN PANEL
+══════════════════════ */
 #adminPanel{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);backdrop-filter:blur(10px)}
 #adminPanel.on{display:flex}
-.adm-sidebar{
-  width:230px;flex-shrink:0;background:#09090f;border-right:1px solid var(--border);
-  display:flex;flex-direction:column;overflow-y:auto;
-}
-.adm-logo-area{
-  padding:16px 18px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:8px;
-}
+.adm-sidebar{width:230px;flex-shrink:0;background:#09090f;border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
+.adm-logo-area{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
 .adm-logo-text{font-family:'Cinzel',serif;font-size:14px;font-weight:900;color:var(--danger);letter-spacing:.5px;display:flex;align-items:center;gap:7px}
 .adm-logo-badge{background:rgba(255,68,102,.15);border:1px solid rgba(255,68,102,.35);color:var(--danger);font-size:10px;font-weight:700;padding:1px 7px;border-radius:3px;letter-spacing:1px;text-transform:uppercase}
 .adm-close{background:none;border:none;color:var(--dim);font-size:18px;cursor:pointer;padding:2px}
 .adm-close:hover{color:var(--text)}
 .adm-nav-section{padding:12px 18px 4px;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--dim)}
-.adm-nav-btn{
-  display:flex;align-items:center;gap:9px;padding:9px 18px;
-  cursor:pointer;font-size:13px;font-weight:600;color:var(--dim);
-  border-left:3px solid transparent;transition:all .15s;
-}
+.adm-nav-btn{display:flex;align-items:center;gap:9px;padding:9px 18px;cursor:pointer;font-size:13px;font-weight:600;color:var(--dim);border-left:3px solid transparent;transition:all .15s}
 .adm-nav-btn:hover{color:var(--text);background:rgba(255,255,255,.025)}
 .adm-nav-btn.on{color:var(--danger);border-left-color:var(--danger);background:rgba(255,68,102,.06)}
 .adm-nav-btn .adm-ico{font-size:14px;width:18px;text-align:center}
 .adm-nav-count{margin-left:auto;background:var(--danger);color:#fff;font-size:9px;font-weight:800;padding:1px 6px;border-radius:10px}
-
 .adm-content{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
-
-/* Admin top bar */
-.adm-topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 24px;border-bottom:1px solid var(--border);
-  background:#0c0c14;flex-shrink:0;
-}
+.adm-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--border);background:#0c0c14;flex-shrink:0;position:sticky;top:0;z-index:10}
 .adm-page-title{font-family:'Cinzel',serif;font-size:16px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:8px}
 .adm-topbar-actions{display:flex;gap:8px}
-
 .adm-body{padding:22px 24px}
 .a-sec{display:none}.a-sec.on{display:block}
 
-/* Stat cards */
+/* STAT CARDS */
 .stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px}
-.stat-c{
-  background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px;
-  position:relative;overflow:hidden;
-}
+.stat-c{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px;position:relative;overflow:hidden}
 .stat-c::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--c,var(--accent))}
 .stat-c .sv{font-size:26px;font-weight:700;color:var(--c,var(--accent));margin-bottom:3px}
 .stat-c .sl{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--dim)}
 .stat-c .schange{font-size:11px;margin-top:4px;color:var(--success)}
 
-/* Admin card */
+/* ADMIN CARDS */
 .a-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:14px}
 .a-card-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin-bottom:14px;display:flex;align-items:center;gap:6px}
 .a-card-title::before{content:'';width:3px;height:14px;background:var(--danger);border-radius:2px}
-
-/* Form rows */
 .a-row{display:flex;gap:8px;align-items:center;margin-bottom:9px;flex-wrap:wrap}
 .a-lbl{font-size:12px;font-weight:700;color:var(--dim);width:70px;flex-shrink:0;text-transform:uppercase;letter-spacing:.3px}
 .a-in{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-family:'Rajdhani',sans-serif;font-size:13px;color:var(--text);outline:none;min-width:0;transition:border-color .2s}
@@ -340,7 +262,7 @@ header{
 .a-ta{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-family:'Rajdhani',sans-serif;font-size:13px;color:var(--text);outline:none;min-width:0;resize:vertical;min-height:70px}
 .a-ta:focus{border-color:var(--danger)}
 
-/* Buttons */
+/* BUTTONS */
 .a-btn{padding:7px 14px;border:none;border-radius:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;white-space:nowrap}
 .a-btn:hover{opacity:.82}
 .a-btn.red{background:var(--danger);color:#fff}
@@ -351,42 +273,86 @@ header{
 .a-btn.gry:hover{color:var(--text)}
 .a-btn.sml{padding:4px 10px;font-size:12px}
 
-/* Table */
+/* TABLE */
 .a-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .a-tbl th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--dim)}
 .a-tbl td{padding:10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
 .a-tbl tr:hover td{background:rgba(255,255,255,.015)}
 .a-tbl .tdact{display:flex;gap:5px;align-items:center}
-
-/* Badge */
 .bdg{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 .bdg.g{background:rgba(34,221,136,.1);color:var(--success);border:1px solid rgba(34,221,136,.25)}
 .bdg.r{background:rgba(255,68,102,.1);color:var(--danger);border:1px solid rgba(255,68,102,.25)}
 .bdg.o{background:rgba(245,166,35,.1);color:var(--accent);border:1px solid rgba(245,166,35,.25)}
 .bdg.p{background:rgba(124,58,237,.15);color:#a78bfa;border:1px solid rgba(124,58,237,.3)}
 
-/* Toggle row */
+/* TOGGLE ROW */
 .t-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .t-row:last-child{border:none}
 .t-row-left .t-lbl{font-size:13px;font-weight:600;color:var(--text)}.t-row-left .t-desc{font-size:11px;color:var(--dim);margin-top:2px}
 
-/* Admin quick action cards */
-.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:18px}
-.quick-c{
-  background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;
-  cursor:pointer;transition:border-color .2s,background .2s;text-align:center;
-}
+/* QUICK GRID */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:18px}
+.quick-c{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;cursor:pointer;transition:border-color .2s,background .2s;text-align:center}
 .quick-c:hover{border-color:var(--danger);background:rgba(255,68,102,.04)}
 .quick-c .q-ico{font-size:28px;margin-bottom:6px}
 .quick-c .q-lbl{font-size:12px;font-weight:700;color:var(--dim)}
 
-/* Revenue chart placeholder */
+/* REVENUE CHART */
 .rev-chart{height:120px;background:var(--surface2);border-radius:6px;display:flex;align-items:flex-end;justify-content:space-around;padding:16px 10px 10px;gap:4px;overflow:hidden;position:relative}
-.rev-bar{background:linear-gradient(180deg,var(--accent),rgba(245,166,35,.3));border-radius:3px 3px 0 0;min-width:18px;flex:1;transition:height .8s ease;animation:barGrow .8s ease forwards;transform-origin:bottom}
+.rev-bar{background:linear-gradient(180deg,var(--accent),rgba(245,166,35,.3));border-radius:3px 3px 0 0;min-width:18px;flex:1}
 @keyframes barGrow{from{height:0!important}to{}}
 .rev-chart-lbl{position:absolute;bottom:2px;font-size:9px;color:var(--dim);width:100%;display:flex;justify-content:space-around;padding:0 10px}
 
-/* Admin lock */
+/* ══════════════════════
+   IMAGE UPLOAD SYSTEM
+══════════════════════ */
+.up-tabs{display:flex;margin-bottom:12px;border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--bg)}
+.up-tab{flex:1;padding:7px 4px;text-align:center;font-size:11px;font-weight:700;color:var(--dim);cursor:pointer;background:none;border:none;font-family:'Rajdhani',sans-serif;transition:all .2s;white-space:nowrap}
+.up-tab.on{background:var(--danger);color:#fff}
+.up-tab-body{display:none}.up-tab-body.on{display:block}
+
+/* Upload drop zone */
+.drop-zone{border:2px dashed var(--border);border-radius:8px;padding:20px 12px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;background:var(--bg)}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--danger);background:rgba(255,68,102,.04)}
+.drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-zone .dz-ico{font-size:28px;display:block;margin-bottom:6px}
+.drop-zone .dz-txt{font-size:12px;font-weight:700;color:var(--dim);display:block}
+.drop-zone .dz-sub{font-size:10px;color:var(--dim);opacity:.7;margin-top:3px;display:block}
+
+/* Preview box */
+.up-preview{width:70px;height:70px;border-radius:8px;border:2px solid var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;flex-shrink:0;position:relative;cursor:default}
+.up-preview img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.up-preview .up-del{position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;font-size:16px;color:#fff;cursor:pointer;border-radius:6px}
+.up-preview:hover .up-del{display:flex}
+
+.up-preview-lg{width:100%;height:130px;border-radius:8px;border:2px solid var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;position:relative;cursor:default}
+.up-preview-lg img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.up-preview-lg .up-del{position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;font-size:20px;color:#fff;cursor:pointer;border-radius:6px}
+.up-preview-lg:hover .up-del{display:flex}
+
+.up-row{display:flex;gap:12px;align-items:flex-start}
+.up-row .ur-r{flex:1;min-width:0}
+
+/* Emoji quick pick */
+.emoji-grid{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.emoji-pick{font-size:20px;cursor:pointer;padding:4px;border-radius:4px;transition:background .15s;line-height:1}
+.emoji-pick:hover{background:rgba(255,255,255,.08)}
+
+/* Image library */
+.img-lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:6px;margin-top:8px}
+.lib-item{width:56px;height:56px;border-radius:6px;background:var(--surface2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;transition:border-color .2s;overflow:hidden;position:relative;flex-shrink:0}
+.lib-item:hover{border-color:var(--danger)}
+.lib-item.sel{border-color:var(--danger);box-shadow:0 0 0 2px rgba(255,68,102,.3)}
+.lib-item img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+.lib-item .li-del{position:absolute;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;color:#fff;font-size:13px;border-radius:4px}
+.lib-item:hover .li-del{display:flex}
+.lib-empty{font-size:12px;color:var(--dim);grid-column:1/-1;padding:8px 0;text-align:center}
+
+/* QR preview */
+.qr-admin-preview{width:130px;height:130px;background:var(--surface2);border:2px dashed var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 12px;overflow:hidden}
+.qr-admin-preview img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+
+/* ADMIN LOCK */
 .adm-lock{position:fixed;inset:0;z-index:950;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px}
 .adm-lock.on{display:flex}
 .lock-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px;width:340px;max-width:94vw;text-align:center}
@@ -403,7 +369,6 @@ header{
 .toast{position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.5);transform:translateY(60px);opacity:0;transition:transform .3s,opacity .3s;pointer-events:none;max-width:320px}
 .toast.on{transform:translateY(0);opacity:1}
 
-/* Scrollbars */
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 
@@ -422,15 +387,15 @@ header{
 </head>
 <body>
 
-<!-- ── PROMO BANNER ── -->
+<!-- PROMO BANNER -->
 <div id="promoBanner">
-  🎉 MythicalLife Store is Live! Use code <strong>MYTHICAL10</strong> for 10% OFF your first purchase
-  <button class="pb-close" onclick="this.closest('#promoBanner').style.display='none'">✕</button>
+  🎉 MythicalLife Store is Live! Use code <strong>MYTHICAL10</strong> for 10% OFF
+  <button class="pb-close" onclick="this.parentElement.style.display='none'">✕</button>
 </div>
 
-<!-- ── HEADER ── -->
+<!-- HEADER -->
 <header>
-  <div class="h-logo">⚔ MythicalLife</div>
+  <div class="h-logo" id="hLogoText">⚔ MythicalLife</div>
   <div class="h-center">
     <div class="srv-pill" onclick="copyIP()">
       <div class="srv-dot"></div>
@@ -446,46 +411,35 @@ header{
     <div class="bdr-toggle" id="bdrToggle" onclick="toggleBedrock()">
       <span>📱</span><span class="bdr-lbl">Bedrock</span><div class="tsw"></div>
     </div>
-    <div class="cart-btn" onclick="openCart()">
-      🛒 Cart <div class="cart-badge" id="cartBadge">0</div>
-    </div>
+    <div class="cart-btn" onclick="openCart()">🛒 Cart<div class="cart-badge" id="cartBadge">0</div></div>
     <button class="sign-btn" id="signBtn" onclick="openLogin()">Sign In</button>
-    <div class="user-chip" id="userChip">
-      👤 <span class="uc-name" id="ucName"></span>
-      <span class="uc-out" onclick="doLogout()">[logout]</span>
-    </div>
+    <div class="user-chip" id="userChip">👤 <span class="uc-name" id="ucName"></span><span class="uc-out" onclick="doLogout()">[logout]</span></div>
   </div>
 </header>
 
-<!-- ── MIGRATE BANNER ── -->
+<!-- MIGRATE BANNER -->
 <div id="migBanner">
-  <div class="mig-l">
-    <span>📦</span>
-    <div><strong>Purana account hai?</strong> MCS6 se migrate karo free mein! <span>Apne ranks &amp; purchases transfer karo.</span></div>
-  </div>
+  <div class="mig-l"><span>📦</span><div><strong>Purana account?</strong> MCS6 se free migrate karo! <span>Ranks &amp; purchases transfer ho jayenge.</span></div></div>
   <button class="mig-go" onclick="openMigrate()">Migrate Now →</button>
   <button class="mig-x" onclick="document.getElementById('migBanner').style.display='none'">✕</button>
 </div>
 
-<!-- ── STORE LAYOUT ── -->
+<!-- CUSTOM BANNER IMAGE AREA -->
+<div id="customBannerArea"><img id="customBannerImg" src="" alt="banner"/></div>
+
+<!-- STORE LAYOUT -->
 <div class="store-wrap">
-
-  <!-- SIDEBAR -->
-  <div id="sidebar">
-    <div id="catList"></div>
-  </div>
-
-  <!-- MAIN -->
+  <div id="sidebar"><div id="catList"></div></div>
   <div id="mainArea">
 
-    <!-- LOGO HERO BANNER -->
+    <!-- HERO -->
     <div class="store-hero" id="storeHero">
       <div class="hero-bg"></div>
       <div class="hero-particles" id="heroParticles"></div>
       <div class="hero-logo-wrap">
-        <div class="hero-logo-img" id="heroLogoImg">⚔</div>
+        <div class="hero-logo-img" id="heroLogoImg"><span id="heroLogoEmoji">⚔</span></div>
         <div class="hero-title" id="heroTitle">MythicalLife</div>
-        <div class="hero-sub">Official MythicalLife Minecraft Server Store</div>
+        <div class="hero-sub" id="heroSub">Official MythicalLife Minecraft Server Store</div>
         <div class="hero-pills">
           <div class="hero-pill" onclick="copyIP()">
             <div class="pdot" style="background:#22dd88;box-shadow:0 0 5px #22dd88"></div>
@@ -505,9 +459,9 @@ header{
     <!-- HOME PAGE -->
     <div class="page on" id="page-home">
       <div class="info-box">
-        <div class="info-box-title">Welcome to the Official</div>
-        <h2>MythicalLife Store</h2>
-        <p>MythicalLife is a <strong>free-to-play Minecraft Server</strong>. Items purchased here enhance gameplay and grant special perks.<br>To begin, please <strong>select a category from the sidebar.</strong></p>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:3px">Welcome to the Official</div>
+        <h2 style="font-family:'Cinzel',serif;font-size:18px;margin-bottom:4px">MythicalLife Store</h2>
+        <p style="font-size:13px;color:var(--dim);line-height:1.75;margin-top:6px">MythicalLife is a <strong style="color:var(--text)">free-to-play Minecraft Server</strong>. Items purchased here enhance gameplay and grant special perks.<br>Select a category from the sidebar to get started.</p>
         <div class="info-grid">
           <div class="info-card"><div class="info-card-lbl">Online Now</div><div class="info-card-val" id="onlineHome">...</div></div>
           <div class="info-card"><div class="info-card-lbl">Discord</div><div class="info-card-val">5,552</div></div>
@@ -517,19 +471,16 @@ header{
       </div>
       <div class="info-box">
         <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin-bottom:9px">⚠️ Refund Policy</h3>
-        <p>All payments are final and non-refundable. Attempting a chargeback will result in <strong style="color:var(--danger)">permanent and irreversible banishment</strong> from all MythicalLife servers. Payments are secured by Tebex. Items may take 1–20 minutes to credit in-game.</p>
+        <p style="font-size:13px;color:var(--dim);line-height:1.75">All payments are final and non-refundable. Attempting a chargeback will result in <strong style="color:var(--danger)">permanent banishment</strong> from all MythicalLife servers. Payments secured by Tebex. Items may take 1–20 minutes to credit.</p>
       </div>
       <div class="info-box">
         <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin-bottom:9px">💬 Support</h3>
-        <p>Need help? Open a ticket on Discord or email <strong style="color:var(--accent)">support@mythicallife.net</strong></p>
+        <p style="font-size:13px;color:var(--dim);line-height:1.75">Need help? Open a ticket on Discord or email <strong style="color:var(--accent)">support@mythicallife.net</strong></p>
         <button class="a-btn grn" style="margin-top:11px" onclick="showToast('🔗','Opening Discord...')">Discord Server</button>
       </div>
       <div class="info-box" style="margin-bottom:0">
         <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin-bottom:9px">🎁 Giftcard Balance</h3>
-        <div style="display:flex;gap:7px">
-          <input class="fi" placeholder="Card Number" id="gcInput" style="flex:1"/>
-          <button class="a-btn org" onclick="checkGc()">Check</button>
-        </div>
+        <div style="display:flex;gap:7px"><input class="fi" placeholder="Card Number" id="gcInput" style="flex:1"/><button class="a-btn org" onclick="checkGc()">Check</button></div>
       </div>
     </div>
 
@@ -538,11 +489,10 @@ header{
       <div class="sec-hd" id="pkgPageTitle">Packages</div>
       <div class="pkg-list" id="pkgList"></div>
     </div>
+  </div>
+</div>
 
-  </div><!-- /mainArea -->
-</div><!-- /store-wrap -->
-
-<!-- ── ITEM DETAIL MODAL ── -->
+<!-- ITEM DETAIL MODAL -->
 <div class="det-ov" id="detOv" onclick="ovClose(event,'detOv')">
   <div class="det-box">
     <div class="det-top">
@@ -564,26 +514,34 @@ header{
   </div>
 </div>
 
-<!-- ── CART SIDE PANEL ── -->
+<!-- CART PANEL -->
 <div class="cart-ov" id="cartOv" onclick="ovClose(event,'cartOv')">
   <div class="cart-panel">
-    <div class="cart-hd">
-      <h3>🛒 Shopping Cart</h3>
-      <button class="cart-x" onclick="closeM('cartOv')">✕</button>
-    </div>
+    <div class="cart-hd"><h3>🛒 Shopping Cart</h3><button class="cart-x" onclick="closeM('cartOv')">✕</button></div>
     <div class="cart-body" id="cartBody"></div>
     <div class="cart-ft" id="cartFt" style="display:none">
-      <div class="cart-total"><span>Total Price:</span><span id="cartTotal"></span></div>
-      <div class="coup-row">
-        <input class="coup-in" placeholder="Enter coupon code..." id="couponIn"/>
-        <button class="coup-ap" onclick="applyCoupon()">Redeem</button>
-      </div>
+      <div class="cart-total"><span>Total:</span><span id="cartTotal"></span></div>
+      <div class="coup-row"><input class="coup-in" placeholder="Coupon code..." id="couponIn"/><button class="coup-ap" onclick="applyCoupon()">Redeem</button></div>
       <button class="checkout-btn" onclick="doCheckout()">Proceed to Checkout</button>
     </div>
   </div>
 </div>
 
-<!-- ── LOGIN MODAL ── -->
+<!-- QR CHECKOUT MODAL -->
+<div class="qr-ov" id="qrOv" onclick="ovClose(event,'qrOv')">
+  <div class="qr-box">
+    <button class="m-close" onclick="closeM('qrOv')">✕</button>
+    <h3>Complete Payment</h3>
+    <p>Scan QR to pay via UPI / GPay</p>
+    <div class="qr-img-area" id="qrCheckoutImg"><span>📱</span></div>
+    <div class="qr-amt" id="qrAmt">₹0</div>
+    <p style="font-size:12px;color:var(--dim);margin-bottom:10px">After payment, items will be delivered in 1–20 minutes in-game.</p>
+    <button class="qr-close" onclick="finishCheckout()">✅ I've Paid — Done</button>
+    <button class="qr-close" onclick="closeM('qrOv')" style="margin-top:6px">Cancel</button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
 <div class="m-ov" id="loginOv" onclick="ovClose(event,'loginOv')">
   <div class="m-box">
     <button class="m-close" onclick="closeM('loginOv')">✕</button>
@@ -596,12 +554,12 @@ header{
   </div>
 </div>
 
-<!-- ── MIGRATE MODAL ── -->
+<!-- MIGRATE MODAL -->
 <div class="m-ov" id="migOv" onclick="ovClose(event,'migOv')">
   <div class="m-box">
     <button class="m-close" onclick="closeM('migOv')">✕</button>
     <div class="m-title mg-title">Migrate MCS6 Data</div>
-    <div class="m-sub">Purana MCS6 account ka data MythicalLife mein import karo. Ye process free hai aur ek baar hi ho sakta hai.</div>
+    <div class="m-sub">Purana MCS6 account ka data MythicalLife mein import karo. Free hai, ek baar ho sakta hai.</div>
     <div class="fg"><label class="fl">MCS6 Username</label><input class="fi" id="mcs6u" placeholder="Purana username"/></div>
     <div class="fg"><label class="fl">MCS6 Email / Order ID</label><input class="fi" id="mcs6e" placeholder="Order ID ya email"/></div>
     <div class="mg-prog"><div class="mg-bar" id="mgBar"></div></div>
@@ -610,12 +568,12 @@ header{
   </div>
 </div>
 
-<!-- ── ADMIN LOCK ── -->
+<!-- ADMIN LOCK -->
 <div class="adm-lock" id="admLock">
   <div class="lock-box">
     <span class="lock-icon">🔐</span>
     <h2>Admin Access</h2>
-    <p>Enter your admin password to access the MythicalLife admin panel.</p>
+    <p>Enter your admin password to access the MythicalLife control panel.</p>
     <input class="lock-in" type="password" id="lockIn" placeholder="••••••••" onkeydown="if(event.key==='Enter')verifyAdmin()"/>
     <button class="lock-btn" onclick="verifyAdmin()">Unlock Panel</button>
     <div class="lock-err" id="lockErr"></div>
@@ -623,28 +581,24 @@ header{
   <button style="margin-top:10px;background:none;border:none;color:var(--dim);cursor:pointer;font-size:13px" onclick="closeAdmLock()">← Back to Store</button>
 </div>
 
-<!-- ══════════════════════════════════
+<!-- ══════════════════════════════
      ADMIN PANEL
-══════════════════════════════════ -->
+══════════════════════════════ -->
 <div id="adminPanel">
-  <!-- SIDEBAR -->
   <div class="adm-sidebar">
     <div class="adm-logo-area">
-      <div class="adm-logo-text">
-        🛡 Admin
-        <span class="adm-logo-badge">Panel</span>
-      </div>
+      <div class="adm-logo-text">🛡 Admin <span class="adm-logo-badge">Panel</span></div>
       <button class="adm-close" onclick="closeAdmin()">✕</button>
     </div>
     <div class="adm-nav-section">Dashboard</div>
     <div class="adm-nav-btn on" data-s="dash" onclick="aNav('dash')"><span class="adm-ico">📊</span> Overview</div>
-    <div class="adm-nav-section">Store Management</div>
+    <div class="adm-nav-section">Store</div>
     <div class="adm-nav-btn" data-s="pkgs" onclick="aNav('pkgs')"><span class="adm-ico">📦</span> Packages</div>
     <div class="adm-nav-btn" data-s="cats" onclick="aNav('cats')"><span class="adm-ico">📂</span> Categories</div>
     <div class="adm-nav-btn" data-s="coups" onclick="aNav('coups')"><span class="adm-ico">🎟</span> Coupons</div>
     <div class="adm-nav-section">Appearance</div>
-    <div class="adm-nav-btn" data-s="hero" onclick="aNav('hero')"><span class="adm-ico">🖼</span> Hero Banner</div>
-    <div class="adm-nav-btn" data-s="banners" onclick="aNav('banners')"><span class="adm-ico">📢</span> Announcements</div>
+    <div class="adm-nav-btn" data-s="hero" onclick="aNav('hero')"><span class="adm-ico">🖼</span> Hero &amp; Banners</div>
+    <div class="adm-nav-btn" data-s="annc" onclick="aNav('annc')"><span class="adm-ico">📢</span> Announcements</div>
     <div class="adm-nav-section">Reports</div>
     <div class="adm-nav-btn" data-s="orders" onclick="aNav('orders')"><span class="adm-ico">🧾</span> Orders <span class="adm-nav-count" id="pendCount">0</span></div>
     <div class="adm-nav-btn" data-s="players" onclick="aNav('players')"><span class="adm-ico">👥</span> Players</div>
@@ -652,7 +606,6 @@ header{
     <div class="adm-nav-btn" data-s="settings" onclick="aNav('settings')"><span class="adm-ico">⚙️</span> Settings</div>
   </div>
 
-  <!-- CONTENT -->
   <div class="adm-content">
     <div class="adm-topbar">
       <div class="adm-page-title" id="admPageTitle">📊 Overview</div>
@@ -663,15 +616,15 @@ header{
     </div>
     <div class="adm-body">
 
-      <!-- ── OVERVIEW ── -->
+      <!-- OVERVIEW -->
       <div class="a-sec on" id="as-dash">
         <div class="stat-row">
           <div class="stat-c" style="--c:#22dd88"><div class="sv">₹14,280</div><div class="sl">Revenue (Month)</div><div class="schange">↑ 18% vs last month</div></div>
-          <div class="stat-c" style="--c:#f5a623"><div class="sv" id="admOnline">247</div><div class="sl">Players Online</div><div class="schange" style="color:var(--success)">● Live</div></div>
+          <div class="stat-c" style="--c:#f5a623"><div class="sv" id="admOnline">247</div><div class="sl">Online Now</div><div class="schange" style="color:var(--success)">● Live</div></div>
           <div class="stat-c" style="--c:#00c9b1"><div class="sv">58</div><div class="sl">Orders Today</div><div class="schange">↑ 12 vs yesterday</div></div>
           <div class="stat-c"><div class="sv">2,841</div><div class="sl">Total Orders</div></div>
-          <div class="stat-c" style="--c:#7c3aed"><div class="sv">1,204</div><div class="sl">Registered Players</div></div>
-          <div class="stat-c"><div class="sv">₹245</div><div class="sl">Avg. Order Value</div></div>
+          <div class="stat-c" style="--c:#7c3aed"><div class="sv">1,204</div><div class="sl">Players</div></div>
+          <div class="stat-c"><div class="sv">₹245</div><div class="sl">Avg. Order</div></div>
         </div>
         <div class="a-card">
           <div class="a-card-title">Revenue (Last 7 Days)</div>
@@ -679,8 +632,7 @@ header{
         </div>
         <div class="a-card">
           <div class="a-card-title">Recent Orders</div>
-          <table class="a-tbl"><thead><tr><th>Player</th><th>Package</th><th>Amount</th><th>Time</th><th>Status</th></tr></thead>
-          <tbody id="recentTbl"></tbody></table>
+          <table class="a-tbl"><thead><tr><th>Player</th><th>Package</th><th>Amount</th><th>Time</th><th>Status</th></tr></thead><tbody id="recentTbl"></tbody></table>
         </div>
         <div class="quick-grid">
           <div class="quick-c" onclick="aNav('pkgs')"><div class="q-ico">📦</div><div class="q-lbl">Add Package</div></div>
@@ -690,16 +642,74 @@ header{
         </div>
       </div>
 
-      <!-- ── PACKAGES ── -->
+      <!-- PACKAGES -->
       <div class="a-sec" id="as-pkgs">
         <div class="a-card">
           <div class="a-card-title">Add New Package</div>
           <div class="a-row"><span class="a-lbl">Category</span><select class="a-sel" id="apCat"></select></div>
           <div class="a-row"><span class="a-lbl">Name</span><input class="a-in" id="apName" placeholder="e.g. VIP Rank"/></div>
           <div class="a-row"><span class="a-lbl">Price (₹)</span><input class="a-in" id="apPrice" type="number" placeholder="99"/></div>
-          <div class="a-row"><span class="a-lbl">Icon</span><input class="a-in" id="apIcon" value="📦" placeholder="Emoji or URL"/></div>
           <div class="a-row"><span class="a-lbl">Desc</span><input class="a-in" id="apDesc" placeholder="Short description"/></div>
           <div class="a-row"><span class="a-lbl">Perks</span><input class="a-in" id="apPerks" placeholder="Perk 1, Perk 2, Perk 3"/></div>
+
+          <!-- PACKAGE ICON UPLOADER -->
+          <div style="margin:10px 0">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin-bottom:8px">Package Icon / Image</div>
+            <div class="up-tabs">
+              <button class="up-tab on" onclick="switchTab(this,'pkg','emoji')">😀 Emoji</button>
+              <button class="up-tab" onclick="switchTab(this,'pkg','upload')">📁 Upload</button>
+              <button class="up-tab" onclick="switchTab(this,'pkg','lib')">🖼 Library</button>
+            </div>
+            <div class="up-tab-body on" id="pkg-t-emoji">
+              <div class="up-row">
+                <div class="up-preview" id="pkgPrev">📦</div>
+                <div class="ur-r">
+                  <input class="a-in" id="apIconEmoji" value="📦" placeholder="Emoji" oninput="setPkgIcon(this.value,'emoji')" style="margin-bottom:6px"/>
+                  <div style="font-size:10px;color:var(--dim);margin-bottom:4px">QUICK PICK — Ranks &amp; Keys:</div>
+                  <div class="emoji-grid">
+                    <span class="emoji-pick" onclick="setPkgIcon('⭐','emoji')">⭐</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('👑','emoji')">👑</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('💎','emoji')">💎</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🔮','emoji')">🔮</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🗝️','emoji')">🗝️</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🔑','emoji')">🔑</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('⚔️','emoji')">⚔️</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🛡️','emoji')">🛡️</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🔥','emoji')">🔥</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('💀','emoji')">💀</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🏆','emoji')">🏆</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('💰','emoji')">💰</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('⚡','emoji')">⚡</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🌟','emoji')">🌟</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('🎁','emoji')">🎁</span>
+                    <span class="emoji-pick" onclick="setPkgIcon('📦','emoji')">📦</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="up-tab-body" id="pkg-t-upload">
+              <div class="up-row">
+                <div class="up-preview" id="pkgPrevImg" style="background:var(--surface2)">
+                  <span id="pkgPrevImgTxt">📦</span>
+                  <div class="up-del" onclick="clearPkgImg()">🗑</div>
+                </div>
+                <div class="ur-r">
+                  <div class="drop-zone">
+                    <input type="file" accept="image/*" onchange="handlePkgUpload(this)"/>
+                    <span class="dz-ico">📁</span>
+                    <span class="dz-txt">Click or drag image here</span>
+                    <span class="dz-sub">PNG, JPG, WEBP — max 2MB<br>Best: 64×64px square</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="up-tab-body" id="pkg-t-lib">
+              <div style="font-size:11px;color:var(--dim);margin-bottom:7px">Click image from library to select as icon</div>
+              <div class="img-lib" id="pkgLib"><div class="lib-empty">No images in library. Upload from Hero &amp; Banners → Image Library</div></div>
+            </div>
+          </div>
+          <input type="hidden" id="apIconFinal" value="📦"/>
+
           <div class="a-row" style="margin-top:6px">
             <button class="a-btn grn" onclick="addPkg()">➕ Add Package</button>
             <button class="a-btn gry" onclick="clearPkgForm()">Clear</button>
@@ -709,118 +719,251 @@ header{
           <div class="a-card-title">All Packages</div>
           <div style="display:flex;gap:7px;margin-bottom:12px">
             <select class="a-sel" id="pkgFilterCat" style="max-width:160px" onchange="refreshAdm()"><option value="">All Categories</option></select>
-            <input class="a-in" placeholder="Search packages..." id="pkgSearch" oninput="refreshAdm()"/>
+            <input class="a-in" placeholder="Search..." id="pkgSearch" oninput="refreshAdm()"/>
           </div>
-          <table class="a-tbl"><thead><tr><th>Icon</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
-          <tbody id="pkgTbl"></tbody></table>
+          <table class="a-tbl"><thead><tr><th>Icon</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead><tbody id="pkgTbl"></tbody></table>
         </div>
       </div>
 
-      <!-- ── CATEGORIES ── -->
+      <!-- CATEGORIES -->
       <div class="a-sec" id="as-cats">
         <div class="a-card">
           <div class="a-card-title">Add Category</div>
           <div class="a-row"><span class="a-lbl">ID</span><input class="a-in" id="acId" placeholder="e.g. lifesteal"/></div>
           <div class="a-row"><span class="a-lbl">Name</span><input class="a-in" id="acName" placeholder="e.g. LifeSteal"/></div>
-          <div class="a-row"><span class="a-lbl">Icon</span><input class="a-in" id="acIcon" value="⚔️" placeholder="Emoji"/></div>
-          <div class="a-row" style="margin-top:6px">
-            <button class="a-btn grn" onclick="addCat()">➕ Add Category</button>
+          <!-- CATEGORY ICON UPLOADER -->
+          <div style="margin:10px 0">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin-bottom:8px">Category Icon</div>
+            <div class="up-tabs">
+              <button class="up-tab on" onclick="switchTab(this,'cat','emoji')">😀 Emoji</button>
+              <button class="up-tab" onclick="switchTab(this,'cat','upload')">📁 Upload</button>
+              <button class="up-tab" onclick="switchTab(this,'cat','lib')">🖼 Library</button>
+            </div>
+            <div class="up-tab-body on" id="cat-t-emoji">
+              <div class="up-row">
+                <div class="up-preview" id="catPrev">⚔️</div>
+                <div class="ur-r">
+                  <input class="a-in" id="acIconEmoji" value="⚔️" placeholder="Emoji" oninput="setCatIcon(this.value,'emoji')" style="margin-bottom:6px"/>
+                  <div class="emoji-grid">
+                    <span class="emoji-pick" onclick="setCatIcon('⚔️','emoji')">⚔️</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🏝','emoji')">🏝</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🛏','emoji')">🛏</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🎨','emoji')">🎨</span>
+                    <span class="emoji-pick" onclick="setCatIcon('❤️','emoji')">❤️</span>
+                    <span class="emoji-pick" onclick="setCatIcon('⛏','emoji')">⛏</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🌲','emoji')">🌲</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🔥','emoji')">🔥</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🏆','emoji')">🏆</span>
+                    <span class="emoji-pick" onclick="setCatIcon('💀','emoji')">💀</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🌟','emoji')">🌟</span>
+                    <span class="emoji-pick" onclick="setCatIcon('🎭','emoji')">🎭</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="up-tab-body" id="cat-t-upload">
+              <div class="up-row">
+                <div class="up-preview" id="catPrevImg">
+                  <span id="catPrevImgTxt">⚔️</span>
+                  <div class="up-del" onclick="clearCatImg()">🗑</div>
+                </div>
+                <div class="ur-r">
+                  <div class="drop-zone">
+                    <input type="file" accept="image/*" onchange="handleCatUpload(this)"/>
+                    <span class="dz-ico">📁</span>
+                    <span class="dz-txt">Upload category icon</span>
+                    <span class="dz-sub">PNG/JPG — 32×32px recommended</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="up-tab-body" id="cat-t-lib">
+              <div class="img-lib" id="catLib"><div class="lib-empty">No images in library yet.</div></div>
+            </div>
           </div>
+          <input type="hidden" id="acIconFinal" value="⚔️"/>
+          <div class="a-row" style="margin-top:6px"><button class="a-btn grn" onclick="addCat()">➕ Add Category</button></div>
         </div>
         <div class="a-card">
           <div class="a-card-title">All Categories</div>
-          <table class="a-tbl"><thead><tr><th>Icon</th><th>ID</th><th>Name</th><th>Packages</th><th>Actions</th></tr></thead>
-          <tbody id="catTbl"></tbody></table>
+          <table class="a-tbl"><thead><tr><th>Icon</th><th>ID</th><th>Name</th><th>Packages</th><th>Actions</th></tr></thead><tbody id="catTbl"></tbody></table>
         </div>
       </div>
 
-      <!-- ── COUPONS ── -->
+      <!-- COUPONS -->
       <div class="a-sec" id="as-coups">
         <div class="a-card">
           <div class="a-card-title">Create Coupon</div>
           <div class="a-row"><span class="a-lbl">Code</span><input class="a-in" id="ccCode" placeholder="e.g. SALE20" style="text-transform:uppercase"/></div>
-          <div class="a-row">
-            <span class="a-lbl">Discount</span>
-            <input class="a-in" id="ccDisc" type="number" placeholder="20" style="max-width:100px"/>
-            <select class="a-sel" id="ccType" style="max-width:70px"><option value="pct">%</option><option value="flat">₹</option></select>
-          </div>
+          <div class="a-row"><span class="a-lbl">Discount</span><input class="a-in" id="ccDisc" type="number" placeholder="20" style="max-width:100px"/><select class="a-sel" id="ccType" style="max-width:70px"><option value="pct">%</option><option value="flat">₹</option></select></div>
           <div class="a-row"><span class="a-lbl">Max Uses</span><input class="a-in" id="ccUses" type="number" value="100"/></div>
           <div class="a-row"><span class="a-lbl">Expiry</span><input class="a-in" id="ccExp" type="date"/></div>
           <div class="a-row" style="margin-top:6px"><button class="a-btn grn" onclick="addCoupon()">➕ Create Coupon</button></div>
         </div>
         <div class="a-card">
           <div class="a-card-title">Active Coupons</div>
-          <table class="a-tbl"><thead><tr><th>Code</th><th>Discount</th><th>Uses Left</th><th>Expiry</th><th>Status</th><th>Actions</th></tr></thead>
-          <tbody id="coupTbl"></tbody></table>
+          <table class="a-tbl"><thead><tr><th>Code</th><th>Discount</th><th>Left</th><th>Expiry</th><th>Status</th><th>Actions</th></tr></thead><tbody id="coupTbl"></tbody></table>
         </div>
       </div>
 
-      <!-- ── HERO BANNER ── -->
+      <!-- HERO & BANNERS -->
       <div class="a-sec" id="as-hero">
+
+        <!-- SERVER LOGO -->
         <div class="a-card">
-          <div class="a-card-title">Hero Logo & Banner</div>
-          <div class="a-row"><span class="a-lbl">Logo Icon</span><input class="a-in" id="heroIconIn" value="⚔" placeholder="Emoji or image URL"/></div>
-          <div class="a-row"><span class="a-lbl">Server Name</span><input class="a-in" id="heroTitleIn" value="MythicalLife"/></div>
-          <div class="a-row"><span class="a-lbl">Subtitle</span><input class="a-in" id="heroSubIn" value="Official MythicalLife Minecraft Server Store"/></div>
-          <div class="a-row" style="margin-top:6px">
-            <button class="a-btn org" onclick="updateHero()">Update Hero</button>
+          <div class="a-card-title">Server Logo (Hero Circle)</div>
+          <div class="up-tabs">
+            <button class="up-tab on" onclick="switchTab(this,'heroLogo','emoji')">😀 Emoji</button>
+            <button class="up-tab" onclick="switchTab(this,'heroLogo','upload')">📁 Upload Image</button>
+          </div>
+          <div class="up-tab-body on" id="heroLogo-t-emoji">
+            <div class="up-row" style="align-items:center">
+              <div class="up-preview" style="width:80px;height:80px;font-size:36px;border-radius:50%" id="heroLogoPrev">⚔</div>
+              <div class="ur-r">
+                <input class="a-in" id="heroIconIn" value="⚔" placeholder="Emoji" oninput="liveHeroEmoji(this.value)" style="margin-bottom:6px"/>
+                <div class="emoji-grid">
+                  <span class="emoji-pick" onclick="liveHeroEmoji('⚔')">⚔</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('🏰')">🏰</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('🛡️')">🛡️</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('👑')">👑</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('🔮')">🔮</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('💎')">💎</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('🌟')">🌟</span>
+                  <span class="emoji-pick" onclick="liveHeroEmoji('🔥')">🔥</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="up-tab-body" id="heroLogo-t-upload">
+            <div class="up-row" style="align-items:center">
+              <div class="up-preview" style="width:80px;height:80px;border-radius:50%;overflow:hidden" id="heroLogoImgPrev">
+                <span>⚔</span>
+                <div class="up-del" onclick="clearHeroLogoImg()">🗑</div>
+              </div>
+              <div class="ur-r">
+                <div class="drop-zone">
+                  <input type="file" accept="image/*" onchange="handleHeroLogoImg(this)"/>
+                  <span class="dz-ico">🖼</span>
+                  <span class="dz-txt">Upload Server Logo</span>
+                  <span class="dz-sub">Best: 200×200px PNG with transparent bg<br>Will appear in glowing circle</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:12px">
+            <div class="a-row"><span class="a-lbl">Title</span><input class="a-in" id="heroTitleIn" value="MythicalLife" oninput="document.getElementById('heroTitle').textContent=this.value"/></div>
+            <div class="a-row"><span class="a-lbl">Subtitle</span><input class="a-in" id="heroSubIn" value="Official MythicalLife Minecraft Server Store" oninput="document.getElementById('heroSub').textContent=this.value"/></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="a-btn org" onclick="updateHero()">✅ Apply Hero</button>
             <button class="a-btn gry" onclick="toggleHero()">Show/Hide Hero</button>
           </div>
         </div>
+
+        <!-- CUSTOM TOP BANNER -->
+        <div class="a-card">
+          <div class="a-card-title">Custom Top Banner Image</div>
+          <div style="font-size:12px;color:var(--dim);margin-bottom:10px">Upload a wide banner image shown between migrate bar and store. Recommended 1200×180px.</div>
+          <div class="up-preview-lg" id="customBannerPrev" style="height:100px;border-radius:8px;border:2px solid var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;margin-bottom:8px">
+            <span style="font-size:28px;color:var(--dim)" id="customBannerPrevTxt">🖼 No banner uploaded</span>
+            <div class="up-del" onclick="clearCustomBanner()" style="position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;font-size:18px;color:#fff;cursor:pointer">🗑 Remove</div>
+          </div>
+          <div class="drop-zone" style="margin-bottom:8px">
+            <input type="file" accept="image/*" onchange="handleCustomBanner(this)"/>
+            <span class="dz-ico">🎨</span>
+            <span class="dz-txt">Upload Custom Banner</span>
+            <span class="dz-sub">PNG/JPG — 1200×180px recommended wide image</span>
+          </div>
+          <div style="display:flex;gap:7px">
+            <button class="a-btn org" onclick="applyCustomBanner()">Apply Banner</button>
+            <button class="a-btn gry" onclick="clearCustomBanner()">Remove</button>
+          </div>
+        </div>
+
+        <!-- QR CODE -->
+        <div class="a-card">
+          <div class="a-card-title">Payment QR Code</div>
+          <div style="font-size:12px;color:var(--dim);margin-bottom:12px">Upload your UPI / GPay QR — shown at checkout when player pays.</div>
+          <div style="text-align:center;margin-bottom:12px">
+            <div class="qr-admin-preview" id="qrAdminPrev"><span id="qrAdminPrevTxt">📱</span></div>
+            <div style="font-size:11px;color:var(--dim)">QR Preview</div>
+          </div>
+          <div class="drop-zone" style="margin-bottom:10px">
+            <input type="file" accept="image/*" onchange="handleQRUpload(this)"/>
+            <span class="dz-ico">📷</span>
+            <span class="dz-txt">Upload QR Code Image</span>
+            <span class="dz-sub">PNG/JPG — Keep it high quality &amp; scannable</span>
+          </div>
+          <div style="display:flex;gap:7px;justify-content:center">
+            <button class="a-btn org sml" onclick="showToast('✅','QR Code saved!')">💾 Save QR</button>
+            <button class="a-btn gry sml" onclick="clearQR()">🗑 Remove</button>
+          </div>
+        </div>
+
+        <!-- IMAGE LIBRARY -->
+        <div class="a-card">
+          <div class="a-card-title">Image Library (Shared)</div>
+          <div style="font-size:12px;color:var(--dim);margin-bottom:10px">All uploaded images — reuse as package icons or category icons from the Library tab.</div>
+          <div class="drop-zone" style="margin-bottom:10px">
+            <input type="file" accept="image/*" multiple onchange="addToLibrary(this)"/>
+            <span class="dz-ico">📚</span>
+            <span class="dz-txt">Upload images to library</span>
+            <span class="dz-sub">Multiple files supported — drag &amp; drop here</span>
+          </div>
+          <div class="img-lib" id="globalLib">
+            <div class="lib-empty">Library empty. Upload images above.</div>
+          </div>
+        </div>
+
+        <!-- PROMO TICKER -->
         <div class="a-card">
           <div class="a-card-title">Promo Ticker Banner</div>
-          <div class="a-row"><span class="a-lbl">Text</span><input class="a-in" id="promoTxt" value="🎉 MythicalLife Store is Live! Use code MYTHICAL10 for 10% OFF your first purchase"/></div>
+          <div class="a-row"><span class="a-lbl">Text</span><input class="a-in" id="promoTxt" value="🎉 MythicalLife Store is Live! Use code MYTHICAL10 for 10% OFF"/></div>
           <div style="display:flex;gap:7px;margin-top:6px">
-            <button class="a-btn org" onclick="updatePromo()">Update Banner</button>
+            <button class="a-btn org" onclick="updatePromo()">Update</button>
             <button class="a-btn gry" onclick="togglePromoBan()">Show/Hide</button>
           </div>
         </div>
       </div>
 
-      <!-- ── ANNOUNCEMENTS ── -->
-      <div class="a-sec" id="as-banners">
+      <!-- ANNOUNCEMENTS -->
+      <div class="a-sec" id="as-annc">
         <div class="a-card">
           <div class="a-card-title">Migrate Banner</div>
           <div class="t-row">
-            <div class="t-row-left"><div class="t-lbl">Show MCS6 Migration Banner</div><div class="t-desc">Orange banner urging old players to migrate their data</div></div>
+            <div class="t-row-left"><div class="t-lbl">Show MCS6 Migration Banner</div><div class="t-desc">Orange banner urging old players to migrate</div></div>
             <div class="msw on" id="migBanSw" onclick="toggleMigBan()"></div>
           </div>
         </div>
         <div class="a-card">
           <div class="a-card-title">Maintenance Mode</div>
           <div class="t-row">
-            <div class="t-row-left"><div class="t-lbl">Enable Maintenance Mode</div><div class="t-desc">Show maintenance overlay to all store visitors</div></div>
-            <div class="msw" onclick="this.classList.toggle('on');showToast('⚙️','Maintenance '+(this.classList.contains('on')?'enabled':'disabled'))"></div>
+            <div class="t-row-left"><div class="t-lbl">Enable Maintenance</div><div class="t-desc">Show maintenance overlay to all visitors</div></div>
+            <div class="msw" onclick="this.classList.toggle('on');showToast('⚙️','Maintenance '+(this.classList.contains('on')?'ON':'OFF'))"></div>
           </div>
         </div>
         <div class="a-card">
           <div class="a-card-title">Custom Announcement</div>
-          <div class="a-row"><span class="a-lbl">Message</span><textarea class="a-ta" id="annMsg" placeholder="Enter announcement message..."></textarea></div>
-          <div class="a-row"><span class="a-lbl">Type</span>
-            <select class="a-sel"><option>Info (Blue)</option><option>Warning (Orange)</option><option>Success (Green)</option><option>Danger (Red)</option></select>
-          </div>
-          <button class="a-btn org" style="margin-top:4px" onclick="showToast('📢','Announcement sent!')">Send Announcement</button>
+          <div class="a-row"><span class="a-lbl">Message</span><textarea class="a-ta" id="annMsg" placeholder="Enter announcement..."></textarea></div>
+          <div class="a-row"><span class="a-lbl">Type</span><select class="a-sel"><option>Info (Blue)</option><option>Warning (Orange)</option><option>Success (Green)</option><option>Danger (Red)</option></select></div>
+          <button class="a-btn org" style="margin-top:4px" onclick="showToast('📢','Announcement sent!')">Send</button>
         </div>
       </div>
 
-      <!-- ── ORDERS ── -->
+      <!-- ORDERS -->
       <div class="a-sec" id="as-orders">
         <div class="a-card">
           <div class="a-card-title">Order Management</div>
           <div style="display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap">
-            <input class="a-in" placeholder="Search player, package or order ID..." style="flex:1;min-width:150px"/>
+            <input class="a-in" placeholder="Search player, package, ID..." style="flex:1;min-width:150px"/>
             <select class="a-sel" style="max-width:130px"><option>All Status</option><option>Completed</option><option>Pending</option><option>Refunded</option></select>
-            <select class="a-sel" style="max-width:120px"><option>All Time</option><option>Today</option><option>This Week</option><option>This Month</option></select>
             <button class="a-btn org">Search</button>
           </div>
-          <table class="a-tbl">
-            <thead><tr><th>#</th><th>Player</th><th>Package</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
-            <tbody id="ordersTbl"></tbody>
-          </table>
+          <table class="a-tbl"><thead><tr><th>#</th><th>Player</th><th>Package</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody id="ordersTbl"></tbody></table>
         </div>
       </div>
 
-      <!-- ── PLAYERS ── -->
+      <!-- PLAYERS -->
       <div class="a-sec" id="as-players">
         <div class="a-card">
           <div class="a-card-title">Player Management</div>
@@ -828,18 +971,15 @@ header{
             <input class="a-in" placeholder="Search by username..." style="flex:1"/>
             <button class="a-btn org">Search</button>
           </div>
-          <table class="a-tbl">
-            <thead><tr><th>Player</th><th>Type</th><th>Purchases</th><th>Total Spent</th><th>Last Seen</th><th>Actions</th></tr></thead>
-            <tbody id="playersTbl"></tbody>
-          </table>
+          <table class="a-tbl"><thead><tr><th>Player</th><th>Type</th><th>Purchases</th><th>Spent</th><th>Last Seen</th><th>Actions</th></tr></thead><tbody id="playersTbl"></tbody></table>
         </div>
       </div>
 
-      <!-- ── SETTINGS ── -->
+      <!-- SETTINGS -->
       <div class="a-sec" id="as-settings">
         <div class="a-card">
           <div class="a-card-title">Store Settings</div>
-          <div class="a-row"><span class="a-lbl">Store Name</span><input class="a-in" value="MythicalLife Store"/></div>
+          <div class="a-row"><span class="a-lbl">Name</span><input class="a-in" value="MythicalLife Store"/></div>
           <div class="a-row"><span class="a-lbl">Server IP</span><input class="a-in" value="play.mythicallife.net"/></div>
           <div class="a-row"><span class="a-lbl">Currency</span><select class="a-sel"><option>₹ INR</option><option>$ USD</option><option>€ EUR</option></select></div>
           <div class="a-row"><span class="a-lbl">Discord</span><input class="a-in" placeholder="https://discord.gg/..."/></div>
@@ -848,11 +988,12 @@ header{
         </div>
         <div class="a-card">
           <div class="a-card-title">Feature Flags</div>
-          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Bedrock Login Toggle</div><div class="t-desc">Allow Bedrock player login mode</div></div><div class="msw on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Bedrock Login</div><div class="t-desc">Allow Bedrock player login mode</div></div><div class="msw on" onclick="this.classList.toggle('on')"></div></div>
           <div class="t-row"><div class="t-row-left"><div class="t-lbl">MCS6 Migration</div><div class="t-desc">Allow MCS6 data migration</div></div><div class="msw on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Coupon Codes</div><div class="t-desc">Enable coupon redemption</div></div><div class="msw on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Gifting</div><div class="t-desc">Allow gifting packages to other players</div></div><div class="msw" onclick="this.classList.toggle('on')"></div></div>
-          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Hero Banner</div><div class="t-desc">Show logo hero on store main page</div></div><div class="msw on" id="heroFlagSw" onclick="this.classList.toggle('on');toggleHero()"></div></div>
+          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Coupon Codes</div><div class="t-desc">Enable coupon redemption at checkout</div></div><div class="msw on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Gifting</div><div class="t-desc">Allow gifting packages to others</div></div><div class="msw" onclick="this.classList.toggle('on')"></div></div>
+          <div class="t-row"><div class="t-row-left"><div class="t-lbl">Hero Banner</div><div class="t-desc">Show hero logo section on homepage</div></div><div class="msw on" onclick="this.classList.toggle('on');toggleHero()"></div></div>
+          <div class="t-row"><div class="t-row-left"><div class="t-lbl">QR Checkout</div><div class="t-desc">Show QR code at checkout</div></div><div class="msw on" id="qrToggleSw" onclick="this.classList.toggle('on')"></div></div>
         </div>
         <div class="a-card">
           <div class="a-card-title">Change Admin Password</div>
@@ -861,72 +1002,74 @@ header{
         </div>
       </div>
 
-    </div><!-- /adm-body -->
-  </div><!-- /adm-content -->
-</div><!-- /adminPanel -->
+    </div>
+  </div>
+</div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"><span id="tIco"></span><span id="tMsg"></span></div>
 
 <script>
-// ════════════════════════════════════
+// ══════════════════════════════════
 // DATA
-// ════════════════════════════════════
-let ADMIN_PASS = 'admin123';
-let currentUser = null, bedrockOn = false, cart = [];
+// ══════════════════════════════════
+let ADMIN_PASS='admin123';
+let currentUser=null,bedrockOn=false,cart=[];
+let globalLibrary=[]; // {dataUrl, name}
+let qrDataUrl=''; // stored QR
+let customBannerDataUrl='';
 
-let CATS = [
-  {id:'survival',name:'Survival',icon:'🌲'},
-  {id:'skyblock',name:'SkyBlock',icon:'🏝'},
-  {id:'bedwars',name:'BedWars',icon:'🛏'},
-  {id:'kitpvp',name:'KitPvP',icon:'⚔️'},
-  {id:'creative',name:'Creative',icon:'🎨'},
-  {id:'lifesteal',name:'LifeSteal',icon:'❤️'},
-  {id:'classic',name:'Classic',icon:'⛏'},
+let CATS=[
+  {id:'survival',name:'Survival',icon:'🌲',iconType:'emoji'},
+  {id:'skyblock',name:'SkyBlock',icon:'🏝',iconType:'emoji'},
+  {id:'bedwars',name:'BedWars',icon:'🛏',iconType:'emoji'},
+  {id:'kitpvp',name:'KitPvP',icon:'⚔️',iconType:'emoji'},
+  {id:'creative',name:'Creative',icon:'🎨',iconType:'emoji'},
+  {id:'lifesteal',name:'LifeSteal',icon:'❤️',iconType:'emoji'},
+  {id:'classic',name:'Classic',icon:'⛏',iconType:'emoji'},
 ];
 
-let PKGS = {
+let PKGS={
   survival:[
-    {id:'sv1',name:'VIP Rank',price:49,icon:'⭐',desc:'Custom prefix, /nick, /fly in spawn',perks:['/nick command','/fly in spawn','+2 homes','VIP kit','Custom join message']},
-    {id:'sv2',name:'MVP Rank',price:99,icon:'💎',desc:'All VIP + extra homes & custom msg',perks:['All VIP perks','+5 homes','/workbench','/enderchest','MVP kit']},
-    {id:'sv3',name:'Elite Rank',price:199,icon:'👑',desc:'Top tier — particles, /kit elite',perks:['All MVP perks','Particle effects','/kit elite','/hat','/disposal','+10 homes']},
-    {id:'sv4',name:'3x Crate Key',price:29,icon:'🗝️',desc:'3x Legendary crate keys',perks:['3 Legendary Crate Keys']},
-    {id:'sv5',name:'2x XP Booster',price:19,icon:'⚡',desc:'24hr double XP boost',perks:['2x XP for 24 hours']},
-    {id:'sv6',name:'God Set',price:39,icon:'🛡️',desc:'Pre-enchanted starter gear',perks:['Full enchanted armor','Enchanted sword + bow','16 Golden Apples']},
-    {id:'sv7',name:'50k Money',price:15,icon:'💰',desc:'In-game economy boost',perks:['50,000 in-game coins']},
+    {id:'sv1',name:'VIP Rank',price:49,icon:'⭐',iconType:'emoji',desc:'Custom prefix, /nick, /fly in spawn',perks:['/nick command','/fly in spawn','+2 homes','VIP kit','Custom join msg']},
+    {id:'sv2',name:'MVP Rank',price:99,icon:'💎',iconType:'emoji',desc:'All VIP + extra homes',perks:['All VIP perks','+5 homes','/workbench','/enderchest','MVP kit']},
+    {id:'sv3',name:'Elite Rank',price:199,icon:'👑',iconType:'emoji',desc:'Top tier — particles, /kit elite',perks:['All MVP perks','Particles','/kit elite','/hat','+10 homes']},
+    {id:'sv4',name:'3x Crate Key',price:29,icon:'🗝️',iconType:'emoji',desc:'3x Legendary crate keys',perks:['3 Legendary Crate Keys']},
+    {id:'sv5',name:'2x XP Booster',price:19,icon:'⚡',iconType:'emoji',desc:'24hr double XP boost',perks:['2x XP for 24 hours']},
+    {id:'sv6',name:'God Set',price:39,icon:'🛡️',iconType:'emoji',desc:'Pre-enchanted starter gear',perks:['Full enchanted armor','Enchanted sword + bow','16 Golden Apples']},
+    {id:'sv7',name:'50k Coins',price:15,icon:'💰',iconType:'emoji',desc:'In-game economy boost',perks:['50,000 in-game coins']},
   ],
   skyblock:[
-    {id:'sk1',name:'Island+ Rank',price:59,icon:'🏝️',desc:'Bigger island, 5 hoppers, /fly',perks:['/fly on island','+5 hoppers','Large island','Island+ kit']},
-    {id:'sk2',name:'Stellar Rank',price:149,icon:'🌟',desc:'Max island, custom terrain',perks:['All Island+ perks','Max island size','Unlimited hoppers','Custom terrain']},
-    {id:'sk3',name:'Ore Generator',price:39,icon:'⛏️',desc:'Tier 5 ore spawner upgrade',perks:['Tier 5 ore generator']},
-    {id:'sk4',name:'5x Minion Pack',price:49,icon:'🤖',desc:'5 extra minion slots',perks:['5 extra minion slots']},
-    {id:'sk5',name:'3x SkyKey',price:29,icon:'🗝️',desc:'Sky crate keys bundle',perks:['3 Sky Crate Keys']},
+    {id:'sk1',name:'Island+ Rank',price:59,icon:'🏝️',iconType:'emoji',desc:'Bigger island, /fly',perks:['/fly on island','+5 hoppers','Large island','Island+ kit']},
+    {id:'sk2',name:'Stellar Rank',price:149,icon:'🌟',iconType:'emoji',desc:'Max island, custom terrain',perks:['All Island+ perks','Max island','Unlimited hoppers','Custom terrain']},
+    {id:'sk3',name:'Ore Generator',price:39,icon:'⛏️',iconType:'emoji',desc:'Tier 5 ore spawner',perks:['Tier 5 ore generator']},
+    {id:'sk4',name:'5x Minion Pack',price:49,icon:'🤖',iconType:'emoji',desc:'5 extra minion slots',perks:['5 extra minion slots']},
+    {id:'sk5',name:'3x SkyKey',price:29,icon:'🗝️',iconType:'emoji',desc:'Sky crate keys bundle',perks:['3 Sky Crate Keys']},
   ],
   bedwars:[
-    {id:'bw1',name:'Iron Rank',price:49,icon:'⚔️',desc:'Prefix + spawn firework',perks:['[IRON] prefix','Spawn firework','Custom kill message']},
-    {id:'bw2',name:'Diamond Rank',price:119,icon:'💠',desc:'Trails, win effects, spectator chat',perks:['All Iron perks','Trail effects','Win explosion','/kit diamond']},
-    {id:'bw3',name:'Win Effect Pack',price:29,icon:'⚡',desc:'Lightning win effect cosmetic',perks:['Lightning win effect']},
-    {id:'bw4',name:'Bed Shield',price:19,icon:'🛡️',desc:'One-time bed shield',perks:['1x Bed Shield (consumable)']},
+    {id:'bw1',name:'Iron Rank',price:49,icon:'⚔️',iconType:'emoji',desc:'Prefix + spawn firework',perks:['[IRON] prefix','Spawn firework','Custom kill msg']},
+    {id:'bw2',name:'Diamond Rank',price:119,icon:'💠',iconType:'emoji',desc:'Trails, win effects',perks:['All Iron perks','Trail effects','Win explosion','/kit diamond']},
+    {id:'bw3',name:'Win Effect Pack',price:29,icon:'⚡',iconType:'emoji',desc:'Lightning win effect',perks:['Lightning win effect cosmetic']},
+    {id:'bw4',name:'Bed Shield',price:19,icon:'🛡️',iconType:'emoji',desc:'One-time bed shield',perks:['1x Bed Shield (consumable)']},
   ],
   kitpvp:[
-    {id:'kp1',name:'Fighter Rank',price:39,icon:'🥊',desc:'Premium kits + /fly in lobby',perks:['/fly in lobby','Premium kits','[FIGHTER] prefix']},
-    {id:'kp2',name:'Warlord Rank',price:99,icon:'⚔️',desc:'All kits + kill msg + aura',perks:['All Fighter perks','All kits','Kill message','Particle aura']},
-    {id:'kp3',name:'Kill Streak Boost',price:25,icon:'🔥',desc:'2x killstreak rewards 48h',perks:['2x killstreak for 48h']},
-    {id:'kp4',name:'Mystery Kit',price:19,icon:'🎁',desc:'Random exclusive kit',perks:['1 random exclusive kit']},
+    {id:'kp1',name:'Fighter Rank',price:39,icon:'🥊',iconType:'emoji',desc:'Premium kits + /fly in lobby',perks:['/fly in lobby','Premium kits','[FIGHTER] prefix']},
+    {id:'kp2',name:'Warlord Rank',price:99,icon:'⚔️',iconType:'emoji',desc:'All kits + kill msg + aura',perks:['All Fighter perks','All kits','Kill message','Particle aura']},
+    {id:'kp3',name:'Kill Streak Boost',price:25,icon:'🔥',iconType:'emoji',desc:'2x killstreak rewards 48h',perks:['2x killstreak for 48h']},
   ],
   creative:[
-    {id:'cr1',name:'Builder Rank',price:49,icon:'🏗️',desc:'Large plot + WorldEdit basics',perks:['Large plot','Basic WorldEdit','/fly','[BUILDER] prefix']},
-    {id:'cr2',name:'Architect Rank',price:129,icon:'🎨',desc:'Max plot + full WorldEdit + trails',perks:['All Builder perks','Max plot','Full WorldEdit','Particle trails']},
-    {id:'cr3',name:'Extra Plot',price:35,icon:'🗺️',desc:'+1 extra plot slot',perks:['+1 extra plot']},
+    {id:'cr1',name:'Builder Rank',price:49,icon:'🏗️',iconType:'emoji',desc:'Large plot + WorldEdit',perks:['Large plot','Basic WorldEdit','/fly','[BUILDER] prefix']},
+    {id:'cr2',name:'Architect Rank',price:129,icon:'🎨',iconType:'emoji',desc:'Max plot + full WorldEdit',perks:['All Builder perks','Max plot','Full WorldEdit','Trails']},
+    {id:'cr3',name:'Extra Plot',price:35,icon:'🗺️',iconType:'emoji',desc:'+1 extra plot slot',perks:['+1 extra plot']},
   ],
   lifesteal:[
-    {id:'ls1',name:'Deadliest Rank',price:49,icon:'💀',desc:'+1000 Coins, exclusive kit',perks:['/fly in lobby','+1000 coins','[DEADLIEST] prefix','Exclusive kit']},
-    {id:'ls2',name:'Supreme Rank',price:129,icon:'🔮',desc:'+3200 Coins, godly perks',perks:['All Deadliest perks','/enderchest','/workbench','+3200 coins','Supreme cosmetic']},
-    {id:'ls3',name:'15600 Coins',price:79,icon:'💰',desc:'15,600 LifeSteal coins',perks:['15,600 in-game coins']},
+    {id:'ls1',name:'Deadliest Rank',price:49,icon:'💀',iconType:'emoji',desc:'+1000 Coins, exclusive kit',perks:['/fly in lobby','+1000 coins','[DEADLIEST] prefix','Exclusive kit']},
+    {id:'ls2',name:'Supreme Rank',price:129,icon:'🔮',iconType:'emoji',desc:'+3200 Coins, godly perks',perks:['All Deadliest perks','/enderchest','/workbench','+3200 coins','Supreme cosmetic']},
+    {id:'ls3',name:'15600 Coins',price:79,icon:'💰',iconType:'emoji',desc:'15,600 LifeSteal coins',perks:['15,600 in-game coins']},
   ],
   classic:[
-    {id:'cl1',name:'Classic VIP',price:39,icon:'⭐',desc:'Classic mode VIP rank',perks:['[VIP] prefix','/fly in spawn','+2 homes','VIP kit']},
-    {id:'cl2',name:'15600 Coins',price:79,icon:'💰',desc:'15,600 Classic coins',perks:['15,600 in-game coins']},
+    {id:'cl1',name:'Classic VIP',price:39,icon:'⭐',iconType:'emoji',desc:'Classic mode VIP rank',perks:['[VIP] prefix','/fly in spawn','+2 homes','VIP kit']},
+    {id:'cl2',name:'15600 Coins',price:79,icon:'💰',iconType:'emoji',desc:'15,600 Classic coins',perks:['15,600 in-game coins']},
   ],
 };
 
@@ -953,15 +1096,23 @@ const PLAYERS_D=[
   {name:'BlazeFire',type:'java',buys:4,spent:'₹299',last:'8 Mar'},
 ];
 
-// ════════════════════════════════════
+// pkg icon state
+let pkgIconMode='emoji', pkgIconValue='📦';
+let catIconMode='emoji', catIconValue='⚔️';
+
+// ══════════════════════════════════
 // SIDEBAR
-// ════════════════════════════════════
+// ══════════════════════════════════
 function buildSidebar(){
+  function iconHtml(c){
+    if(c.iconType==='image') return `<span class="cat-ico"><img src="${c.icon}" alt=""/></span>`;
+    return `<span class="cat-ico">${c.icon}</span>`;
+  }
   document.getElementById('catList').innerHTML=
     `<div class="sb-head">Select Category</div>
      <div class="cat-btn active" data-id="home" onclick="showPage('home',this)"><span class="cat-ico">🏠</span><span>Home</span></div>
      <div class="sb-sep"></div>`+
-    CATS.map(c=>`<div class="cat-btn" data-id="${c.id}" onclick="showPage('${c.id}',this)"><span class="cat-ico">${c.icon}</span><span>${c.name}</span></div>`).join('')+
+    CATS.map(c=>`<div class="cat-btn" data-id="${c.id}" onclick="showPage('${c.id}',this)">${iconHtml(c)}<span>${c.name}</span></div>`).join('')+
     `<div class="sb-sep"></div>
      <div class="cat-btn" onclick="openAdmLock()"><span class="cat-ico">🔐</span><span>Admin</span></div>`;
   syncApCatSelect();
@@ -970,8 +1121,7 @@ function buildSidebar(){
 function showPage(id,el){
   document.querySelectorAll('.cat-btn').forEach(x=>x.classList.remove('active'));
   if(el) el.classList.add('active');
-  // Show hero only on home
-  document.getElementById('storeHero').style.display = id==='home'?'flex':'none';
+  document.getElementById('storeHero').style.display=id==='home'?'flex':'none';
   if(id==='home'){
     document.getElementById('page-home').classList.add('on');
     document.getElementById('page-pkgs').classList.remove('on');
@@ -990,15 +1140,15 @@ function loadPkgs(catId){
   if(!pkgs.length){list.innerHTML='<div style="color:var(--dim);padding:20px 0;font-size:14px">No packages in this category yet.</div>';return;}
   list.innerHTML=pkgs.map(p=>`
     <div class="pkg-row" onclick="openDetail('${p.id}')">
-      <div class="pr-ico">${p.icon}</div>
+      <div class="pr-ico">${p.iconType==='image'?`<img src="${p.icon}"/>`:`${p.icon}`}</div>
       <div class="pr-inf"><div class="pr-name">${p.name}</div><div class="pr-desc">${p.desc}</div></div>
       <div class="pr-price"><small>₹</small>${p.price}</div>
     </div>`).join('');
 }
 
-// ════════════════════════════════════
-// HERO BANNER
-// ════════════════════════════════════
+// ══════════════════════════════════
+// HERO
+// ══════════════════════════════════
 function spawnParticles(){
   const c=document.getElementById('heroParticles');c.innerHTML='';
   for(let i=0;i<18;i++){
@@ -1008,12 +1158,13 @@ function spawnParticles(){
   }
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // DETAIL MODAL
-// ════════════════════════════════════
+// ══════════════════════════════════
 function openDetail(id){
   const p=Object.values(PKGS).flat().find(x=>x.id===id);if(!p) return;
-  document.getElementById('detIco').textContent=p.icon;
+  const icoEl=document.getElementById('detIco');
+  icoEl.innerHTML=p.iconType==='image'?`<img src="${p.icon}"/>`:`${p.icon}`;
   document.getElementById('detName').textContent=p.name;
   document.getElementById('detPrice').textContent='₹'+p.price;
   document.getElementById('detPerks').innerHTML=(p.perks||[]).map(k=>`<li>${k}</li>`).join('');
@@ -1021,21 +1172,19 @@ function openDetail(id){
   document.getElementById('detOv').classList.add('on');
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // CART
-// ════════════════════════════════════
+// ══════════════════════════════════
 function addToCart(p){cart.push({...p});updCart();showToast('🛒',p.name+' cart mein add hua!');}
 function updCart(){const b=document.getElementById('cartBadge');b.textContent=cart.length;b.classList.toggle('on',cart.length>0);}
 function openCart(){
   const cb=document.getElementById('cartBody'),cf=document.getElementById('cartFt');
-  if(!cart.length){
-    cb.innerHTML='<div class="cart-empty"><span class="e-ico">🛒</span>Your cart is empty.<br><small>Select a category to browse packages.</small></div>';
-    cf.style.display='none';
-  } else {
+  if(!cart.length){cb.innerHTML='<div class="cart-empty"><span class="e-ico">🛒</span>Cart empty.<br><small>Browse categories to add items.</small></div>';cf.style.display='none';}
+  else{
     const tot=cart.reduce((s,i)=>s+i.price,0);
     cb.innerHTML=cart.map((item,i)=>`
       <div class="cart-item">
-        <div class="ci-ico">${item.icon}</div>
+        <div class="ci-ico">${item.iconType==='image'?`<img src="${item.icon}"/>`:`${item.icon}`}</div>
         <div class="ci-inf"><div class="ci-n">${item.name}</div><div class="ci-p">₹${item.price}</div></div>
         <button class="ci-rm" onclick="rmCart(${i})">🗑</button>
       </div>`).join('');
@@ -1045,70 +1194,80 @@ function openCart(){
   document.getElementById('cartOv').classList.add('on');
 }
 function rmCart(i){cart.splice(i,1);updCart();openCart();}
-function doCheckout(){
-  if(!currentUser){closeM('cartOv');openLogin();return;}
-  cart=[];updCart();closeM('cartOv');showToast('✅','Order placed! Items will arrive in 1–20 min.');
-}
 function applyCoupon(){
   const code=document.getElementById('couponIn').value.trim().toUpperCase();
   const c=COUPONS.find(x=>x.code===code&&x.active);
-  if(!c){showToast('❌','Invalid or expired coupon code');return;}
+  if(!c){showToast('❌','Invalid coupon code');return;}
   showToast('🎉',`Applied! ${c.discount}${c.type==='pct'?'%':'₹'} off`);
 }
+function doCheckout(){
+  if(!currentUser){closeM('cartOv');openLogin();return;}
+  const tot=cart.reduce((s,i)=>s+i.price,0);
+  const qrSw=document.getElementById('qrToggleSw');
+  if(qrSw.classList.contains('on')&&qrDataUrl){
+    closeM('cartOv');
+    document.getElementById('qrAmt').textContent='₹'+tot;
+    const qi=document.getElementById('qrCheckoutImg');
+    qi.innerHTML=`<img src="${qrDataUrl}" style="width:100%;height:100%;object-fit:contain;border-radius:8px"/>`;
+    document.getElementById('qrOv').classList.add('on');
+  } else {
+    cart=[];updCart();closeM('cartOv');showToast('✅','Order placed! Items arrive in 1–20 min.');
+  }
+}
+function finishCheckout(){cart=[];updCart();closeM('qrOv');showToast('✅','Payment submitted! Items arrive in 1–20 min.');}
 function checkGc(){const v=document.getElementById('gcInput').value.trim();showToast(v?'💳':'⚠️',v?'Giftcard not found or already used.':'Enter a card number first.');}
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // AUTH
-// ════════════════════════════════════
+// ══════════════════════════════════
 function openLogin(){document.getElementById('loginOv').classList.add('on');}
 function doLogin(){
   const u=document.getElementById('unInput').value.trim();
-  if(!u){showToast('⚠️','Username dalo pehle!');return;}
+  if(!u){showToast('⚠️','Username dalo!');return;}
   currentUser=u;closeM('loginOv');
   document.getElementById('signBtn').style.display='none';
   document.getElementById('userChip').classList.add('on');
   document.getElementById('ucName').textContent=u;
-  showToast('✅','Welcome back, '+u+'!');
+  showToast('✅','Welcome, '+u+'!');
 }
 function doLogout(){
   currentUser=null;
   document.getElementById('signBtn').style.display='';
   document.getElementById('userChip').classList.remove('on');
-  showToast('👋','Logged out successfully.');
+  showToast('👋','Logged out!');
 }
-let bedrockOnGlobal=false;
 function toggleBedrock(){
-  bedrockOnGlobal=!bedrockOnGlobal;
-  document.getElementById('bdrToggle').classList.toggle('on',bedrockOnGlobal);
-  document.getElementById('bdrMsw').classList.toggle('on',bedrockOnGlobal);
-  const h=document.getElementById('bHint'),s=document.getElementById('loginSub'),i=document.getElementById('unInput');
-  if(bedrockOnGlobal){h.classList.add('on');s.innerHTML='Bedrock player login. <span class="bt">BEDROCK</span>';i.placeholder='.YourGamertag';showToast('📱','Bedrock mode enabled!');}
-  else{h.classList.remove('on');s.textContent='Please enter your Minecraft username. Case Sensitive.';i.placeholder='YourUsername';}
+  bedrockOn=!bedrockOn;
+  document.getElementById('bdrToggle').classList.toggle('on',bedrockOn);
+  document.getElementById('bdrMsw').classList.toggle('on',bedrockOn);
+  const h=document.getElementById('bHint'),i=document.getElementById('unInput');
+  if(bedrockOn){h.classList.add('on');i.placeholder='.YourGamertag';showToast('📱','Bedrock mode on!');}
+  else{h.classList.remove('on');i.placeholder='YourUsername';}
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // MIGRATE
-// ════════════════════════════════════
+// ══════════════════════════════════
 function openMigrate(){document.getElementById('migOv').classList.add('on');}
 function startMigrate(){
   const u=document.getElementById('mcs6u').value.trim(),e=document.getElementById('mcs6e').value.trim();
   if(!u||!e){showToast('⚠️','Dono fields bharo!');return;}
   const btn=document.getElementById('mgBtn'),bar=document.getElementById('mgBar'),st=document.getElementById('mgSt');
   btn.disabled=true;
-  const steps=[[10,'🔍 Account dhundh raha hoon...'],[30,'📦 Purana data fetch ho raha hai...'],[55,'🔄 Ranks aur purchases migrate ho rahe hain...'],[80,'🎁 Inventory transfer ho rahi hai...'],[100,'✅ Migration complete! Store se dobara login karo.']];
-  let i=0;(function go(){if(i>=steps.length){setTimeout(()=>{closeM('migOv');showToast('🎉','MCS6 data successfully migrated!');},600);return;}
-  const[p,m]=steps[i++];bar.style.width=p+'%';st.textContent=m;setTimeout(go,850+Math.random()*350);})();
+  const steps=[[10,'🔍 Account dhundh raha hoon...'],[30,'📦 Purana data fetch...'],[55,'🔄 Ranks migrate ho rahe hain...'],[80,'🎁 Inventory transfer...'],[100,'✅ Done! Store se login karo.']];
+  let i=0;(function go(){if(i>=steps.length){setTimeout(()=>{closeM('migOv');showToast('🎉','MCS6 data migrated!');},600);return;}
+  const[p,m]=steps[i++];bar.style.width=p+'%';st.textContent=m;setTimeout(go,900+Math.random()*300);})();
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // ADMIN LOCK
-// ════════════════════════════════════
+// ══════════════════════════════════
 function openAdmLock(){document.getElementById('admLock').classList.add('on');setTimeout(()=>document.getElementById('lockIn').focus(),100);}
 function closeAdmLock(){document.getElementById('admLock').classList.remove('on');document.getElementById('lockIn').value='';document.getElementById('lockErr').textContent='';}
 function verifyAdmin(){
   const p=document.getElementById('lockIn').value;
   if(p===ADMIN_PASS){closeAdmLock();openAdmin();}
-  else{document.getElementById('lockErr').textContent='❌ Incorrect password!';document.getElementById('lockIn').value='';}
+  else{document.getElementById('lockErr').textContent='❌ Wrong password!';document.getElementById('lockIn').value='';}
 }
 function openAdmin(){
   document.getElementById('adminPanel').classList.add('on');
@@ -1117,67 +1276,264 @@ function openAdmin(){
 }
 function closeAdmin(){document.getElementById('adminPanel').classList.remove('on');}
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // ADMIN NAV
-// ════════════════════════════════════
-const PAGE_TITLES={'dash':'📊 Overview','pkgs':'📦 Packages','cats':'📂 Categories','coups':'🎟 Coupons','hero':'🖼 Hero Banner','banners':'📢 Announcements','orders':'🧾 Orders','players':'👥 Players','settings':'⚙️ Settings'};
+// ══════════════════════════════════
+const PAGE_TITLES={dash:'📊 Overview',pkgs:'📦 Packages',cats:'📂 Categories',coups:'🎟 Coupons',hero:'🖼 Hero & Banners',annc:'📢 Announcements',orders:'🧾 Orders',players:'👥 Players',settings:'⚙️ Settings'};
 function aNav(s){
   document.querySelectorAll('.adm-nav-btn').forEach(x=>x.classList.toggle('on',x.dataset.s===s));
   document.querySelectorAll('.a-sec').forEach(x=>x.classList.toggle('on',x.id==='as-'+s));
   document.getElementById('admPageTitle').textContent=PAGE_TITLES[s]||s;
+  if(s==='hero') refreshLibraryViews();
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
+// IMAGE UPLOAD TAB SWITCHER
+// ══════════════════════════════════
+function switchTab(btn,prefix,tab){
+  const parent=btn.closest('.a-card')||btn.closest('.adm-body');
+  btn.parentElement.querySelectorAll('.up-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  // hide all tab bodies with this prefix
+  document.querySelectorAll(`[id^="${prefix}-t-"]`).forEach(el=>el.classList.remove('on'));
+  const body=document.getElementById(`${prefix}-t-${tab}`);
+  if(body) body.classList.add('on');
+  if(tab==='lib') refreshLibraryViews();
+}
+
+// ══════════════════════════════════
+// PACKAGE ICON UPLOAD
+// ══════════════════════════════════
+function setPkgIcon(val,type){
+  pkgIconMode=type;pkgIconValue=val;
+  document.getElementById('pkgPrev').textContent=val;
+  if(type==='emoji') document.getElementById('apIconEmoji').value=val;
+  document.getElementById('apIconFinal').value=val;
+}
+function handlePkgUpload(input){
+  const file=input.files[0];if(!file||file.size>2097152){showToast('⚠️','Max 2MB!');return;}
+  const r=new FileReader();
+  r.onload=e=>{
+    pkgIconMode='image';pkgIconValue=e.target.result;
+    document.getElementById('apIconFinal').value=e.target.result;
+    const prev=document.getElementById('pkgPrevImg');
+    prev.innerHTML=`<img src="${e.target.result}"/><div class="up-del" onclick="clearPkgImg()">🗑</div>`;
+    document.getElementById('pkgPrev').innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"/>`;
+    addToLibrary(null,e.target.result,file.name);
+    showToast('✅','Icon uploaded!');
+  };r.readAsDataURL(file);
+}
+function clearPkgImg(){
+  pkgIconMode='emoji';pkgIconValue='📦';
+  document.getElementById('apIconFinal').value='📦';
+  document.getElementById('pkgPrevImg').innerHTML=`<span id="pkgPrevImgTxt">📦</span><div class="up-del" onclick="clearPkgImg()">🗑</div>`;
+  document.getElementById('pkgPrev').textContent='📦';
+}
+
+// ══════════════════════════════════
+// CATEGORY ICON UPLOAD
+// ══════════════════════════════════
+function setCatIcon(val,type){
+  catIconMode=type;catIconValue=val;
+  document.getElementById('catPrev').textContent=val;
+  if(type==='emoji') document.getElementById('acIconEmoji').value=val;
+  document.getElementById('acIconFinal').value=val;
+}
+function handleCatUpload(input){
+  const file=input.files[0];if(!file||file.size>2097152){showToast('⚠️','Max 2MB!');return;}
+  const r=new FileReader();
+  r.onload=e=>{
+    catIconMode='image';catIconValue=e.target.result;
+    document.getElementById('acIconFinal').value=e.target.result;
+    const prev=document.getElementById('catPrevImg');
+    prev.innerHTML=`<img src="${e.target.result}"/><div class="up-del" onclick="clearCatImg()">🗑</div>`;
+    document.getElementById('catPrev').innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"/>`;
+    addToLibrary(null,e.target.result,file.name);
+    showToast('✅','Icon uploaded!');
+  };r.readAsDataURL(file);
+}
+function clearCatImg(){
+  catIconMode='emoji';catIconValue='⚔️';
+  document.getElementById('acIconFinal').value='⚔️';
+  document.getElementById('catPrevImg').innerHTML=`<span id="catPrevImgTxt">⚔️</span><div class="up-del" onclick="clearCatImg()">🗑</div>`;
+  document.getElementById('catPrev').textContent='⚔️';
+}
+
+// ══════════════════════════════════
+// HERO LOGO UPLOAD
+// ══════════════════════════════════
+function liveHeroEmoji(val){
+  document.getElementById('heroIconIn').value=val;
+  document.getElementById('heroLogoPrev').textContent=val;
+  document.getElementById('heroLogoEmoji').textContent=val;
+  const img=document.getElementById('heroLogoImg');
+  img.innerHTML=`<span id="heroLogoEmoji">${val}</span>`;
+}
+function handleHeroLogoImg(input){
+  const file=input.files[0];if(!file){return;}
+  const r=new FileReader();
+  r.onload=e=>{
+    const src=e.target.result;
+    const prev=document.getElementById('heroLogoImgPrev');
+    prev.innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/><div class="up-del" onclick="clearHeroLogoImg()">🗑</div>`;
+    document.getElementById('heroLogoPrev').innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+    document.getElementById('heroLogoImg').innerHTML=`<img src="${src}"/>`;
+    addToLibrary(null,src,file.name);
+    showToast('✅','Server logo updated!');
+  };r.readAsDataURL(file);
+}
+function clearHeroLogoImg(){
+  const em=document.getElementById('heroIconIn').value||'⚔';
+  document.getElementById('heroLogoImgPrev').innerHTML=`<span>${em}</span><div class="up-del" onclick="clearHeroLogoImg()">🗑</div>`;
+  document.getElementById('heroLogoPrev').textContent=em;
+  document.getElementById('heroLogoImg').innerHTML=`<span id="heroLogoEmoji">${em}</span>`;
+}
+
+// ══════════════════════════════════
+// CUSTOM BANNER UPLOAD
+// ══════════════════════════════════
+function handleCustomBanner(input){
+  const file=input.files[0];if(!file){return;}
+  const r=new FileReader();
+  r.onload=e=>{
+    customBannerDataUrl=e.target.result;
+    const prev=document.getElementById('customBannerPrev');
+    prev.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"/><div class="up-del" onclick="clearCustomBanner()" style="position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;font-size:18px;color:#fff;cursor:pointer">🗑 Remove</div>`;
+    showToast('✅','Banner uploaded! Click Apply to show.');
+  };r.readAsDataURL(file);
+}
+function applyCustomBanner(){
+  if(!customBannerDataUrl){showToast('⚠️','Pehle image upload karo!');return;}
+  const area=document.getElementById('customBannerArea');
+  document.getElementById('customBannerImg').src=customBannerDataUrl;
+  area.style.display='block';
+  showToast('✅','Custom banner applied!');
+}
+function clearCustomBanner(){
+  customBannerDataUrl='';
+  document.getElementById('customBannerArea').style.display='none';
+  document.getElementById('customBannerImg').src='';
+  const prev=document.getElementById('customBannerPrev');
+  prev.innerHTML=`<span style="font-size:28px;color:var(--dim)" id="customBannerPrevTxt">🖼 No banner uploaded</span><div class="up-del" onclick="clearCustomBanner()" style="position:absolute;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;font-size:18px;color:#fff;cursor:pointer">🗑 Remove</div>`;
+}
+
+// ══════════════════════════════════
+// QR UPLOAD
+// ══════════════════════════════════
+function handleQRUpload(input){
+  const file=input.files[0];if(!file){return;}
+  const r=new FileReader();
+  r.onload=e=>{
+    qrDataUrl=e.target.result;
+    const prev=document.getElementById('qrAdminPrev');
+    prev.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:contain;border-radius:8px"/>`;
+    showToast('✅','QR uploaded! Will show at checkout.');
+  };r.readAsDataURL(file);
+}
+function clearQR(){
+  qrDataUrl='';
+  document.getElementById('qrAdminPrev').innerHTML=`<span id="qrAdminPrevTxt">📱</span>`;
+  showToast('🗑','QR removed.');
+}
+
+// ══════════════════════════════════
+// GLOBAL IMAGE LIBRARY
+// ══════════════════════════════════
+function addToLibrary(input,dataUrl,name){
+  if(input){
+    const files=Array.from(input.files);
+    files.forEach(file=>{
+      if(file.size>5242880){showToast('⚠️',file.name+' too large (max 5MB)');return;}
+      const r=new FileReader();
+      r.onload=e=>{globalLibrary.push({dataUrl:e.target.result,name:file.name});refreshLibraryViews();showToast('📚',file.name+' added to library!');};
+      r.readAsDataURL(file);
+    });
+  } else if(dataUrl){
+    if(!globalLibrary.find(x=>x.dataUrl===dataUrl)){
+      globalLibrary.push({dataUrl,name:name||'image'});
+      refreshLibraryViews();
+    }
+  }
+}
+
+function refreshLibraryViews(){
+  const empty='<div class="lib-empty">Library empty. Upload images in Hero &amp; Banners → Image Library.</div>';
+  const html=globalLibrary.length?globalLibrary.map((img,i)=>`
+    <div class="lib-item" onclick="selectFromLib(${i})" title="${img.name}">
+      <img src="${img.dataUrl}" alt="${img.name}"/>
+      <div class="li-del" onclick="event.stopPropagation();removeFromLib(${i})">🗑</div>
+    </div>`).join(''):empty;
+  ['globalLib','pkgLib','catLib'].forEach(id=>{const el=document.getElementById(id);if(el) el.innerHTML=html;});
+}
+
+let _libTarget='pkg';
+function selectFromLib(i){
+  const img=globalLibrary[i];
+  // figure out which lib panel is visible
+  const pkgLibOn=document.getElementById('pkg-t-lib')?.classList.contains('on');
+  const catLibOn=document.getElementById('cat-t-lib')?.classList.contains('on');
+  if(pkgLibOn){
+    pkgIconMode='image';pkgIconValue=img.dataUrl;
+    document.getElementById('apIconFinal').value=img.dataUrl;
+    document.getElementById('pkgPrev').innerHTML=`<img src="${img.dataUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"/>`;
+    showToast('✅','Icon selected from library!');
+  } else if(catLibOn){
+    catIconMode='image';catIconValue=img.dataUrl;
+    document.getElementById('acIconFinal').value=img.dataUrl;
+    document.getElementById('catPrev').innerHTML=`<img src="${img.dataUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"/>`;
+    showToast('✅','Category icon set from library!');
+  } else {
+    showToast('ℹ️','Library se Package ya Category tab mein select karo.');
+  }
+  document.querySelectorAll('.lib-item').forEach(x=>x.classList.remove('sel'));
+  const libItems=document.querySelectorAll('.lib-item');
+  if(libItems[i]) libItems[i].classList.add('sel');
+}
+function removeFromLib(i){globalLibrary.splice(i,1);refreshLibraryViews();}
+
+// ══════════════════════════════════
 // ADMIN REFRESH
-// ════════════════════════════════════
+// ══════════════════════════════════
 function refreshAdm(){
-  // Packages
   const filterCat=document.getElementById('pkgFilterCat')?.value||'';
   const search=(document.getElementById('pkgSearch')?.value||'').toLowerCase();
   const allPkgs=Object.entries(PKGS).flatMap(([cat,ps])=>ps.map(p=>({...p,cat})))
     .filter(p=>(!filterCat||p.cat===filterCat)&&(!search||p.name.toLowerCase().includes(search)));
   document.getElementById('pkgTbl').innerHTML=allPkgs.map(p=>`
     <tr>
-      <td style="font-size:20px">${p.icon}</td>
+      <td>${p.iconType==='image'?`<img src="${p.icon}" style="width:28px;height:28px;object-fit:cover;border-radius:4px"/>`:`<span style="font-size:20px">${p.icon}</span>`}</td>
       <td style="font-weight:700">${p.name}</td>
       <td><span class="bdg o">${p.cat}</span></td>
       <td style="color:var(--accent);font-weight:700">₹${p.price}</td>
-      <td><div class="tdact">
-        <button class="a-btn gry sml" onclick="editPkg('${p.id}','${p.cat}')">Edit</button>
-        <button class="a-btn red sml" onclick="delPkg('${p.id}','${p.cat}')">Delete</button>
-      </div></td>
+      <td><div class="tdact"><button class="a-btn red sml" onclick="delPkg('${p.id}','${p.cat}')">Delete</button></div></td>
     </tr>`).join('');
 
-  // Sync filter dropdown
   const pfc=document.getElementById('pkgFilterCat');
   if(pfc){const cur=pfc.value;pfc.innerHTML='<option value="">All Categories</option>'+CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');pfc.value=cur;}
 
-  // Categories
   document.getElementById('catTbl').innerHTML=CATS.map(c=>`
     <tr>
-      <td style="font-size:18px">${c.icon}</td>
+      <td>${c.iconType==='image'?`<img src="${c.icon}" style="width:24px;height:24px;object-fit:cover;border-radius:3px"/>`:c.icon}</td>
       <td style="color:var(--dim);font-size:12px">${c.id}</td>
       <td style="font-weight:700">${c.name}</td>
-      <td style="color:var(--dim)">${(PKGS[c.id]||[]).length} packages</td>
+      <td style="color:var(--dim)">${(PKGS[c.id]||[]).length} pkgs</td>
       <td><button class="a-btn red sml" onclick="delCat('${c.id}')">Delete</button></td>
     </tr>`).join('');
 
-  // Coupons
   document.getElementById('coupTbl').innerHTML=COUPONS.map((c,i)=>`
     <tr>
       <td style="font-weight:800;letter-spacing:.5px">${c.code}</td>
       <td style="color:var(--accent)">${c.discount}${c.type==='pct'?'%':'₹'}</td>
-      <td style="color:var(--dim)">${c.uses-c.used} / ${c.uses}</td>
-      <td style="color:var(--dim);font-size:12px">${c.exp||'No expiry'}</td>
-      <td><span class="bdg ${c.active?'g':'r'}">${c.active?'Active':'Disabled'}</span></td>
+      <td style="color:var(--dim)">${c.uses-c.used}/${c.uses}</td>
+      <td style="color:var(--dim);font-size:11px">${c.exp||'—'}</td>
+      <td><span class="bdg ${c.active?'g':'r'}">${c.active?'Active':'Off'}</span></td>
       <td><div class="tdact">
         <button class="a-btn gry sml" onclick="COUPONS[${i}].active=!COUPONS[${i}].active;refreshAdm()">Toggle</button>
-        <button class="a-btn red sml" onclick="COUPONS.splice(${i},1);refreshAdm()">Delete</button>
+        <button class="a-btn red sml" onclick="COUPONS.splice(${i},1);refreshAdm()">Del</button>
       </div></td>
     </tr>`).join('');
 
-  // Recent orders
-  document.getElementById('recentTbl').innerHTML=ORDERS_D.map(o=>`
+  document.getElementById('recentTbl').innerHTML=ORDERS_D.slice(0,5).map(o=>`
     <tr>
       <td style="font-weight:700">${o.player}</td>
       <td>${o.pkg}</td>
@@ -1186,40 +1542,31 @@ function refreshAdm(){
       <td><span class="bdg ${o.status==='completed'?'g':o.status==='pending'?'o':'r'}">${o.status}</span></td>
     </tr>`).join('');
 
-  // Orders table
   document.getElementById('ordersTbl').innerHTML=ORDERS_D.map(o=>`
     <tr>
-      <td style="color:var(--dim);font-size:12px">${o.id}</td>
+      <td style="color:var(--dim);font-size:11px">${o.id}</td>
       <td style="font-weight:700">${o.player}</td>
       <td>${o.pkg}</td>
       <td style="color:var(--accent);font-weight:700">${o.amt}</td>
-      <td style="color:var(--dim);font-size:12px">${o.date}</td>
+      <td style="color:var(--dim);font-size:11px">${o.date}</td>
       <td><span class="bdg ${o.status==='completed'?'g':o.status==='pending'?'o':'r'}">${o.status}</span></td>
-      <td><div class="tdact">
-        <button class="a-btn gry sml">View</button>
-        ${o.status==='pending'?'<button class="a-btn grn sml">Complete</button>':''}
-      </div></td>
+      <td><div class="tdact"><button class="a-btn gry sml">View</button>${o.status==='pending'?'<button class="a-btn grn sml">Done</button>':''}</div></td>
     </tr>`).join('');
 
-  // Players table
   document.getElementById('playersTbl').innerHTML=PLAYERS_D.map(p=>`
     <tr>
       <td style="font-weight:700">${p.name}</td>
       <td><span class="bdg ${p.type==='bedrock'?'p':'o'}">${p.type}</span></td>
       <td style="color:var(--dim)">${p.buys}</td>
       <td style="color:var(--accent);font-weight:700">${p.spent}</td>
-      <td style="color:var(--dim);font-size:12px">${p.last}</td>
-      <td><div class="tdact">
-        <button class="a-btn gry sml">View</button>
-        <button class="a-btn red sml">Ban</button>
-      </div></td>
+      <td style="color:var(--dim);font-size:11px">${p.last}</td>
+      <td><div class="tdact"><button class="a-btn gry sml">View</button><button class="a-btn red sml">Ban</button></div></td>
     </tr>`).join('');
 
-  // Revenue chart
   const vals=[42,68,35,89,54,110,75];const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
   const mx=Math.max(...vals);
   document.getElementById('revChart').innerHTML=
-    vals.map((v,i)=>`<div class="rev-bar" style="height:${(v/mx)*90}px" title="₹${v*100} - ${days[i]}"></div>`).join('')+
+    vals.map((v,i)=>`<div class="rev-bar" style="height:${(v/mx)*90}px" title="${days[i]}: ₹${v*100}"></div>`).join('')+
     `<div class="rev-chart-lbl">${days.map(d=>`<span>${d}</span>`).join('')}</div>`;
 
   syncApCatSelect();
@@ -1230,41 +1577,47 @@ function syncApCatSelect(){
   if(sel) sel.innerHTML=CATS.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // ADMIN CRUD
-// ════════════════════════════════════
+// ══════════════════════════════════
 function addPkg(){
   const cat=document.getElementById('apCat').value;
   const name=document.getElementById('apName').value.trim();
   const price=parseInt(document.getElementById('apPrice').value)||0;
-  const icon=document.getElementById('apIcon').value.trim()||'📦';
   const desc=document.getElementById('apDesc').value.trim();
   const perks=document.getElementById('apPerks').value.split(',').map(x=>x.trim()).filter(Boolean);
+  const iconFinal=document.getElementById('apIconFinal').value||'📦';
   if(!name||!price){showToast('⚠️','Name aur price zaroori hai!');return;}
   if(!PKGS[cat]) PKGS[cat]=[];
-  PKGS[cat].push({id:'p'+Date.now(),name,price,icon,desc,perks});
-  refreshAdm();showToast('✅','"'+name+'" successfully added!');
+  PKGS[cat].push({id:'p'+Date.now(),name,price,icon:iconFinal,iconType:pkgIconMode,desc,perks});
+  refreshAdm();showToast('✅','"'+name+'" added!');
   clearPkgForm();
 }
-function clearPkgForm(){['apName','apPrice','apDesc','apPerks'].forEach(id=>document.getElementById(id).value='');document.getElementById('apIcon').value='📦';}
-function editPkg(id,cat){showToast('✏️','Edit feature — coming soon!');}
+function clearPkgForm(){
+  ['apName','apPrice','apDesc','apPerks'].forEach(id=>document.getElementById(id).value='');
+  pkgIconMode='emoji';pkgIconValue='📦';
+  document.getElementById('apIconFinal').value='📦';
+  document.getElementById('apIconEmoji').value='📦';
+  document.getElementById('pkgPrev').textContent='📦';
+}
 function delPkg(id,cat){
   if(!confirm('Delete this package?')) return;
   if(PKGS[cat]) PKGS[cat]=PKGS[cat].filter(p=>p.id!==id);
   refreshAdm();showToast('🗑','Package deleted.');
 }
 function addCat(){
-  const id=document.getElementById('acId').value.trim().toLowerCase().replace(/\s/g,'-');
+  const id=document.getElementById('acId').value.trim().toLowerCase().replace(/\s+/g,'-');
   const name=document.getElementById('acName').value.trim();
-  const icon=document.getElementById('acIcon').value.trim()||'📂';
+  const iconFinal=document.getElementById('acIconFinal').value||'⚔️';
   if(!id||!name){showToast('⚠️','ID aur name bharo!');return;}
-  if(CATS.find(c=>c.id===id)){showToast('⚠️','Ye category already exists!');return;}
-  CATS.push({id,name,icon});if(!PKGS[id]) PKGS[id]=[];
-  buildSidebar();refreshAdm();showToast('✅','"'+name+'" category added!');
+  if(CATS.find(c=>c.id===id)){showToast('⚠️','Category already exists!');return;}
+  CATS.push({id,name,icon:iconFinal,iconType:catIconMode});
+  if(!PKGS[id]) PKGS[id]=[];
+  buildSidebar();refreshAdm();showToast('✅','"'+name+'" added!');
   document.getElementById('acId').value='';document.getElementById('acName').value='';
 }
 function delCat(id){
-  if(!confirm('Delete this category? All its packages will also be removed.')) return;
+  if(!confirm('Delete this category + all its packages?')) return;
   const i=CATS.findIndex(c=>c.id===id);
   if(i>-1){CATS.splice(i,1);delete PKGS[id];buildSidebar();refreshAdm();showToast('🗑','Category deleted.');}
 }
@@ -1277,23 +1630,25 @@ function addCoupon(){
   if(!code||!disc){showToast('⚠️','Code aur discount bharo!');return;}
   if(COUPONS.find(c=>c.code===code)){showToast('⚠️','Code already exists!');return;}
   COUPONS.push({code,discount:disc,type,uses,used:0,active:true,exp});
-  refreshAdm();showToast('✅','"'+code+'" coupon created!');
+  refreshAdm();showToast('✅','"'+code+'" created!');
   document.getElementById('ccCode').value='';document.getElementById('ccDisc').value='';
 }
 function updateHero(){
   const ico=document.getElementById('heroIconIn').value.trim();
   const title=document.getElementById('heroTitleIn').value.trim();
   const sub=document.getElementById('heroSubIn').value.trim();
-  if(ico) document.getElementById('heroLogoImg').textContent=ico;
+  if(ico&&document.getElementById('heroLogoImg').querySelector('img')===null){
+    document.getElementById('heroLogoImg').innerHTML=`<span id="heroLogoEmoji">${ico}</span>`;
+  }
   if(title) document.getElementById('heroTitle').textContent=title;
-  if(sub) document.getElementById('storeHero').querySelector('.hero-sub').textContent=sub;
-  showToast('✅','Hero banner updated!');
+  if(sub) document.getElementById('heroSub').textContent=sub;
+  showToast('✅','Hero updated!');
 }
 function toggleHero(){const h=document.getElementById('storeHero');h.style.display=h.style.display==='none'?'flex':'none';}
 function updatePromo(){
   const t=document.getElementById('promoTxt').value.trim();
-  if(t){const b=document.getElementById('promoBanner');b.innerHTML=t+'<button class="pb-close" onclick="this.closest(\'#promoBanner\').style.display=\'none\'">✕</button>';}
-  showToast('✅','Promo banner updated!');
+  if(t){const b=document.getElementById('promoBanner');b.innerHTML=t+'<button class="pb-close" onclick="this.parentElement.style.display=\'none\'">✕</button>';}
+  showToast('✅','Promo updated!');
 }
 function togglePromoBan(){const b=document.getElementById('promoBanner');b.style.display=b.style.display==='none'?'flex':'none';}
 function toggleMigBan(){
@@ -1302,27 +1657,27 @@ function toggleMigBan(){
 }
 function changePass(){
   const p=document.getElementById('newPass').value.trim();
-  if(p.length<4){showToast('⚠️','Min 4 characters needed!');return;}
-  ADMIN_PASS=p;document.getElementById('newPass').value='';showToast('✅','Admin password changed successfully!');
+  if(p.length<4){showToast('⚠️','Min 4 characters!');return;}
+  ADMIN_PASS=p;document.getElementById('newPass').value='';showToast('✅','Password changed!');
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════
 // HELPERS
-// ════════════════════════════════════
+// ══════════════════════════════════
 function closeM(id){document.getElementById(id).classList.remove('on');}
 function ovClose(e,id){if(e.target===document.getElementById(id)) closeM(id);}
-function copyIP(){navigator.clipboard?.writeText('play.mythicallife.net').catch(()=>{});showToast('📋','play.mythicallife.net copied to clipboard!');}
+function copyIP(){navigator.clipboard?.writeText('play.mythicallife.net').catch(()=>{});showToast('📋','IP copied!');}
 let _tt;
 function showToast(ico,msg){
   clearTimeout(_tt);
   document.getElementById('tIco').textContent=ico+' ';
   document.getElementById('tMsg').textContent=msg;
   const t=document.getElementById('toast');t.classList.add('on');
-  _tt=setTimeout(()=>t.classList.remove('on'),3200);
+  _tt=setTimeout(()=>t.classList.remove('on'),3000);
 }
 function fakeOnline(){
   const n=200+Math.floor(Math.random()*90);
-  ['onlinePill','onlineHome','heroOnline','admOnline'].forEach(id=>{const el=document.getElementById(id);if(el) el.textContent=n;});
+  ['onlinePill','onlineHome','heroOnline','admOnline'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=n;});
 }
 
 // INIT
